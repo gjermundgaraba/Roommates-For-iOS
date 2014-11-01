@@ -1,0 +1,177 @@
+//
+//  NotePageViewController.m
+//  Roommates
+//
+//  Created by Gjermund Bjaanes on 03/03/14.
+//  Copyright (c) 2014 Real Kode. All rights reserved.
+//
+
+#import "NotePageViewController.h"
+#import "NotePageContentViewController.h"
+#import "UserHelperClient.h"
+#import "SVProgressHUD.h"
+#import "FetchNoteClient.h"
+#import "CreateNoteClient.h"
+
+#define numberOfNotes 5
+
+@interface NotePageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIAlertViewDelegate>
+@property (strong, nonatomic) NSArray *notePageContentViewControllers;
+@property (strong, nonatomic) NSArray *notes; // of PFObjects
+@property (strong, nonatomic) FetchNoteClient *fetchNoteClient;
+@property (strong, nonatomic) UserHelperClient *userHelperClient;
+@end
+
+@implementation NotePageViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.fetchNoteClient = [[FetchNoteClient alloc] init];
+    
+    // Fix some appearences:
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecieveLogoutNotification:) name:@"LogoutNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewNoteNotification:) name:@"NewNoteNotification" object:nil];
+}
+
+<<<<<<< HEAD
+- (UserHelperClient *)userHelperClient {
+    if (!_userHelperClient) {
+        _userHelperClient = [[UserHelperClient alloc] init];
+=======
+//Rewrites the getter for userClient and instansiates it if it does not exist
+- (UserClient *)userClient {
+    if (!_userClient) {
+        _userClient = [[UserClient alloc] init];
+>>>>>>> 41077b26cee767d2b4f305f40c20ff4e02cd1537
+    }
+    return _userHelperClient;
+}
+
+//Refreshes notes with forcefetch
+- (void)refreshNotesWithForceFetch:(BOOL)forceFetch {
+    [self.fetchNoteClient getLatestNotesInBackgroundWithForceFetch:forceFetch
+                                                  limit:numberOfNotes
+                                                  block:^(NSArray *notes, NSError *error)
+    {
+        if (!error) {
+            self.notes = notes;
+        }
+        else {
+            NSLog(@"Get latest notes failed");
+        }
+        
+    }];
+}
+
+//Rewrites the setter for notes
+- (void)setNotes:(NSArray *)notes {
+    _notes = notes;
+    
+    if (self.notes != nil && self.notes.count != 0) {
+        self.dataSource = nil;
+        self.dataSource = self;
+        
+        [self setViewControllers:@[[self viewControllerAtIndex:0]]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:NO
+                      completion:nil];
+    }
+    else {
+        NSLog(@"No notes to show.");
+        NotePageContentViewController *emptyViewController = [[NotePageContentViewController alloc] init];
+        emptyViewController.pageIndex = 0;
+        [self setViewControllers:@[emptyViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }
+}
+
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveNewNoteNotification:(NSNotificationCenter *)notificationCenter {
+    [self refreshNotesWithForceFetch:YES];
+}
+
+- (void)didRecieveLogoutNotification:(NSNotificationCenter *)notificationCenter {
+    self.notes = nil;
+}
+
+//When view is appearing it does not refresh notes with forcefetch
+- (void)viewDidAppear:(BOOL)animated {
+    [self refreshNotesWithForceFetch:NO];
+}
+
+//If user is logged in and member of a household performsegueto allnotes
+- (void)allNotesSegue {
+    if ([self.userHelperClient userIsLoggedInAndMemberOfAHousehold]) {
+        [self performSegueWithIdentifier:@"allNotesSegue" sender:self];
+    }
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
+    NSUInteger index = ((NotePageContentViewController*) viewController).pageIndex;
+    
+    //gets notes as a pageview- if no notes return nil
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
+    NSUInteger index = ((NotePageContentViewController*) viewController).pageIndex;
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
+    if (index == self.notes.count) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
+}
+
+- (NotePageContentViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+    if ((numberOfNotes == 0) || (index >= self.notes.count)) {
+        return nil;
+    }
+    
+    // Create a new view controller and pass suitable data.
+    NotePageContentViewController *pageContentViewController =
+        [self.storyboard instantiateViewControllerWithIdentifier:@"NotePageContentViewController"];
+    pageContentViewController.pageIndex = index;
+    pageContentViewController.note = [self.notes objectAtIndex:index];
+    
+    return pageContentViewController;
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    if (self.notes) {
+        return self.notes.count;
+    }
+    else {
+        return 0;
+    }
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return 0;
+    
+}
+
+
+@end

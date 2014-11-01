@@ -1,0 +1,158 @@
+//
+//  LoginViewController.m
+//  Roommates
+//
+//  Created by Gjermund Bjaanes on 19/02/14.
+//  Copyright (c) 2014 Real Kode. All rights reserved.
+//
+
+#import "LoginViewController.h"
+#import "SignupViewController.h"
+#import <Parse/Parse.h>
+#import "SVProgressHUD.h"
+#import "UserOrdinaryLoginClient.h"
+#import "UserFacebookLoginClient.h"
+
+@interface LoginViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) UserOrdinaryLoginClient *userLoginClient;
+@property (strong, nonatomic) UserFacebookLoginClient *userFacebookLoginClient;
+@end
+
+@implementation LoginViewController
+
+<<<<<<< HEAD
+- (UserOrdinaryLoginClient *)userLoginClient {
+=======
+/** Rewrites the getters for userLoginClient and userFacebookLoginClient
+    and instansiates them if they don´t exist. **/
+
+- (UserLoginClient *)userLoginClient {
+>>>>>>> 41077b26cee767d2b4f305f40c20ff4e02cd1537
+    if (!_userLoginClient) {
+        _userLoginClient = [[UserOrdinaryLoginClient alloc] init];
+    }
+    return _userLoginClient;
+}
+
+- (UserFacebookLoginClient *)userFacebookLoginClient {
+    if (!_userFacebookLoginClient) {
+        _userFacebookLoginClient = [[UserFacebookLoginClient alloc] init];
+    }
+    return _userFacebookLoginClient;
+}
+
+/** If the user is already logged in, it will dismiss this viewcontroller **/
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([PFUser currentUser]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+/** Changes statusbar color to white **/
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark Button actions
+
+/**  When Logging in, show progressHUD, remove keyboards. Shows a UIAlertView if error **/
+
+- (IBAction)login {
+    [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    
+    [self.userLoginClient loginInBackgroundWithUsername:self.usernameTextField.text
+                                               password:self.passwordTextField.text
+                                                  block:^(NSError *error)
+    {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];
+        }
+    }];
+}
+
+/**  When Logging in with fb, show progressHUD, remove keyboards. Shows a UIAlertView if error **/
+
+- (IBAction)loginWithFacebbok  {
+    [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    
+    NSLog(@"login With Facebook");
+    [self.userFacebookLoginClient facebookLoginInBackgroundWithBlock:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];
+        }
+    }];
+    
+}
+
+#pragma mark UITextField animation
+
+/** Animating the textFields to fit with keyboard on screen **/
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 80; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (orientation ==  UIDeviceOrientationPortrait)
+    {
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    }
+    else {
+        self.view.frame = CGRectOffset(self.view.frame, -movement, 0);
+    }
+    [UIView commitAnimations];
+}
+
+
+#pragma mark UITextField Delegate methods
+
+/** Lets us know when textfieldevents happen **/
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField:textField up:NO];
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+
+
+
+@end

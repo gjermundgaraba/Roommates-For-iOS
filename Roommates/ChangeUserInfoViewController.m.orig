@@ -1,0 +1,144 @@
+//
+//  ChangeUserInfoViewController.m
+//  Roommates
+//
+//  Created by Gjermund Bjaanes on 30/03/14.
+//  Copyright (c) 2014 Real Kode. All rights reserved.
+//
+
+#import "ChangeUserInfoViewController.h"
+#import <Parse/Parse.h>
+#import "UserHelperClient.h"
+#import "SVProgressHUD.h"
+#import "UserChangeDisplayNameClient.h"
+#import "UserChangeEmailClient.h"
+
+@interface ChangeUserInfoViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+
+@property (strong, nonatomic) UserHelperClient *userHelperClient;
+@property (strong, nonatomic) UserChangeDisplayNameClient *userChangeDisplayNameClient;
+@property (strong, nonatomic) UserChangeEmailClient *userChangeEmailClient;
+@end
+
+@implementation ChangeUserInfoViewController
+
+<<<<<<< HEAD
+- (UserHelperClient *)userHelperClient {
+    if (!_userHelperClient) {
+        _userHelperClient = [[UserHelperClient alloc] init];
+=======
+/** rewrites the setters for userClient, userChangeDisplayNameClient and userChangeEmailClient and instansiates them if they dont exist **/
+
+- (UserClient *)userClient {
+    if (!_userClient) {
+        _userClient = [[UserClient alloc] init];
+>>>>>>> 41077b26cee767d2b4f305f40c20ff4e02cd1537
+    }
+    return _userHelperClient;
+}
+
+- (UserChangeDisplayNameClient *)userChangeDisplayNameClient {
+    if (!_userChangeDisplayNameClient) {
+        _userChangeDisplayNameClient = [[UserChangeDisplayNameClient alloc] init];
+    }
+    return _userChangeDisplayNameClient;
+}
+
+- (UserChangeEmailClient *)userChangeEmailClient {
+    if (!_userChangeEmailClient) {
+        _userChangeEmailClient = [[UserChangeEmailClient alloc] init];
+    }
+    return _userChangeEmailClient;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    PFUser *currentUser = [PFUser currentUser];
+    
+    //sets up the textfields text
+    self.displayNameTextField.text = currentUser[@"displayName"];
+    self.emailTextField.text = currentUser[@"email"];
+}
+
+- (IBAction)saveChangesButtonPressed {
+    [SVProgressHUD showWithStatus:@"Changing User Info" maskType:SVProgressHUDMaskTypeBlack];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    NSString *oldDisplayName = currentUser[@"displayName"];
+    NSString *oldEmail = currentUser[@"email"];
+    NSString *displayName = self.displayNameTextField.text;
+    NSString *email = self.emailTextField.text;
+    NSString *confirmPassword = self.confirmPasswordTextField.text;
+    
+    BOOL displayNameChanged = ![displayName isEqualToString:oldDisplayName];
+    BOOL emailChanged = ![email isEqualToString:oldEmail];
+    
+    //Changes displayname and email in background
+    if (displayNameChanged && emailChanged) {
+        [self.userChangeDisplayNameClient changeDisplayNameInBackground:displayName
+                                                    withPasswordConfirm:confirmPassword
+                                                                  block:^(NSError *error)
+        {
+            if (!error) {
+                [self.userChangeEmailClient changeEmailInBackground:email
+                                                withPasswordConfirm:confirmPassword
+                                                              block:^(NSError *error)
+                {
+                    [SVProgressHUD dismiss];
+                    if (!error) {
+                        NSLog(@"Save BOTH SUCCESS!");
+                    }
+                    else {
+                        NSLog(@"Error saving email");
+                    }
+                }];
+            }
+            else {
+                NSLog(@"Error saving displayname");
+                [SVProgressHUD dismiss];
+            }
+        }];
+    }
+    //changes displayname in background
+    else if (displayNameChanged) {
+        [self.userChangeDisplayNameClient changeDisplayNameInBackground:displayName
+                                                    withPasswordConfirm:confirmPassword
+                                                                  block:^(NSError *error)
+        {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                NSLog(@"SAVE DISPLAY NAME SUCCESS!");
+            }
+            else {
+                NSLog(@"SAVE DISPLAY NAME FAILED!");
+            }
+        }];
+    }
+    //changes email in background
+    else if (emailChanged) {
+        [self.userChangeEmailClient changeEmailInBackground:email
+                                        withPasswordConfirm:confirmPassword
+                                                      block:^(NSError *error)
+        {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                NSLog(@"SAVE EMAIL SUCCESS");
+            }
+            else {
+                NSLog(@"SAVE EMAIL FAILED!");
+            }
+        }];
+    }
+    else {
+        [SVProgressHUD dismiss];
+        NSLog(@"Nothing User Info Changed...");
+    }
+    
+}
+
+
+@end
