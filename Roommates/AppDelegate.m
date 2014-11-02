@@ -1,16 +1,8 @@
-//
-//  AppDelegate.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 19/02/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 
-// For Subclass registering
 #import "TaskList.h"
 #import "Household.h"
 #import "User.h"

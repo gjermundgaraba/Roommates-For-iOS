@@ -1,10 +1,3 @@
-//
-//  NoHouseholdViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 26/02/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "NoHouseholdViewController.h"
 #import <Parse/Parse.h>

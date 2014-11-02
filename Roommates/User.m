@@ -1,10 +1,3 @@
-//
-//  User.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 16/04/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "User.h"
 #import <Parse/PFObject+Subclass.h>
@@ -15,6 +8,10 @@
 @dynamic activeHousehold;
 @dynamic displayName;
 @dynamic profilePicture;
+
++ (BOOL)isAnyoneLoggedIn {
+    return [User currentUser] ? YES : NO;
+}
 
 - (NSString *)userChannel {
     return [NSString stringWithFormat:@"user-%@", self.objectId];

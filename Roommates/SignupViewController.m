@@ -1,10 +1,3 @@
-//
-//  SignupViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 02/03/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "SignupViewController.h"
 #import <Parse/Parse.h>

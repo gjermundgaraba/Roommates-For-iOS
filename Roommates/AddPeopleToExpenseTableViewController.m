@@ -1,10 +1,3 @@
-//
-//  AddPeopleToExpenseTableViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 27/04/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "AddPeopleToExpenseTableViewController.h"
 #import "User.h"

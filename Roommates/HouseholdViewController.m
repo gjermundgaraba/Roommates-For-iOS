@@ -1,10 +1,3 @@
-//
-//  HouseholdViewControllerTMP.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 07/03/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "HouseholdViewController.h"
 #import "SVProgressHUD.h"

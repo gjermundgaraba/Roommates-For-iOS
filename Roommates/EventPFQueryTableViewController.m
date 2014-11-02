@@ -1,11 +1,3 @@
-//
-//  EventPFQueryTableViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 11/04/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
-//  Parse helper class for showing data in table view controllers
 
 #import "EventPFQueryTableViewController.h"
 #import <Parse/Parse.h>

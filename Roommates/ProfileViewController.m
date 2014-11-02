@@ -1,10 +1,3 @@
-//
-//  ProfileViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 25/02/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "ProfileViewController.h"
 #import "LoginViewController.h"

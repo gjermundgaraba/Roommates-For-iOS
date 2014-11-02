@@ -1,13 +1,3 @@
-//
-//  FeedViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 06/03/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
-// Only holds two containers that does all the work
-// (feed and notes)
-
 
 #import "FeedViewController.h"
 #import "Note.h"
@@ -16,6 +6,8 @@
 
 @interface FeedViewController () <UIAlertViewDelegate>
 @end
+
+static int ADD_BUTTON_INDEX = 1;
 
 @implementation FeedViewController
 
@@ -37,7 +29,7 @@
 
 // Add note
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // User pressed Add
+    if (buttonIndex == ADD_BUTTON_INDEX) {
         PFACL *acl = [PFACL ACL];
         [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
         
@@ -53,9 +45,12 @@
             if (!error) {
                 [SVProgressHUD showSuccessWithStatus:@"Note Created!"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"NewNoteCreated" object:nil];
-            }
-            else {
-                UIAlertView *saveNoteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new note" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            } else {
+                UIAlertView *saveNoteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new note"
+                                                                            message:error.userInfo[@"error"]
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles:nil];
                 [saveNoteFailAlert show];
             }
         }];

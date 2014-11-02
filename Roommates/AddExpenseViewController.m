@@ -1,10 +1,3 @@
-//
-//  AddExpenseViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 25/04/14.
-//  Copyright (c) 2014 Real Kode. All rights reserved.
-//
 
 #import "AddExpenseViewController.h"
 #import "User.h"
