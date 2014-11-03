@@ -13,16 +13,12 @@
 
 @implementation LoginViewController
 
-/** If the user is already logged in, it will dismiss this viewcontroller **/
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([User currentUser]) {
+    if ([User isAnyoneLoggedIn]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
-/** Changes statusbar color to white **/
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -58,15 +54,11 @@
                                    password:password
                                       block:^(PFUser *user, NSError *error)
          {
-             // Done, time to check if things went OK
              [SVProgressHUD dismiss];
-             if (!error) { // ok !
-                 [User refreshChannels]; // Update Push
-                 
-                 // Remove login screen and show the app
+             if (!error) {
+                 [User refreshChannels];
                  [self dismissViewControllerAnimated:YES completion:nil];
-             }
-             else { // not ok...
+             } else {
                  UIAlertView *loginFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
                                                                       message:@""
                                                                      delegate:nil
@@ -75,8 +67,7 @@
                  
                  if (error.code == kPFErrorObjectNotFound) {
                      loginFailAlert.message = @"Username Password Combination is Wrong";
-                 }
-                 else {
+                 } else {
                      loginFailAlert.message = @"Something went wrong";
                  }
                  
@@ -85,8 +76,6 @@
          }];
     }
 }
-
-/**  When Logging in with fb, show progressHUD, remove keyboards. Shows a UIAlertView if error **/
 
 - (IBAction)loginWithFacebbok  {
     [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];

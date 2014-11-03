@@ -25,6 +25,24 @@ static int ADD_BUTTON_INDEX = 1;
     }
 }
 
+- (void)createNewNote:(Note *)newNote {
+    [SVProgressHUD showWithStatus:@"Creating new Note"];
+    [newNote saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:@"Note Created!"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NewNoteCreated" object:nil];
+        } else {
+            UIAlertView *saveNoteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new note"
+                                                                        message:error.userInfo[@"error"]
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+            [saveNoteFailAlert show];
+        }
+    }];
+}
+
 #pragma mark UIAlertView Delegate Methods
 
 // Add note
@@ -39,21 +57,7 @@ static int ADD_BUTTON_INDEX = 1;
         newNote.household = [User currentUser].activeHousehold;
         newNote.ACL = acl;
         
-        [SVProgressHUD showWithStatus:@"Creating new Note"];
-        [newNote saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [SVProgressHUD dismiss];
-            if (!error) {
-                [SVProgressHUD showSuccessWithStatus:@"Note Created!"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"NewNoteCreated" object:nil];
-            } else {
-                UIAlertView *saveNoteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new note"
-                                                                            message:error.userInfo[@"error"]
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"OK"
-                                                                  otherButtonTitles:nil];
-                [saveNoteFailAlert show];
-            }
-        }];
+        [self createNewNote:newNote];
     }
 }
 

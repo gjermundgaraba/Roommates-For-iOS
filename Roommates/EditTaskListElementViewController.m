@@ -28,10 +28,6 @@
         self.finishedByLabel.text = isFinished ? self.taskListElement.finishedBy.displayName : @"";
         self.createdByLabel.text = self.taskListElement.createdBy.displayName;
     }
-    else {
-        // Should not ever happen.
-        // If this ever becomes a problem, hide UI elements and disable the save button.
-    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
 }
@@ -65,11 +61,10 @@
     [SVProgressHUD showWithStatus:@"Saving Task List Element" maskType:SVProgressHUDMaskTypeBlack];
     [self.taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [SVProgressHUD dismiss];
-        if (!error) { // save success
+        if (!error) {
             [SVProgressHUD showSuccessWithStatus:@"Task List Element Saved!"];
             [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
-        }
-        else { // save fail
+        } else {
             UIAlertView *saveFailAlert = [[UIAlertView alloc] initWithTitle:@"Saving Task List Element Failed!" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [saveFailAlert show];
         }
@@ -90,8 +85,7 @@
             if (!error) { // delete success
                 [SVProgressHUD showSuccessWithStatus:@"Task List Element Deleted!"];
                 [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
-            }
-            else { // delete fail
+            } else { // delete fail
                 UIAlertView *saveFailAlert = [[UIAlertView alloc] initWithTitle:@"Deleting Task List Element Failed!" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [saveFailAlert show];
             }
