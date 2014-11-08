@@ -1,6 +1,7 @@
 
 #import "ProfileInformationViewController.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import "SVProgressHUD.h"
 #import "InputValidation.h"
 #import "User.h"
@@ -43,7 +44,6 @@
     self.imageView.layer.masksToBounds = YES;
     
     // Sets the profile picture as the image view picture and load it
-    // Thx Parse! :D
     PFFile *profilePicture = self.currentUser.profilePicture;
     self.imageView.image = [UIImage imageNamed:@"placeholder"];
     self.imageView.file = profilePicture;

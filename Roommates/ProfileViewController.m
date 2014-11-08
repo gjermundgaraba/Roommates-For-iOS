@@ -2,6 +2,7 @@
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import "User.h"
 
 @interface ProfileViewController ()

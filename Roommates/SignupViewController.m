@@ -91,13 +91,12 @@
             else {
                 // Sign up failed for some reason, tell the user
                 
-                int errorCode = error.code;
-                NSString *errorString = [NSString stringWithFormat:@"Error code: %d. Something went wrong, please try again.", errorCode];
+                NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", error.code];
                 
-                if (errorCode == kPFErrorConnectionFailed) {
+                if (error.code == kPFErrorConnectionFailed) {
                     errorString = @"The Internet connection appears to be offline.";
                 }
-                else if (errorCode == kPFErrorUsernameTaken) {
+                else if (error.code == kPFErrorUsernameTaken) {
                     errorString = @"Username already taken";
                 }
 

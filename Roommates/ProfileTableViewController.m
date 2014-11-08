@@ -1,6 +1,7 @@
 
 #import "ProfileTableViewController.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "LoginViewController.h"
 #import "User.h"
 

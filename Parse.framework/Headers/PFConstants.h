@@ -2,11 +2,12 @@
 // Copyright 2011 Parse, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
+
 @class PFObject;
 @class PFUser;
 
 // Version
-#define PARSE_VERSION @"1.2.19"
+#define PARSE_VERSION @"1.5.0"
 
 extern NSInteger const PARSE_API_VERSION;
 
@@ -39,6 +40,8 @@ typedef enum {
 } PFCachePolicy;
 
 // Errors
+
+extern NSString *const PFParseErrorDomain;
 
 /*! @abstract 1: Internal server error. No information available. */
 extern NSInteger const kPFErrorInternalServer;
@@ -115,7 +118,8 @@ extern NSInteger const kPFErrorInvalidImageData;
 extern NSInteger const kPFErrorUnsavedFile;
 /*! @abstract 153: Fail to delete file. */
 extern NSInteger const kPFErrorFileDeleteFailure;
-
+/*! @abstract 160: Invalid event name. */
+extern NSInteger const kPFErrorInvalidEventName;
 /*! @abstract 200: Username is missing or empty */
 extern NSInteger const kPFErrorUsernameMissing;
 /*! @abstract 201: Password is missing or empty */
@@ -158,3 +162,16 @@ typedef void (^PFDataStreamResultBlock)(NSInputStream *stream, NSError *error);
 typedef void (^PFStringResultBlock)(NSString *string, NSError *error);
 typedef void (^PFIdResultBlock)(id object, NSError *error);
 typedef void (^PFProgressBlock)(int percentDone);
+
+// Deprecated Macro
+#ifndef PARSE_DEPRECATED
+#ifdef __deprecated_msg
+#define PARSE_DEPRECATED(_MSG) __deprecated_msg(_MSG)
+#else
+#ifdef __deprecated
+#define PARSE_DEPRECATED(_MSG) __attribute__((deprecated))
+#else
+#define PARSE_DEPRECATED(_MSG)
+#endif
+#endif
+#endif

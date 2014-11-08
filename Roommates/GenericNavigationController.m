@@ -1,5 +1,6 @@
 
 #import "GenericNavigationController.h"
+#import "User.h"
 
 @interface GenericNavigationController ()
 
@@ -12,6 +13,8 @@
     [super viewDidLoad];
     self.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationBar.translucent = NO;
+    
+    [[User currentUser] fetchInBackground];
 }
 
 @end

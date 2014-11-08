@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #import "TaskList.h"
 #import "Household.h"

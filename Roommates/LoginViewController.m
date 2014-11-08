@@ -2,6 +2,7 @@
 #import "LoginViewController.h"
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "SVProgressHUD.h"
 #import "User.h"
 
@@ -147,10 +148,9 @@
          } // end if (!error)
          else {
              // Something went wrong
-             int errorCode = error.code;
-             NSString *errorString = [NSString stringWithFormat:@"Error code: %d. Something went wrong, please try again.", errorCode];
+             NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", (long)error.code];
              
-             if (errorCode == kPFErrorConnectionFailed) {
+             if (error.code == kPFErrorConnectionFailed) {
                  errorString = @"The Internet connection appears to be offline.";
              }
              

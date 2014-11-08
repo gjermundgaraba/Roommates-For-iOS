@@ -413,8 +413,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zzt-Ik-cUb">
-                                <rect key="frame" x="20" y="8" width="280" height="219"/>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzt-Ik-cUb">
+                                <rect key="frame" x="20" y="8" width="280" height="220"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="IQK-Na-bBm"/>
@@ -423,8 +423,8 @@
                                     <segue destination="mSO-Lx-FHr" kind="embed" id="lYn-9U-8A2"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="foD-rn-8iD">
-                                <rect key="frame" x="20" y="235" width="280" height="220"/>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foD-rn-8iD">
+                                <rect key="frame" x="20" y="236" width="280" height="219"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="cOp-ky-VOt" kind="embed" id="vVO-7y-VND"/>
@@ -460,7 +460,7 @@
             <objects>
                 <tableViewController id="mSO-Lx-FHr" customClass="AllNotesPFQueryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WKU-OW-2v8">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
@@ -577,7 +577,7 @@
             <objects>
                 <tableViewController id="cOp-ky-VOt" customClass="EventPFQueryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="30z-Ky-Vav">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="220"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
@@ -1100,28 +1100,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ubx-cT-rUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3107" y="357"/>
-        </scene>
-        <!--Edit Household-->
-        <scene sceneID="zRb-Yr-oaf">
-            <objects>
-                <viewController id="tKH-iM-w0O" customClass="HouseholdNameViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LD4-Ds-pEz"/>
-                        <viewControllerLayoutGuide type="bottom" id="tjc-8i-3Dt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EdP-74-HJz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Edit Household" id="uPL-Zo-QO8"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u1W-Ta-rH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4080" y="864"/>
         </scene>
         <!--Invitations-->
         <scene sceneID="jSr-HU-svf">
