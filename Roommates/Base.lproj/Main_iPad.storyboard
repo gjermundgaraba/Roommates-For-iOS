@@ -879,8 +879,8 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-Zn-I95">
-                                <rect key="frame" x="667" y="930" width="81" height="30"/>
-                                <state key="normal" title="Create New">
+                                <rect key="frame" x="624" y="930" width="124" height="30"/>
+                                <state key="normal" title="Create Household">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

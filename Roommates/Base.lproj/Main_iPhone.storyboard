@@ -1153,8 +1153,8 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5h-Mg-4RQ">
-                                <rect key="frame" x="219" y="474" width="81" height="30"/>
-                                <state key="normal" title="Create New">
+                                <rect key="frame" x="176" y="474" width="124" height="30"/>
+                                <state key="normal" title="Create Household">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
