@@ -18,14 +18,12 @@ extern NSString * const SVProgressHUDDidAppearNotification;
 
 extern NSString * const SVProgressHUDStatusUserInfoKey;
 
-enum {
+typedef NS_ENUM(NSUInteger, SVProgressHUDMaskType) {
     SVProgressHUDMaskTypeNone = 1, // allow user interactions while HUD is displayed
     SVProgressHUDMaskTypeClear, // don't allow
     SVProgressHUDMaskTypeBlack, // don't allow and dim the UI in the back of the HUD
     SVProgressHUDMaskTypeGradient // don't allow and dim the UI with a a-la-alert-view bg gradient
 };
-
-typedef NSUInteger SVProgressHUDMaskType;
 
 @interface SVProgressHUD : UIView
 
@@ -63,5 +61,14 @@ typedef NSUInteger SVProgressHUDMaskType;
 + (void)dismiss;
 
 + (BOOL)isVisible;
+
+@end
+
+
+@interface SVIndefiniteAnimatedView : UIView
+
+@property (nonatomic, assign) CGFloat strokeThickness;
+@property (nonatomic, assign) CGFloat radius;
+@property (nonatomic, strong) UIColor *strokeColor;
 
 @end

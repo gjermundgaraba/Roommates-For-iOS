@@ -105,7 +105,6 @@
                                                            id result,
                                                            NSError *error)
                       {
-                          [SVProgressHUD dismiss];
                           if (!error) {
                               NSDictionary *userData = (NSDictionary *)result;
                               NSString *fbPictureURL =
@@ -125,25 +124,23 @@
                               user[@"email"] = userData[@"email"];
                               user[@"profilePicture"] = pictureFile;
                               
-                              [SVProgressHUD showWithStatus:@"Saving user" maskType:SVProgressHUDMaskTypeBlack];
                               [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                   [SVProgressHUD dismiss];
                                   if (!error) {
-                                      [SVProgressHUD dismiss];
                                       [self dismissViewControllerAnimated:YES completion:nil];
                                   } else {
                                       UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                       [facebookFailAlert show];
                                       [user deleteInBackground];
-                                      [PFUser logOut];
+                                      //[PFUser logOut];
                                   }
                               }];
                           }
                           else {
+                              [SVProgressHUD dismiss];
                               UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:@"Could not contact Facebook, please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                               [facebookFailAlert show];
                               [user deleteInBackground];
-                              [PFUser logOut];
                           }
                       }];
                  }
