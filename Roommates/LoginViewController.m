@@ -82,7 +82,6 @@
     [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
- 
     
     // The permissions requested from the user
     NSArray *permissionsArray = @[ @"email" ];
@@ -106,7 +105,7 @@
                                                            id result,
                                                            NSError *error)
                       {
-                          
+                          [SVProgressHUD dismiss];
                           if (!error) {
                               NSDictionary *userData = (NSDictionary *)result;
                               NSString *fbPictureURL =
@@ -116,38 +115,44 @@
                               NSURL *pictureURL = [NSURL URLWithString:
                                                    [NSString stringWithFormat:fbPictureURL, facebookID]];
                               
+                              NSData *pictureData = [NSData dataWithContentsOfURL:pictureURL];
+                              UIImage *profilePicture = [UIImage imageWithData:pictureData];
+                              NSData *imageData = UIImagePNGRepresentation(profilePicture);
+                              PFFile *pictureFile = [PFFile fileWithData:imageData];
+                              
                               user[@"username"] = userData[@"email"];
                               user[@"displayName"] = userData[@"name"];
                               user[@"email"] = userData[@"email"];
-                              
-                              NSData *pictureData = [NSData dataWithContentsOfURL:pictureURL];
-                              UIImage *profilePicture = [UIImage imageWithData:pictureData];
-                              
-                              
-                              NSData *imageData = UIImagePNGRepresentation(profilePicture);
-                              PFFile *pictureFile = [PFFile fileWithData:imageData];
                               user[@"profilePicture"] = pictureFile;
                               
-                              [user saveInBackground];
-                              
-                              [SVProgressHUD dismiss];
-                              [self dismissViewControllerAnimated:YES completion:nil];
+                              [SVProgressHUD showWithStatus:@"Saving user" maskType:SVProgressHUDMaskTypeBlack];
+                              [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                  [SVProgressHUD dismiss];
+                                  if (!error) {
+                                      [SVProgressHUD dismiss];
+                                      [self dismissViewControllerAnimated:YES completion:nil];
+                                  } else {
+                                      UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                      [facebookFailAlert show];
+                                      [user deleteInBackground];
+                                      [PFUser logOut];
+                                  }
+                              }];
                           }
                           else {
-                              [PFUser logOut];
-                              [user deleteInBackground];
                               UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:@"Could not contact Facebook, please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                               [facebookFailAlert show];
+                              [user deleteInBackground];
+                              [PFUser logOut];
                           }
                       }];
                  }
                  else {
                      [self dismissViewControllerAnimated:YES completion:nil];
                  }
-             } // end if (user)
-         } // end if (!error)
+             }
+         }
          else {
-             // Something went wrong
              NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", (long)error.code];
              
              if (error.code == kPFErrorConnectionFailed) {
