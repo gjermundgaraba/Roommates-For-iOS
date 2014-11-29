@@ -3,12 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "buttonFacebook.png"
+      "filename" : "facebookLogin.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "buttonFacebook@2x.png"
+      "filename" : "facebookLogin@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "facebookLogin@3x.png"
     }
   ],
   "info" : {

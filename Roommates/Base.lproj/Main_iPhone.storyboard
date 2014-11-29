@@ -115,10 +115,12 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4R-H7-Q1n">
-                                <rect key="frame" x="38" y="406" width="245" height="48"/>
-                                <state key="normal" image="buttonFacebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <rect key="frame" x="38" y="406" width="245" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="afh-lP-me8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KhmerMN" family="Khmer MN" pointSize="18"/>
+                                <state key="normal" image="facebookLogin"/>
                                 <connections>
                                     <action selector="loginWithFacebbok" destination="bKz-1X-OmG" eventType="touchUpInside" id="Lf0-O7-yBC"/>
                                 </connections>
@@ -1812,8 +1814,8 @@
         <image name="Roommates logo" width="2133" height="2133"/>
         <image name="Roommates logo white" width="1805" height="1928"/>
         <image name="TasksIcon" width="50" height="50"/>
-        <image name="buttonFacebook" width="248" height="48"/>
         <image name="expenses50x50" width="50" height="50"/>
+        <image name="facebookLogin" width="245" height="52"/>
         <image name="feed" width="50" height="50"/>
         <image name="me" width="50" height="50"/>
     </resources>
