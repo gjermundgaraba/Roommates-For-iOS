@@ -19,7 +19,6 @@
 
 #pragma mark getters and setters
 
-// Safety, just in case someone tries to use it before they have been fetched
 - (NSArray *)finishedTaskListElements {
     if (!_finishedTaskListElements) {
         _finishedTaskListElements = [[NSArray alloc] init];
@@ -27,7 +26,6 @@
     return _finishedTaskListElements;
 }
 
-// Safety, just in case someone tries to use it before they have been fetched
 - (NSArray *)unfinishedTaskListElements {
     if (!_unfinishedTaskListElements) {
         _unfinishedTaskListElements = [[NSArray alloc] init];
@@ -35,14 +33,9 @@
     return _unfinishedTaskListElements;
 }
 
-// Overwrites the taskList setter
-// Refreshed the table view after set
-// Sets title of scene also
 - (void)setTaskList:(TaskList *)taskList {
     _taskList = taskList;
-    
     [self refreshTaskListElements];
-    
     self.title = taskList.listName;
 }
 
@@ -114,9 +107,9 @@
     [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
 
-// Will be called from the toolbar to signal that adding is done
-// Removes keyboard from screen
 - (void)doneWithAdding {
+    [self saveTaskListElement:self.addItemTextField.text];
+    [self.addItemTextField setText:@""];
     [self.addItemTextField resignFirstResponder];
 }
 
@@ -289,7 +282,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSString *elementName = textField.text;
-    
+    [self saveTaskListElement:elementName];
+    textField.text = @"";
+    return NO;
+}
+
+- (void) saveTaskListElement:(NSString *)elementName {
     if (![elementName isEqualToString:@""]) {
         if ([User currentUser] && [User currentUser].activeHousehold && self.taskList) {
             TaskListElement *newTaskListElement = [TaskListElement object];
@@ -310,11 +308,8 @@
             }];
         }
     }
-
-    textField.text = @"";
-    //[textField resignFirstResponder];
-    return NO;
 }
+        
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

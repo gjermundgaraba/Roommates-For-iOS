@@ -56,11 +56,11 @@
 		7C17F73A18D8DD54003BF1E3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F5D18B4CCDA00F56529 /* XCTest.framework */; };
 		7C1E35C118FC574E00F626E2 /* AllNotesPFQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E35C018FC574E00F626E2 /* AllNotesPFQueryTableViewController.m */; };
 		7C1FC28118C3D9C1001A30F0 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FC28018C3D9C1001A30F0 /* SignupViewController.m */; };
-		7C2D74CF18DB626200373C1A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D74CC18DB626200373C1A /* SVProgressHUD.bundle */; };
-		7C2D74D018DB626200373C1A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D74CE18DB626200373C1A /* SVProgressHUD.m */; };
 		7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C42150418C8A3D4007DA6BC /* FeedViewController.m */; };
 		7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753D718D4AFC000131F95 /* InputValidation.m */; };
 		7C4753DB18D4B78B00131F95 /* ForgottenPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753DA18D4B78B00131F95 /* ForgottenPasswordViewController.m */; };
+		7C535DAA1A25150E00AF1969 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */; };
+		7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C535DA91A25150E00AF1969 /* SVProgressHUD.m */; };
 		7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */; };
 		7C5D037B18FC9A020055DDD5 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037A18FC9A020055DDD5 /* ProfileTableViewController.m */; };
 		7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037D18FC9D0B0055DDD5 /* ProfileInformationViewController.m */; };
@@ -159,10 +159,6 @@
 		7C1E35C018FC574E00F626E2 /* AllNotesPFQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllNotesPFQueryTableViewController.m; sourceTree = "<group>"; };
 		7C1FC27F18C3D9C1001A30F0 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		7C1FC28018C3D9C1001A30F0 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
-		7C2D74CB18DB626200373C1A /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		7C2D74CC18DB626200373C1A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		7C2D74CD18DB626200373C1A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		7C2D74CE18DB626200373C1A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C42150318C8A3D4007DA6BC /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		7C42150418C8A3D4007DA6BC /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FeedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C4753D618D4AFC000131F95 /* InputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputValidation.h; sourceTree = "<group>"; };
@@ -175,6 +171,10 @@
 		7C4B54FA190E5FB70041CB21 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		7C4B5501190E63D50041CB21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C4B5503190E644F0041CB21 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7C535DA61A25150E00AF1969 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7C535DA81A25150E00AF1969 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		7C535DA91A25150E00AF1969 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		7C5D037718FC68F30055DDD5 /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		7C5D037918FC9A020055DDD5 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
@@ -380,9 +380,9 @@
 		7C062F4118B4CCD900F56529 /* Roommates */ = {
 			isa = PBXGroup;
 			children = (
+				7C535DA51A25150E00AF1969 /* SVProgressHUD */,
 				7C5D037518FC68C90055DDD5 /* NSDate Time Ago */,
 				7C1E35B818FC522000F626E2 /* Parse Subclasses */,
-				7C2D74CA18DB626200373C1A /* SVProgressHUD */,
 				7C062F7A18B4DFE700F56529 /* View Controllers */,
 				7C329E3018DE0FA600BF6513 /* Helpers */,
 				7C062F4D18B4CCD900F56529 /* Main_iPhone.storyboard */,
@@ -562,17 +562,6 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
-		7C2D74CA18DB626200373C1A /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				7C2D74CB18DB626200373C1A /* SVProgressHUD-Prefix.pch */,
-				7C2D74CC18DB626200373C1A /* SVProgressHUD.bundle */,
-				7C2D74CD18DB626200373C1A /* SVProgressHUD.h */,
-				7C2D74CE18DB626200373C1A /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
 		7C329E3018DE0FA600BF6513 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +569,17 @@
 				7C4753D718D4AFC000131F95 /* InputValidation.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7C535DA51A25150E00AF1969 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7C535DA61A25150E00AF1969 /* SVProgressHUD-Prefix.pch */,
+				7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */,
+				7C535DA81A25150E00AF1969 /* SVProgressHUD.h */,
+				7C535DA91A25150E00AF1969 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		7C5D037518FC68C90055DDD5 /* NSDate Time Ago */ = {
@@ -793,7 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C98F72B18D9E477008928AD /* Localizable.strings in Resources */,
-				7C2D74CF18DB626200373C1A /* SVProgressHUD.bundle in Resources */,
+				7C535DAA1A25150E00AF1969 /* SVProgressHUD.bundle in Resources */,
 				7C062F5218B4CCD900F56529 /* Main_iPad.storyboard in Resources */,
 				7C062F5718B4CCD900F56529 /* Images.xcassets in Resources */,
 				7C062F4F18B4CCD900F56529 /* Main_iPhone.storyboard in Resources */,
@@ -823,6 +823,7 @@
 				7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */,
 				7C02430318FF053300DCA653 /* Invitation.m in Sources */,
 				7C0C554618E4B20500AED964 /* TaskListsTableViewController.m in Sources */,
+				7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */,
 				7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */,
 				7CE2CB2F18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m in Sources */,
 				7C96E5E01901BE9900BF355A /* Installation.m in Sources */,
@@ -852,7 +853,6 @@
 				7C02430018FF03B600DCA653 /* Note.m in Sources */,
 				7C0242F418FEF7D400DCA653 /* TaskList.m in Sources */,
 				7C071F6B190AE780009FE5E8 /* AddExpenseViewController.m in Sources */,
-				7C2D74D018DB626200373C1A /* SVProgressHUD.m in Sources */,
 				7C071F74190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -927,8 +927,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -968,8 +968,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -993,7 +993,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1020,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
