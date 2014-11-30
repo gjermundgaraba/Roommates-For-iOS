@@ -22,30 +22,33 @@
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *householdInformationCells;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *householdSettingsCells;
 @property (strong, nonatomic) Household *household;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation HouseholdTableViewController
 
 #pragma mark getters and setters
 
-// On set household, refresh table
 - (void)setHousehold:(Household *)household {
     _household = household;
     [self.tableView reloadData];
 }
-
 
 #pragma mark View Controller Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Get household in background
     [[User currentUser].activeHousehold fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
             self.household = (Household *)object;
         }
     }];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    [super viewWillAppear:animated];
 }
 
 #pragma mark Table View Controller Delegate Methods
@@ -59,14 +62,12 @@
         if (indexPath.row == HOUSEHOLD_NAME_ROW) {
             if (self.household) {
                 cell.detailTextLabel.text = self.household.householdName;
-            }
-            else {
+            } else {
                 // If havent gotten the household yet, just set N/A
                 cell.detailTextLabel.text = @"N/A";
             }
         }
-    }
-    else if (indexPath.section == HOUSEHOLD_SETTINGS_SECTION) {
+    } else if (indexPath.section == HOUSEHOLD_SETTINGS_SECTION) {
         // Get the cell (stored in Settings Cell Outlet Collection)
         cell = [self.householdSettingsCells objectAtIndex:indexPath.row];
     }
@@ -86,8 +87,7 @@
             inviteAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
             inviteAlert.tag = INVITE_TO_HOUSEHOLD_TAG; // To be able to identify it in clickedButtonAtIndex
             [inviteAlert show];
-        }
-        else if (indexPath.row == HOUSEHOLD_LEAVE_HOUSEHOLD_ROW) {
+        } else if (indexPath.row == HOUSEHOLD_LEAVE_HOUSEHOLD_ROW) {
             UIAlertView *leaveAlert =
                     [[UIAlertView alloc] initWithTitle:@"Warning"
                                                message:@"Are you sure you want to leave this household"
@@ -123,16 +123,14 @@
                          [User refreshChannels];
                          [SVProgressHUD showSuccessWithStatus:@"Household Left"];
                          [self.navigationController popViewControllerAnimated:YES];
-                     }
-                     else {
+                     } else {
                          UIAlertView *fetchFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not refresh user" message:@"Please log out and back in again to solve this issue" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                          [fetchFailAlert show];
                          // PERHAPS we should log out the user at this point?
                      }
                      
                  }];
-             }
-             else {
+             } else {
                  UIAlertView *leaveHouseholdAlert =
                         [[UIAlertView alloc] initWithTitle:@"Could not leave household."
                                                    message:error.userInfo[@"error"]
@@ -142,8 +140,7 @@
                  [leaveHouseholdAlert show];
              }
          }];
-    }
-    else {
+    } else {
         // This should not be possible. If so, we might wanna log the user out
         UIAlertView *leaveHouseholdAlert =
                 [[UIAlertView alloc] initWithTitle:@"Could not leave household."
@@ -165,8 +162,7 @@
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
         [emptyUsernameAlert show];
-    }
-    else if ([[User currentUser] isMemberOfAHousehold]) {
+    } else if ([[User currentUser] isMemberOfAHousehold]) {
         [SVProgressHUD showWithStatus:@"Inviting user to Household" maskType:SVProgressHUDMaskTypeBlack];
         PFObject *household = [User currentUser].activeHousehold;
         
@@ -185,8 +181,7 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
                  [invitationSuccess show];
-             }
-             else {
+             } else {
                  // Something went wrong
                  UIAlertView *inviteAlert =
                          [[UIAlertView alloc] initWithTitle:@"Could not invite user"
@@ -205,13 +200,13 @@
 #pragma mark UIAlertView Delegate Methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     if (alertView.tag == LEAVE_HOUSEHOLD_TAG) {
-        if (buttonIndex == 1) { // User pressed Leave
+        if (buttonIndex == 1) {
             [self leaveHousehold];
         }
-    }
-    else if (alertView.tag == INVITE_TO_HOUSEHOLD_TAG) {
-        if (buttonIndex == 1) { // User pressed Invite
+    } else if (alertView.tag == INVITE_TO_HOUSEHOLD_TAG) {
+        if (buttonIndex == 1) {
             NSString *invitee = [alertView textFieldAtIndex:0].text;
             [self inviteRoommateToHouseholdWithUsername:invitee];
         }

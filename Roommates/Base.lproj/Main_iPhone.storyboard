@@ -999,6 +999,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="tableView" destination="ccr-j7-6MC" id="tQQ-XB-oar"/>
                         <outletCollection property="householdInformationCells" destination="vxt-Io-GJc" id="Nau-Om-zWv"/>
                         <outletCollection property="householdSettingsCells" destination="3Iv-oP-cB2" id="nRO-iU-kWO"/>
                         <outletCollection property="householdSettingsCells" destination="uRM-ee-aEx" id="HRo-Bd-tWL"/>
@@ -1396,6 +1397,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="tableView" destination="X2K-ya-jci" id="0jt-eb-OUm"/>
                         <outletCollection property="informationCells" destination="tDZ-BH-gPc" id="eUE-PP-9MV"/>
                         <outletCollection property="informationCells" destination="Jvy-Z4-2p1" id="MR1-oj-cli"/>
                         <outletCollection property="settingsCells" destination="zXU-hb-7jO" id="1f1-2h-aPR"/>

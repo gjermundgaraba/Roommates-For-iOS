@@ -22,37 +22,29 @@
 @interface ProfileTableViewController () <UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *informationCells;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *settingsCells;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property User *currentUser;
+@property (nonatomic)  User *currentUser;
 @end
 
 @implementation ProfileTableViewController
 
 #pragma mark setters and getters
 
-// Gets the user from static call
 - (User *)currentUser {
     return [User currentUser];
 }
 
-// Supposed to be empty, Just in case someone tries to set it (they need not)
-- (void)setCurrentUser:(User *)currentUser {}
-
 #pragma mark View Controller Life Cycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void) viewWillAppear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
+    [super viewDidAppear:animated];
 }
 
 #pragma mark - Table view data source
@@ -151,33 +143,27 @@
 
 #pragma mark Alert View Delegate Methods
 
+- (void)showLoginView {
+    LoginViewController *notLoggedInVC =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"NotLoggedInView"];
+    [self presentViewController:notLoggedInVC animated:YES completion:nil];
+    [self.tabBarController setSelectedIndex:0];
+}
+
 // Delegate Method after user clicked on an Alert View Button
 // Used in checking for User Logout (Are you sure you want to log out?)
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     if (buttonIndex == 1) {
-        // User pressed OK to logout
-        
-        // Log out the user if appropriate
-        // Also, remove all channel subscribtions (Push-stuff)
         if ([PFUser currentUser]) {
-            // We dont want anything from the old user to still be in cache for the next user
             [PFQuery clearAllCachedResults];
-            
-            // Log out
             [PFUser logOut];
-            
-            // Send a notification for the scenes to be reset
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
             
-            // Refresh channels
             [User refreshChannels];
         }
         
-        // PERHAPS, someone else should be in charge of doing this thing? :S
-        LoginViewController *notLoggedInVC =
-        [self.storyboard instantiateViewControllerWithIdentifier:@"NotLoggedInView"];
-        [self presentViewController:notLoggedInVC animated:YES completion:nil];
-        [self.tabBarController setSelectedIndex:0];
+        [self showLoginView];
     }
 }
 
