@@ -91,7 +91,7 @@
             else {
                 // Sign up failed for some reason, tell the user
                 
-                NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", error.code];
+                NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", (long)error.code];
                 
                 if (error.code == kPFErrorConnectionFailed) {
                     errorString = @"The Internet connection appears to be offline.";

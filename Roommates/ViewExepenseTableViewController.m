@@ -35,7 +35,6 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
-// When we get a notification from nsnotificationcenter we update the data in the table view
 - (void)didReceiveReloadNotification:(NSNotificationCenter *)notificationCenter {
     [self.tableView reloadData];
 }

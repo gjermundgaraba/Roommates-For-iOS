@@ -16,7 +16,6 @@
 
 #pragma mark setters and getters
 
-// Safety, just in case someone tries to access before it is set
 - (NSArray *)unsettledExpenses {
     if (!_unsettledExpenses) {
         _unsettledExpenses = @[];
@@ -24,7 +23,6 @@
     return _unsettledExpenses;
 }
 
-// Safety, just in case someone tries to access before it is set
 - (NSArray *)settledExpenses {
     if (!_settledExpenses) {
         _settledExpenses = @[];
@@ -63,63 +61,71 @@
     [self refreshExpenses];
 }
 
-// For internal changes only, no need to go to the interwebs
 - (void)didReceiveReloadNotification:(NSNotificationCenter *)notificationCenter {
     [self refreshExpenses];
 }
 
-- (void)refreshExpenses {
-    if ([[User currentUser] isMemberOfAHousehold]) {
-        // Set up query
-        PFQuery *expensesQuery = [Expense query];
-        [expensesQuery whereKey:@"household" equalTo:[User currentUser].activeHousehold];
-        
-        [expensesQuery orderByDescending:@"updatedAt"];
-        
-        // Also download pointers to:
-        [expensesQuery includeKey:@"owed"];
-        [expensesQuery includeKey:@"notPaidUp"];
-        [expensesQuery includeKey:@"paidUp"];
-        
-        // If no objects, get from cache first. If model populated, go straight to network
-        if (self.unsettledExpenses.count == 0 && self.settledExpenses.count == 0) {
-            expensesQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-        }
-        else {
-            expensesQuery.cachePolicy = kPFCachePolicyNetworkOnly;
-        }
-        
-        [expensesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                // Sort expenses into unsettled and settled
-                NSMutableArray *tmp_unsettledExpenses = [objects mutableCopy];
-                NSMutableArray *tmp_settledExpenses = [[NSMutableArray alloc] init];
-                
-                for (Expense *expense in objects) {
-                    if (expense.notPaidUp.count == 0) {
-                        [tmp_settledExpenses addObject:expense];
-                        [tmp_unsettledExpenses removeObject:expense];
-                    }
-                }
-                
-                self.unsettledExpenses = tmp_unsettledExpenses;
-                self.settledExpenses = tmp_settledExpenses;
-                
-                // Update UI
-                [self.tableView reloadData];
-                
-                [self.refreshControl endRefreshing];
-            }
-        }];
+- (void)setNoExpenses {
+    self.unsettledExpenses = [NSArray array];
+    self.settledExpenses = [NSArray array];
+    
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (PFQuery *)getExpenseQuery {
+    PFQuery *expensesQuery = [Expense query];
+    [expensesQuery whereKey:@"household" equalTo:[User currentUser].activeHousehold];
+    [expensesQuery orderByDescending:@"updatedAt"];
+    [expensesQuery includeKey:@"owed"];
+    [expensesQuery includeKey:@"notPaidUp"];
+    [expensesQuery includeKey:@"paidUp"];
+    
+    if (self.unsettledExpenses.count == 0 && self.settledExpenses.count == 0) {
+        expensesQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     else {
-        // No user or not member of a household
-        // Set empty models
-        self.unsettledExpenses = [NSArray array];
-        self.settledExpenses = [NSArray array];
+        expensesQuery.cachePolicy = kPFCachePolicyNetworkOnly;
+    }
+    return expensesQuery;
+}
+
+- (void)updateExpensesFromQuery:(NSArray *)objects error:(NSError *)error {
+    if (!error) {
+        // Sort expenses into unsettled and settled
+        NSMutableArray *tmp_unsettledExpenses = [objects mutableCopy];
+        NSMutableArray *tmp_settledExpenses = [[NSMutableArray alloc] init];
         
-        // Update UI
+        for (Expense *expense in objects) {
+            if (expense.notPaidUp.count == 0) {
+                [tmp_settledExpenses addObject:expense];
+                [tmp_unsettledExpenses removeObject:expense];
+            }
+        }
+        
+        self.unsettledExpenses = tmp_unsettledExpenses;
+        self.settledExpenses = tmp_settledExpenses;
+        
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)queryExpenses {
+    PFQuery *expensesQuery;
+    expensesQuery = [self getExpenseQuery];
+    
+    [expensesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self updateExpensesFromQuery:objects error:error];
+    }];
+}
+
+- (void)refreshExpenses {
+    if ([[User currentUser] isMemberOfAHousehold]) {
+        [self queryExpenses];
+    }
+    else {
+        [self setNoExpenses];
     }
 }
 
@@ -128,7 +134,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 2;
 }
 
@@ -206,13 +211,8 @@
     return cell;
 }
 
-
-
-
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"viewExpenseSegue"]) {

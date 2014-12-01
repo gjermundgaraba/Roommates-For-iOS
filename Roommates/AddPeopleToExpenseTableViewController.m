@@ -1,6 +1,7 @@
 
 #import "AddPeopleToExpenseTableViewController.h"
 #import "User.h"
+#import "SVProgressHUD.h"
 
 @interface AddPeopleToExpenseTableViewController ()
 @property (strong, nonatomic) NSArray *householdMembers;
@@ -10,7 +11,6 @@
 
 #pragma mark setters and getters
 
-// Just in case someone tries to get it before it is set
 - (NSArray *)householdMembers {
     if (!_householdMembers) {
         _householdMembers = [NSArray array];
@@ -63,11 +63,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-/*
- * Save function (called when user pressed save button)
- * It uses the selections in the table view to determine 
- * new roommates that is part of the expense
- */
 - (IBAction)save:(id)sender {
     NSMutableArray *tmpNotPaidUp = [self.expense.notPaidUp mutableCopy];
     NSMutableArray *tmpPaidUp = [self.expense.paidUp mutableCopy];
@@ -120,9 +115,14 @@
         self.expense.notPaidUp = tmpNotPaidUp;
         self.expense.paidUp = tmpPaidUp;
         
-        [self.expense saveEventually];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-        [self.navigationController popViewControllerAnimated:YES];
+        [SVProgressHUD showWithStatus:@"Saving expense" maskType:SVProgressHUDMaskTypeBlack];
+        [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
     }
 }
 
