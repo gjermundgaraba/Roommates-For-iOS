@@ -101,16 +101,18 @@
 - (IBAction)saveChangesButtonPressed {
     NSString *oldDisplayName = self.currentUser.displayName;
     NSString *oldEmail = self.currentUser.email;
+    PFFile *oldProfilePicture = self.currentUser.profilePicture;
     
     NSString *displayName = self.displayNameTextField.text;
     NSString *email = [[self.emailTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    PFFile *profilePicture = self.imageView.file;
     NSString *confirmPassword = self.confirmPasswordTextField.text;
     
     BOOL displayNameChanged = ![displayName isEqualToString:oldDisplayName];
     BOOL emailChanged = ![email isEqualToString:oldEmail];
+    BOOL profilePictureChanged = !(profilePicture == oldProfilePicture);
     
-    //Changes displayname and email in background
-    if (displayNameChanged || emailChanged) {
+    if (displayNameChanged || emailChanged || profilePictureChanged) {
         if (![InputValidation validateName:displayName]) {
             UIAlertView *invalidDisplayNameAlert = [[UIAlertView alloc] initWithTitle:@"Could not change user info." message:@"Display Name is not valid." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [invalidDisplayNameAlert show];
@@ -127,8 +129,9 @@
                     self.currentUser.username = email;
                     self.currentUser.email = email;
                     self.currentUser.displayName = displayName;
+                    self.currentUser.profilePicture = profilePicture;
                     
-                    [SVProgressHUD showWithStatus:@"Chaning user info" maskType:SVProgressHUDMaskTypeBlack];
+                    [SVProgressHUD showWithStatus:@"Changing user info" maskType:SVProgressHUDMaskTypeBlack];
                     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [SVProgressHUD dismiss];
                         if (!error) {
@@ -141,6 +144,7 @@
                             self.currentUser.username = oldEmail;
                             self.currentUser.email = oldEmail;
                             self.currentUser.displayName = displayName;
+                            self.currentUser.profilePicture = oldProfilePicture;
                             
                             UIAlertView *errorChangeAlert = [[UIAlertView alloc] initWithTitle:@"User info not changed" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                             [errorChangeAlert show];
@@ -161,13 +165,8 @@
 #pragma mark ImagePicker Delegate Methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    //saving profilepicture in background when new profilepicture is picked
-    
-    [SVProgressHUD showWithStatus:@"Saving Profile Picture to Server" maskType:SVProgressHUDMaskTypeBlack];
     
     UIGraphicsBeginImageContext(CGSizeMake(200, 200));
     [image drawInRect: CGRectMake(0, 0, 200, 200)];
@@ -176,21 +175,8 @@
     
     NSData *imageData = UIImagePNGRepresentation(smallImage);
     PFFile *pictureFile = [PFFile fileWithData:imageData];
-    PFFile *oldProfilePicture = self.currentUser.profilePicture;
-    self.currentUser.profilePicture = pictureFile;
-    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [SVProgressHUD dismiss];
-        if (!error) {
-            [SVProgressHUD showSuccessWithStatus:@"Profile Picture Saved!"];
-            self.imageView.image = image;
-        }
-        else {
-            UIAlertView *imageSaveFailAlert = [[UIAlertView alloc] initWithTitle:@"Failed to save Profile Picture" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            self.currentUser.profilePicture = oldProfilePicture;
-            [imageSaveFailAlert show];
-            
-        }
-    }];
+    [self.imageView setFile:pictureFile];
+    [self.imageView setImage:image];
 }
 
 
