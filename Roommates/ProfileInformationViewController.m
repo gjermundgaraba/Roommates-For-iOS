@@ -11,7 +11,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @property User *currentUser;
 @end
@@ -31,9 +30,6 @@
     // Set up the text field data
     self.displayNameTextField.text = self.currentUser.displayName;
     self.emailTextField.text = self.currentUser.email;
-    
-    // Dont need it enabled before something actually changes...
-    self.saveButton.enabled = NO;
     
     // Set up Image View for interaction and to look pretty
     self.imageView.userInteractionEnabled = YES;
@@ -219,7 +215,6 @@
 #pragma mark UITextField Delegate Methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.saveButton.enabled = YES;
     [self animateTextField:textField up:YES];
 }
 

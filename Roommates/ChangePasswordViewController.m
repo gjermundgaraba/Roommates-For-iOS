@@ -9,7 +9,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *changePasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmNewPasswordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *changeButton;
 
 @end
 
@@ -40,7 +39,6 @@
     }
     else {
         [SVProgressHUD showWithStatus:@"Changing password..." maskType:SVProgressHUDMaskTypeBlack];
-        [self.changeButton setEnabled:NO];
         User *user = [User currentUser];
         [User logInWithUsernameInBackground:user.username password:oldPassword block:^(User *user, NSError *error) {
             if (!error) {
@@ -48,7 +46,6 @@
                 
                 [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [SVProgressHUD dismiss];
-                    [self.changeButton setEnabled:YES];
                     if (!error) {
                         UIAlertView *successAlert = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"User has been updated!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         [successAlert show];
@@ -62,7 +59,6 @@
             }
             else {
                 [SVProgressHUD dismiss];
-                [self.changeButton setEnabled:YES];
                 UIAlertView *wrongPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Wrong Password" message:@"The password you provided was incorrect" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [wrongPasswordAlert show];
             }
