@@ -139,7 +139,7 @@
 #pragma mark Table View Methods
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Roommates who owe for this expense";
+    return @"Split between:";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
