@@ -82,6 +82,7 @@
                                      cancelButtonTitle:@"Cancel"
                                      otherButtonTitles:@"OK", nil];
             inviteAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [inviteAlert textFieldAtIndex:0].keyboardType = UIKeyboardTypeEmailAddress;
             inviteAlert.tag = INVITE_TO_HOUSEHOLD_TAG; // To be able to identify it in clickedButtonAtIndex
             [inviteAlert show];
         } else if (indexPath.row == HOUSEHOLD_LEAVE_HOUSEHOLD_ROW) {
