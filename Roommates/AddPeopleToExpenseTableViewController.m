@@ -35,9 +35,7 @@
                 [self.tableView reloadData];
                 
                 for (int i = 0; i < objects.count; ++i) {
-                    
                     User *user = [objects objectAtIndex:i];
-                    
                     if ([self notPaidUpContainsUser:user] || [self paidUpContainsUser:user]) {
                         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
                         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -105,19 +103,25 @@
     }
     
     if (changesHaveBeenMade) {
-        self.expense.notPaidUp = tmpNotPaidUp;
-        self.expense.paidUp = tmpPaidUp;
-        
-        [SVProgressHUD showWithStatus:@"Saving expense" maskType:SVProgressHUDMaskTypeBlack];
-        [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [SVProgressHUD dismiss];
-            if (!error) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                [self.navigationController popViewControllerAnimated:YES];
-            } else {
-                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
-            }
-        }];
+        if (tmpNotPaidUp.count != 0 || tmpPaidUp.count != 0) {
+            self.expense.notPaidUp = tmpNotPaidUp;
+            self.expense.paidUp = tmpPaidUp;
+            
+            [SVProgressHUD showWithStatus:@"Saving expense" maskType:SVProgressHUDMaskTypeBlack];
+            [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (!error) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                    [self.navigationController popViewControllerAnimated:YES];
+                } else {
+                    [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                }
+            }];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Expense cannot be split between 0 persons"];
+        }
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"No changes made"];
     }
 }
 
@@ -162,26 +166,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return self.householdMembers.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Split between:";
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-    
     User *user = [self.householdMembers objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = user.displayName;
-    
-    // Configure the cell...
     
     return cell;
 }

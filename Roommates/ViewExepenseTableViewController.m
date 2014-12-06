@@ -177,7 +177,11 @@
             
             self.expense.notPaidUp = newNotPaidUp;
             self.expense.paidUp = newPaidUp;
-            [self.expense saveEventually];
+            [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                }
+            }];
             [self.tableView reloadData];
         }
         else if (indexPath.section == SETTLED_SECTION) {
@@ -190,7 +194,11 @@
             
             self.expense.notPaidUp = newNotPaidUp;
             self.expense.paidUp = newPaidUp;
-            [self.expense saveEventually];
+            [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                }
+            }];
             [self.tableView reloadData];
         }
     }
@@ -262,21 +270,39 @@
     switch (alertView.tag) {
         case 0: {// deleteAlert
             if (buttonIndex == 1) { // YES, delete
-                [self.expense deleteEventually];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [SVProgressHUD showWithStatus:@"Deleting expense..." maskType:SVProgressHUDMaskTypeBlack];
+                [self.expense deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [SVProgressHUD dismiss];
+                    if (!error) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    } else {
+                        [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                    }
+                }];
             }
             break;
         }
         case 1: {// renameAlert
             if (buttonIndex == 1) { // Change pressed
                 NSString *newExpenseName = [alertView textFieldAtIndex:0].text;
-                
-                self.expense.name = newExpenseName;
-                [self.expense saveEventually];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                self.title = newExpenseName;
-                [self.tableView reloadData];
+                if (![newExpenseName isEqualToString:@""]) {
+                    self.expense.name = newExpenseName;
+                    
+                    [SVProgressHUD showWithStatus:@"Saving expense.." maskType:SVProgressHUDMaskTypeBlack];
+                    [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if (!error) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                            self.title = newExpenseName;
+                            [self.tableView reloadData];
+                        } else {
+                            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                        }
+                    }];
+                } else {
+                    [SVProgressHUD showErrorWithStatus:@"Expense name cannot be empty"];
+                }
             }
             break;
         }
@@ -285,14 +311,21 @@
                 NSString *newAmount = [alertView textFieldAtIndex:0].text;
                 
                 if ([InputValidation validateTotalAmount:newAmount]) {
-                    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                    NSNumber * myNumber = [f numberFromString:newAmount];
+                    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+                    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                    NSNumber * myNumber = [numberFormatter numberFromString:newAmount];
                     
                     self.expense.totalAmount = myNumber;
-                    [self.expense saveEventually];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                    [self.tableView reloadData];
+                    [SVProgressHUD showWithStatus:@"Saving expense..." maskType:SVProgressHUDMaskTypeBlack];
+                    [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if (!error) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                            [self.tableView reloadData];
+                        } else {
+                            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                        }
+                    }];
                 }
                 else {
                     [SVProgressHUD showErrorWithStatus:@"Invalid Amount"];
@@ -305,9 +338,15 @@
                 NSString *newDetails = [alertView textFieldAtIndex:0].text;
                 
                 self.expense.details = newDetails;
-                [self.expense saveEventually];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                [self.tableView reloadData];
+                [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [SVProgressHUD dismiss];
+                    if (!error) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
+                        [self.tableView reloadData];
+                    } else {
+                        [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                    }
+                }];
             }
             break;
         }
@@ -321,7 +360,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addPeopleToExpenseSegue"]) {
         AddPeopleToExpenseTableViewController *targetVC = segue.destinationViewController;
-        
         targetVC.expense = self.expense;
     }
 }

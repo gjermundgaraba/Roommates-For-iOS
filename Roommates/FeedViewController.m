@@ -44,16 +44,22 @@ static int ADD_BUTTON_INDEX = 1;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == ADD_BUTTON_INDEX) {
-        PFACL *acl = [PFACL ACL];
-        [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
+        NSString *noteText = [alertView textFieldAtIndex:0].text;
         
-        Note *newNote = [Note object];
-        newNote.createdBy = [User currentUser];
-        newNote.body = [alertView textFieldAtIndex:0].text;
-        newNote.household = [User currentUser].activeHousehold;
-        newNote.ACL = acl;
-        
-        [self createNewNote:newNote];
+        if ([noteText isEqualToString:@""]) {
+            [SVProgressHUD showErrorWithStatus:@"Note cannot be empty"];
+        } else {
+            PFACL *acl = [PFACL ACL];
+            [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
+            
+            Note *newNote = [Note object];
+            newNote.createdBy = [User currentUser];
+            newNote.body = noteText;
+            newNote.household = [User currentUser].activeHousehold;
+            newNote.ACL = acl;
+            
+            [self createNewNote:newNote];
+        }
     }
 }
 

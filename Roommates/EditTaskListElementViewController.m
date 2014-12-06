@@ -46,25 +46,29 @@
 
 
 - (IBAction)saveButtonPressed:(id)sender {
-    self.taskListElement.elementName = self.elementNameTextField.text;
-    if (self.elementFinishedSlider.on && !self.taskListElement.finishedBy) {
-        self.taskListElement.finishedBy = (User *)[PFUser currentUser];
-    }
-    else if (!self.elementFinishedSlider.on && self.taskListElement.finishedBy) {
-        [self.taskListElement removeObjectForKey:@"finishedBy"];
-    }
-    
-    [SVProgressHUD showWithStatus:@"Saving Task List Element" maskType:SVProgressHUDMaskTypeBlack];
-    [self.taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [SVProgressHUD dismiss];
-        if (!error) {
-            [SVProgressHUD showSuccessWithStatus:@"Task List Element Saved!"];
-            [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
-        } else {
-            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+    if ([self.elementNameTextField.text isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"Task list element cannot be empty"];
+    } else {
+        self.taskListElement.elementName = self.elementNameTextField.text;
+        if (self.elementFinishedSlider.on && !self.taskListElement.finishedBy) {
+            self.taskListElement.finishedBy = (User *)[PFUser currentUser];
+        }
+        else if (!self.elementFinishedSlider.on && self.taskListElement.finishedBy) {
+            [self.taskListElement removeObjectForKey:@"finishedBy"];
         }
         
-    }];
+        [SVProgressHUD showWithStatus:@"Saving Task List Element" maskType:SVProgressHUDMaskTypeBlack];
+        [self.taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                [SVProgressHUD showSuccessWithStatus:@"Task List Element Saved!"];
+                [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
+            } else {
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+            }
+            
+        }];
+    }
 }
 
 
