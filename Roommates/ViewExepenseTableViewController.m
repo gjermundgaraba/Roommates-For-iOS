@@ -1,6 +1,7 @@
 
 #import "ViewExepenseTableViewController.h"
 #import "InputValidation.h"
+#import "SVProgressHUD.h"
 
 #import "AddPeopleToExpenseTableViewController.h"
 
@@ -295,8 +296,7 @@
                     [self.tableView reloadData];
                 }
                 else {
-                    UIAlertView *invalidAmountAlert = [[UIAlertView alloc] initWithTitle:@"Could not change amount" message:@"Invalid Amount" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [invalidAmountAlert show];
+                    [SVProgressHUD showErrorWithStatus:@"Invalid Amount"];
                 }
             }
             break;

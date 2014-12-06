@@ -66,6 +66,7 @@
 		7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037D18FC9D0B0055DDD5 /* ProfileInformationViewController.m */; };
 		7C5D038418FDA08D0055DDD5 /* HouseholdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D038318FDA08D0055DDD5 /* HouseholdTableViewController.m */; };
 		7C69F4CF18BE0E380013FBD3 /* NoHouseholdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */; };
+		7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C818F841A30F4C800B54D8E /* iAd.framework */; };
 		7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */; };
 		7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94294818BCC653007FA97E /* ProfileViewController.m */; };
 		7C96E5E01901BE9900BF355A /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96E5DF1901BE9900BF355A /* Installation.m */; };
@@ -73,7 +74,6 @@
 		7CAFD7881A0E553900524CE1 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD7871A0E553900524CE1 /* ParseUI.framework */; };
 		7CAFD78A1A0E562200524CE1 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */; };
 		7CAFD78C1A0E582C00524CE1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD78B1A0E582C00524CE1 /* Bolts.framework */; };
-		7CBADDC418CA569C00B16792 /* HouseholdNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC318CA569C00B16792 /* HouseholdNameViewController.m */; };
 		7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */; };
 		7CBF4168190ABDF600D964FC /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF4167190ABDF600D964FC /* Expense.m */; };
 		7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */; };
@@ -185,6 +185,7 @@
 		7C5D038318FDA08D0055DDD5 /* HouseholdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseholdTableViewController.m; sourceTree = "<group>"; };
 		7C69F4CD18BE0E380013FBD3 /* NoHouseholdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoHouseholdViewController.h; sourceTree = "<group>"; };
 		7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHouseholdViewController.m; sourceTree = "<group>"; };
+		7C818F841A30F4C800B54D8E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7C94294718BCC653007FA97E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7C94294818BCC653007FA97E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -194,8 +195,6 @@
 		7CAFD7871A0E553900524CE1 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		7CAFD78B1A0E582C00524CE1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		7CBADDC218CA569C00B16792 /* HouseholdNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseholdNameViewController.h; sourceTree = "<group>"; };
-		7CBADDC318CA569C00B16792 /* HouseholdNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseholdNameViewController.m; sourceTree = "<group>"; };
 		7CBADDC518CA599B00B16792 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		7CBF4166190ABDF600D964FC /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
@@ -281,6 +280,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */,
 				7C062F8218B4E0C500F56529 /* CoreLocation.framework in Frameworks */,
 				7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */,
 				7C062F8E18B4E0F100F56529 /* SystemConfiguration.framework in Frameworks */,
@@ -349,6 +349,7 @@
 		7C062F3A18B4CCD900F56529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C818F841A30F4C800B54D8E /* iAd.framework */,
 				7CAFD78B1A0E582C00524CE1 /* Bolts.framework */,
 				7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */,
 				7CAFD7871A0E553900524CE1 /* ParseUI.framework */,
@@ -533,8 +534,6 @@
 				7C5D038318FDA08D0055DDD5 /* HouseholdTableViewController.m */,
 				7CCF84FC18CA24E600CDE0D3 /* HouseholdViewController.h */,
 				7CCF84FD18CA24E600CDE0D3 /* HouseholdViewController.m */,
-				7CBADDC218CA569C00B16792 /* HouseholdNameViewController.h */,
-				7CBADDC318CA569C00B16792 /* HouseholdNameViewController.m */,
 				7CE2CB2D18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.h */,
 				7CE2CB2E18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m */,
 			);
@@ -818,7 +817,6 @@
 			files = (
 				7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */,
 				7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */,
-				7CBADDC418CA569C00B16792 /* HouseholdNameViewController.m in Sources */,
 				7C02430618FF069700DCA653 /* Event.m in Sources */,
 				7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */,
 				7C02430318FF053300DCA653 /* Invitation.m in Sources */,

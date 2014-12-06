@@ -10,7 +10,6 @@
 #define TASK_LIST_FINISHED_SECTION 1
 
 @interface TaskListsTableViewController () <UIAlertViewDelegate>
-// Model
 @property (strong, nonatomic) NSArray *unfinishedTaskLists; // of TaskList *
 @property (strong, nonatomic) NSArray *finishedTaskLists; // of TaskList *
 @end
@@ -22,8 +21,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // On each appear, refresh task lists
-    [self refreshTaskLists];
+    [self.tableView reloadData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
 }
@@ -79,8 +77,7 @@
         
         // Check validity
         if ([listName isEqualToString:@""]) {
-            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new task list" message:@"List Name Empty" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [errorAlert show];
+            [SVProgressHUD showErrorWithStatus:@"List Name is Empty"];
         } else if ([User currentUser] && [User currentUser].isMemberOfAHousehold) {
             TaskList *newTaskList = (TaskList *)[PFObject objectWithClassName:@"TaskList"];
             newTaskList.listName  = listName;
@@ -96,8 +93,7 @@
                     [self refreshTaskLists];
                 }
                 else {
-                    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new task list" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [errorAlert show];
+                    [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                 }
             }];
         }
@@ -121,6 +117,7 @@
         
         
         [taskListsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [self.refreshControl endRefreshing];
             if (!error) {
                 NSMutableArray *unfinishedTaskLists = [objects mutableCopy];
                 NSMutableArray *finishedTaskList = [[NSMutableArray alloc] init];
@@ -135,10 +132,11 @@
                 self.unfinishedTaskLists = unfinishedTaskLists;
                 self.finishedTaskLists = finishedTaskList;
                 
-                // Update UI
                 [self.tableView reloadData];
+            } else {
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
-            [self.refreshControl endRefreshing];
+            
         }];
     }
     else {

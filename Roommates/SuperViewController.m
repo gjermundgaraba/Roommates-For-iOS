@@ -11,7 +11,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Check if there is a user logged in
     if (![User isAnyoneLoggedIn]) {
         [self presentLoginScreen];
     }

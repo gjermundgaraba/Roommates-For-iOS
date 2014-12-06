@@ -35,12 +35,7 @@ static int ADD_BUTTON_INDEX = 1;
             [SVProgressHUD showSuccessWithStatus:@"Note Created!"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"NewNoteCreated" object:nil];
         } else {
-            UIAlertView *saveNoteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new note"
-                                                                        message:error.userInfo[@"error"]
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"OK"
-                                                              otherButtonTitles:nil];
-            [saveNoteFailAlert show];
+            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
         }
     }];
 }

@@ -3,7 +3,6 @@
 
 @implementation InputValidation
 
-
 + (BOOL)validateName:(NSString *) names {
     if ([names isEqualToString:@""]) {
         return NO;
@@ -11,11 +10,7 @@
     else {
         return YES;
     }
-    /*NSString *nameRegex = @"[a-zA-Z ]+";
-    NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
-    return [nameTest evaluateWithObject:names];*/
 }
-
 
 + (BOOL)validatePassword:(NSString *)password {
     NSString *passwordRegex = @"((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
@@ -23,14 +18,12 @@
     return [passwordTest evaluateWithObject:password];
 }
 
-
 + (BOOL)validateEmail:(NSString *)email {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     
     return [emailTest evaluateWithObject:email];
 }
-
 
 + (BOOL)isFirstCharacterALetter:(NSString *)str {
     NSRange first = [str rangeOfComposedCharacterSequenceAtIndex:0];
@@ -42,7 +35,6 @@
         return NO;
     }
 }
-
 
 + (BOOL)isAlphaNumeric:(NSString *)str
 {

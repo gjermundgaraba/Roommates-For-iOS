@@ -65,8 +65,7 @@
             [SVProgressHUD showSuccessWithStatus:@"Task List Element Saved!"];
             [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
         } else {
-            UIAlertView *saveFailAlert = [[UIAlertView alloc] initWithTitle:@"Saving Task List Element Failed!" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [saveFailAlert show];
+            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
         }
         
     }];
@@ -86,8 +85,7 @@
                 [SVProgressHUD showSuccessWithStatus:@"Task List Element Deleted!"];
                 [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
             } else { // delete fail
-                UIAlertView *saveFailAlert = [[UIAlertView alloc] initWithTitle:@"Deleting Task List Element Failed!" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [saveFailAlert show];
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
     }

@@ -34,31 +34,19 @@
     NSString *repeatedPassword = self.repeatedPasswordTextField.text;
     
     
-    
-    // Check the validity of the input from the user
-    UIAlertView *invalidAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up"
-                                                           message:@""
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"OK"
-                                                 otherButtonTitles:nil];
     if (![InputValidation validateEmail:email]) {
-        invalidAlert.message = @"Email is not valid";
-        [invalidAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Email is not valid"];
     }
     else if (![InputValidation validateName:displayName]) {
-        invalidAlert.message = @"Display Name is not valid";
-        [invalidAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Display Name is not valid"];
     }
     else if (![InputValidation validatePassword:password]) {
-        invalidAlert.message = @"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number";
-        [invalidAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number"];
     }
     else if (![password isEqualToString:repeatedPassword]) {
-        invalidAlert.message = @"Passwords do not match";
-        [invalidAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Passwords do not match"];
     }
     else {
-        // Everything should be ok, so we make a new user.
         User *newUser = [User user];
         newUser.username = email;
         newUser.password = password;
@@ -71,41 +59,19 @@
                 // User created, time to log him in
                 [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeBlack];
                 [User logInWithUsernameInBackground:email password:password block:^(User *user, NSError *error) {
-                    // User is logged in, now we let him into the app
                     [SVProgressHUD dismiss];
                     if (!error) {
                         [User refreshChannels];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                         [self performSegueWithIdentifier:@"signUpUnwind" sender:self];
                     }
                     else {
-                        // Log in failed, sign in manually
-                        UIAlertView *signInAlert = [[UIAlertView alloc] initWithTitle:@"Could log in"
-                                                                              message:@"User registered, but could not automatically sign in."
-                                                                             delegate:nil
-                                                                    cancelButtonTitle:@"OK"
-                                                                    otherButtonTitles:nil];
-                        [signInAlert show];
+                        [SVProgressHUD showErrorWithStatus:@"User registered, but could not automatically sign in."];
                     }
                 }];
             }
             else {
-                // Sign up failed for some reason, tell the user
-                
-                NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", (long)error.code];
-                
-                if (error.code == kPFErrorConnectionFailed) {
-                    errorString = @"The Internet connection appears to be offline.";
-                }
-                else if (error.code == kPFErrorUsernameTaken) {
-                    errorString = @"Username already taken";
-                }
-
-                UIAlertView *signUpAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up"
-                                                                      message:errorString
-                                                                     delegate:nil
-                                                            cancelButtonTitle:@"OK"
-                                                            otherButtonTitles:nil];
-                [signUpAlert show];
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
     }
@@ -171,14 +137,11 @@
     [self animateTextField:textField up:NO distance:distance];
 }
 
-// Done, remove keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     
     return YES;
 }
-
-/** Prepares for segue into the app  **/
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 

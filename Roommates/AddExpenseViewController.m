@@ -59,19 +59,15 @@
     NSString *expenseDescription = self.expenseDescriptionTextField.text;
     
     if ([expenseName isEqualToString:@""]) {
-        UIAlertView *emptyNameAlert = [[UIAlertView alloc] initWithTitle:@"Could not create expense" message:@"Empty expense name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [emptyNameAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Empty expense name"];
     }
     else if (![InputValidation validateTotalAmount:expenseTotalAmount]) {
-        UIAlertView *invalidAmountAlert = [[UIAlertView alloc] initWithTitle:@"Could not create expense" message:@"Invalid Amount" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [invalidAmountAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Invalid Amount"];
     }
     else if (selectedRows.copy == 0) {
-        UIAlertView *noMemberSelectedAlert = [[UIAlertView alloc] initWithTitle:@"Could not create expense" message:@"No members selcted for the expense" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [noMemberSelectedAlert show];
+        [SVProgressHUD showErrorWithStatus:@"No members selcted for the expense"];
     }
     else {
-        // Its all OK!
         NSMutableArray *notPaidUp = [[NSMutableArray alloc] init];
         BOOL currentUserIsSelected = NO;
         for (NSIndexPath *indexPath in selectedRows) {
@@ -84,11 +80,10 @@
             } 
         }
         
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber * myNumber = [f numberFromString:expenseTotalAmount];
+        NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * myNumber = [numberFormatter numberFromString:expenseTotalAmount];
         
-        // Time to save our expense!
         Expense *newExpense = [Expense object];
         newExpense.name = expenseName;
         newExpense.household = [User currentUser].activeHousehold;
@@ -103,11 +98,9 @@
         newExpense.notPaidUp = notPaidUp;
         newExpense.details = expenseDescription;
         
-        // Set up ACL
         PFACL *ACL = [PFACL ACL];
         [ACL setWriteAccess:YES forUser:[User currentUser]];
         [ACL setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
-        
         newExpense.ACL = ACL;
         
         [SVProgressHUD showWithStatus:@"Saving Expense" maskType:SVProgressHUDMaskTypeBlack];
@@ -119,8 +112,7 @@
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
             else {
-                UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not save expense" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [errorAlert show];
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
     }
@@ -136,7 +128,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 

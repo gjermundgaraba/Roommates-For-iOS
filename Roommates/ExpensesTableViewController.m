@@ -111,6 +111,8 @@
         
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
+    } else {
+        [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
     }
 }
 

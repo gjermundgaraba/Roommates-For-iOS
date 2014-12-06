@@ -11,7 +11,6 @@
 @property (strong, nonatomic) UITableViewController *tableViewController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-// Model:
 @property (strong, nonatomic) NSArray *invitations; // of Invitation *
 @end
 
@@ -19,7 +18,6 @@
 
 #pragma mark getters and setters
 
-// Just in case someone tries to use invitations before it is set
 - (NSArray *)invitations {
     if (!_invitations) {
         _invitations = [[NSArray alloc] init];
@@ -110,12 +108,7 @@
         
         // Check if everything is OK to start creating the household
         if ([householdName isEqualToString:@""]) {
-            UIAlertView *emptyHouseholdNameAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new household"
-                                                                              message:@"Empty Household Name"
-                                                                             delegate:nil
-                                                                    cancelButtonTitle:@"OK"
-                                                                    otherButtonTitles:nil];
-            [emptyHouseholdNameAlert show];
+            [SVProgressHUD showErrorWithStatus:@"Empty Household Name"];
         }
         else if (![[User currentUser] isMemberOfAHousehold] || [User currentUser]) {
             [SVProgressHUD showWithStatus:@"Creating New Household" maskType:SVProgressHUDMaskTypeBlack];
@@ -135,24 +128,12 @@
                              [self.navigationController popViewControllerAnimated:YES]; // unwind instead?
                          }
                          else {
-                             UIAlertView *fetchUserAlert =
-                                    [[UIAlertView alloc] initWithTitle:@"Household created."
-                                                               message:@"Household created, but could not fetch user. Log out and back in again to solve this issue."
-                                                              delegate:nil
-                                                     cancelButtonTitle:@"OK"
-                                                     otherButtonTitles:nil];
-                             [fetchUserAlert show];
+                             [SVProgressHUD showErrorWithStatus:@"Household created, but could not fetch user info. Log out and back in again to solve this issue."];
                          }
                      }];
                  }
                  else {
-                     UIAlertView *createHouseholdAlert =
-                            [[UIAlertView alloc] initWithTitle:@"Create new Household failed."
-                                                       message:error.userInfo[@"error"]
-                                                      delegate:nil
-                                             cancelButtonTitle:@"OK"
-                                             otherButtonTitles:nil];
-                     [createHouseholdAlert show];
+                     [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                  }
                  
              }];
@@ -174,33 +155,24 @@
          {
              [SVProgressHUD dismiss];
              if (!error) {
+                 
                  // Refresh the user information after the cloud call (user is now member of a household)
                  [SVProgressHUD showWithStatus:@"Fetching user information" maskType:SVProgressHUDMaskTypeBlack];
                  [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                      [SVProgressHUD dismiss];
                      if (!error) {
-                         // User refreshed, set up push
+                         [SVProgressHUD showSuccessWithStatus:@"Invitation accepted!"];
                          [User refreshChannels];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                          [self.navigationController popViewControllerAnimated:YES];
                      }
                      else {
-                         UIAlertView *fetchUserAlert =
-                         [[UIAlertView alloc] initWithTitle:@"Invitation accepted"
-                                                    message:@"Invitation Accepted, but could not fetch user. Log out and back in again to solve this issue."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-                         [fetchUserAlert show];
+                         [SVProgressHUD showSuccessWithStatus:@"Invitation accepted, but could not fetch user. Log out and back in again to solve this issue."];
                      }
                  }];
              }
              else {
-                 UIAlertView *acceptInviteAlert = [[UIAlertView alloc] initWithTitle:@"Invitation not accepted"
-                                                                             message:error.userInfo[@"error"]
-                                                                            delegate:nil
-                                                                   cancelButtonTitle:@"OK"
-                                                                   otherButtonTitles:nil];
-                 [acceptInviteAlert show];
+                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
              }
          }];
     }

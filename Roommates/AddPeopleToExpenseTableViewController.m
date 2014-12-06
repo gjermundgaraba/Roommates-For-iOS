@@ -46,7 +46,7 @@
                 }
             }
             else {
-                // Might want to create some sort of error message
+               [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
         
@@ -121,6 +121,8 @@
             if (!error) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
                 [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
     }

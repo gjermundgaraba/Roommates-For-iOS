@@ -113,83 +113,46 @@
          {
              [SVProgressHUD dismiss];
              if (!error) {
-                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
-                 
                  // Just sending block back, is that really the right thing to do?
                  [SVProgressHUD showWithStatus:@"Fetching user information" maskType:SVProgressHUDMaskTypeBlack];
                  [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                      [SVProgressHUD dismiss];
                      if (!error) {
+                         [SVProgressHUD showSuccessWithStatus:@"Left Household"];
                          [User refreshChannels];
-                         [SVProgressHUD showSuccessWithStatus:@"Household Left"];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                          [self.navigationController popViewControllerAnimated:YES];
                      } else {
-                         UIAlertView *fetchFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not refresh user" message:@"Please log out and back in again to solve this issue" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                         [fetchFailAlert show];
-                         // PERHAPS we should log out the user at this point?
+                         [SVProgressHUD showErrorWithStatus:@"Could not refresh user info. Please log out and back in again."];
                      }
                      
                  }];
              } else {
-                 UIAlertView *leaveHouseholdAlert =
-                        [[UIAlertView alloc] initWithTitle:@"Could not leave household."
-                                                   message:error.userInfo[@"error"]
-                                                  delegate:nil
-                                         cancelButtonTitle:@"OK"
-                                         otherButtonTitles:nil];
-                 [leaveHouseholdAlert show];
+                 
              }
          }];
     } else {
-        // This should not be possible. If so, we might wanna log the user out
-        UIAlertView *leaveHouseholdAlert =
-                [[UIAlertView alloc] initWithTitle:@"Could not leave household."
-                                           message:@"You cannot leave a household without beeing in one."
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-        [leaveHouseholdAlert show];
+        [SVProgressHUD showErrorWithStatus:@"You cannot leave a household without beeing in one."];
     }
 }
 
 // Invites a new user to the household
 - (void)inviteRoommateToHouseholdWithUsername:(NSString *)invitee {
     if ([invitee isEqualToString:@""]) {
-        UIAlertView *emptyUsernameAlert =
-                [[UIAlertView alloc] initWithTitle:@"Could not invite user"
-                                           message:@"Empty email. Please fill out an email"
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-        [emptyUsernameAlert show];
+        [SVProgressHUD showErrorWithStatus:@"Empty email. Please fill out an email"];
     } else if ([[User currentUser] isMemberOfAHousehold]) {
         [SVProgressHUD showWithStatus:@"Inviting user to Household" maskType:SVProgressHUDMaskTypeBlack];
-        PFObject *household = [User currentUser].activeHousehold;
         
-        // Invite with cloud code
+        PFObject *household = [User currentUser].activeHousehold;
         [PFCloud callFunctionInBackground:@"inviteUserToHousehold"
                            withParameters:@{@"username": invitee, @"householdId" : household.objectId}
                                     block:^(id object, NSError *error)
          {
              [SVProgressHUD dismiss];
              if (!error) {
-                 // Invitation sent!
-                 UIAlertView *invitationSuccess =
-                         [[UIAlertView alloc] initWithTitle:@"User invited."
-                                                    message:@"User was invited to household!"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-                 [invitationSuccess show];
+                 [SVProgressHUD showSuccessWithStatus:@"User was invited to household!"];
              } else {
-                 // Something went wrong
-                 UIAlertView *inviteAlert =
-                         [[UIAlertView alloc] initWithTitle:@"Could not invite user"
-                                                    message:error.userInfo[@"error"]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-                 [inviteAlert show];
+                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
              }
          }];
         

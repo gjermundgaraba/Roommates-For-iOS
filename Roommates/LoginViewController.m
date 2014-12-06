@@ -28,28 +28,16 @@
 
 #pragma mark Button actions
 
-/**  When Logging in, show progressHUD, remove keyboard. Shows a UIAlertView if error **/
-
 - (IBAction)login {
-    // Remove keyboard
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     
-    // Get username and password from Views
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
     
-    // Check if fields are filled out
     if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
-        UIAlertView *emptyFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
-                                                             message:@"Please fill out username and password"
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil];
-        [emptyFieldsAlert show];
-    }
-    else {
-        // Start login process (with parse):
+        [SVProgressHUD showErrorWithStatus:@"Please fill out username and password"];
+    } else {
         [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
         [User logInWithUsernameInBackground:username
                                    password:password
@@ -58,21 +46,14 @@
              [SVProgressHUD dismiss];
              if (!error) {
                  [User refreshChannels];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                  [self dismissViewControllerAnimated:YES completion:nil];
              } else {
-                 UIAlertView *loginFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
-                                                                      message:@""
-                                                                     delegate:nil
-                                                            cancelButtonTitle:@"OK"
-                                                            otherButtonTitles:nil];
-                 
                  if (error.code == kPFErrorObjectNotFound) {
-                     loginFailAlert.message = @"Username Password Combination is Wrong";
+                     [SVProgressHUD showErrorWithStatus:@"Username Password Combination is Wrong"];
                  } else {
-                     loginFailAlert.message = @"Something went wrong";
+                     [SVProgressHUD showErrorWithStatus:@"Something went wrong"];
                  }
-                 
-                 [loginFailAlert show];
              }
          }];
     }
@@ -83,15 +64,11 @@
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     
-    // The permissions requested from the user
     NSArray *permissionsArray = @[ @"email" ];
-    
-    // Login PFUser using Facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray
                                     block:^(PFUser *user, NSError *error)
     {
          [SVProgressHUD dismiss];
-         // Check if something went wrong
          if (!error) {
              if (user) {
                  [User refreshChannels];
@@ -99,7 +76,6 @@
                  if (user.isNew) {
                      FBRequest *request = [FBRequest requestForMe];
                      
-                     // Send request to Facebook for user information
                      [SVProgressHUD showWithStatus:@"Getting data from Facebook" maskType:SVProgressHUDMaskTypeBlack];
                      [request startWithCompletionHandler:^(FBRequestConnection *connection,
                                                            id result,
@@ -129,39 +105,24 @@
                                   if (!error) {
                                       [self dismissViewControllerAnimated:YES completion:nil];
                                   } else {
-                                      UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                      [facebookFailAlert show];
+                                      [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                                       [user deleteInBackground];
                                       //[PFUser logOut];
                                   }
                               }];
-                          }
-                          else {
+                          } else {
                               [SVProgressHUD dismiss];
-                              UIAlertView *facebookFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not sign up" message:@"Could not contact Facebook, please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                              [facebookFailAlert show];
+                              [SVProgressHUD showErrorWithStatus:@"Could not contact Facebook, please try again."];
                               [user deleteInBackground];
                           }
                       }];
-                 }
-                 else {
+                 } else {
+                     [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                      [self dismissViewControllerAnimated:YES completion:nil];
                  }
              }
-         }
-         else {
-             NSString *errorString = [NSString stringWithFormat:@"Error code: %ld. Something went wrong, please try again.", (long)error.code];
-             
-             if (error.code == kPFErrorConnectionFailed) {
-                 errorString = @"The Internet connection appears to be offline.";
-             }
-             
-             UIAlertView *facebookLoginFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in."
-                                                                              message:errorString
-                                                                             delegate:nil
-                                                                    cancelButtonTitle:@"OK"
-                                                                    otherButtonTitles:nil];
-             [facebookLoginFailAlert show];
+         } else {
+             [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
          }
      }];
 }

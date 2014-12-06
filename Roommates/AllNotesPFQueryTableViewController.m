@@ -66,7 +66,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self loadObjects];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

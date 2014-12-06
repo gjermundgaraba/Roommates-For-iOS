@@ -3,7 +3,7 @@
 #import "User.h"
 #import "SVProgressHUD.h"
 
-@interface ForgottenPasswordViewController () <UIAlertViewDelegate, UITextFieldDelegate>
+@interface ForgottenPasswordViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UIButton *resetPasswordButton;
 @end
@@ -17,24 +17,11 @@
     return UIStatusBarStyleLightContent;
 }
 
-/** When the user presses OK in the sucessalertview, a segue will transfer the user back to log in screen **/
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self performSegueWithIdentifier:@"forgotUnwind" sender:nil];
-}
-
-/** resets password in background, if sucess sucessalertview. If not sucess error alertview.**/
-
 - (IBAction)resetPassword:(id)sender {
     NSString *email = self.emailTextField.text;
     
     if ([email isEqualToString:@""]) {
-        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not reset password"
-                                                             message:@"You must enter an email!"
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil];
-        [errorAlert show];
+        [SVProgressHUD showErrorWithStatus:@"You must enter an email!"];
     }
     else {
         [SVProgressHUD showWithStatus:@"Resetting Password..." maskType:SVProgressHUDMaskTypeBlack];
@@ -43,20 +30,11 @@
          {
              [SVProgressHUD dismiss];
              if (!error) {
-                 UIAlertView *emailSetAlert = [[UIAlertView alloc] initWithTitle:@"Success!"
-                                                                         message:@"An email has been sent with instructions to reset your password"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"OK"
-                                                               otherButtonTitles:nil];
-                 [emailSetAlert show];
+                 [SVProgressHUD showSuccessWithStatus:@"An email has been sent with instructions to reset your password"];
+                 [self performSegueWithIdentifier:@"forgotUnwind" sender:nil];
              }
              else {
-                 UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not reset password"
-                                                                      message:error.userInfo[@"error"]
-                                                                     delegate:nil
-                                                            cancelButtonTitle:@"OK"
-                                                            otherButtonTitles:nil];
-                 [errorAlert show];
+                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
              }
          }];
         

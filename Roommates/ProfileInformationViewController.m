@@ -6,7 +6,8 @@
 #import "InputValidation.h"
 #import "User.h"
 
-@interface ProfileInformationViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPopoverControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate>
+@interface ProfileInformationViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+                                                UIPopoverControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet PFImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -70,13 +71,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Source not supported"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        
+        [SVProgressHUD showErrorWithStatus:@"Source not supported"];
     }
 }
 
@@ -110,12 +105,10 @@
     
     if (displayNameChanged || emailChanged || profilePictureChanged) {
         if (![InputValidation validateName:displayName]) {
-            UIAlertView *invalidDisplayNameAlert = [[UIAlertView alloc] initWithTitle:@"Could not change user info." message:@"Display Name is not valid." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [invalidDisplayNameAlert show];
+            [SVProgressHUD showErrorWithStatus:@"Display Name is not valid."];
         }
         else if (![InputValidation validateEmail:email]) {
-            UIAlertView *invalidEmailAlert = [[UIAlertView alloc] initWithTitle:@"Could not change user info." message:@"Email is not valid." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [invalidEmailAlert show];
+            [SVProgressHUD showErrorWithStatus:@"Email is not valid."];
         }
         else {
             [SVProgressHUD showWithStatus:@"Checking Password" maskType:SVProgressHUDMaskTypeBlack];
@@ -131,8 +124,7 @@
                     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [SVProgressHUD dismiss];
                         if (!error) {
-                            UIAlertView *successChangeAlert = [[UIAlertView alloc] initWithTitle:@"User info changed" message:@"User info was successfully changed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [successChangeAlert show];
+                            [SVProgressHUD showSuccessWithStatus:@"User info changed!"];
                             [self.navigationController popToRootViewControllerAnimated:YES];
                         }
                         else {
@@ -142,14 +134,12 @@
                             self.currentUser.displayName = displayName;
                             self.currentUser.profilePicture = oldProfilePicture;
                             
-                            UIAlertView *errorChangeAlert = [[UIAlertView alloc] initWithTitle:@"User info not changed" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [errorChangeAlert show];
+                            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                         }
                     }];
                 }
                 else {
-                    UIAlertView *wrongPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Could not change user info." message:@"Password was not correct. Try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [wrongPasswordAlert show];
+                    [SVProgressHUD showErrorWithStatus:@"Password not correct"];
                 }
             }];
         }

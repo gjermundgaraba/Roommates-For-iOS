@@ -55,22 +55,15 @@
 
 + (void)refreshChannels {
     Installation *currentInstallation = [Installation currentInstallation];
-    
-    User *currentUser = [User currentUser];
-    
-    // Start by remove all channels
     [currentInstallation reset];
-    
-    // Set up empty ACL
     PFACL *defaultACL = [PFACL ACL];
     
-    if (currentUser) {
-        // If logged in, add user channel
+    if ([self isAnyoneLoggedIn]) {
+        User *currentUser = [User currentUser];
         currentInstallation.user = currentUser;
         
         if ([currentUser isMemberOfAHousehold]) {
             // Set up default ACL
-            
             NSString *roleName = currentUser.householdChannel;
             [defaultACL setReadAccess:YES forRoleWithName:roleName];
             [defaultACL setWriteAccess:YES forRoleWithName:roleName];

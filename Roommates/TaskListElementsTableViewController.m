@@ -60,12 +60,6 @@
     [numberToolbar sizeToFit];
     self.addItemTextField.inputAccessoryView = numberToolbar;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
 }
 
@@ -88,7 +82,6 @@
 }
 
 - (IBAction)editList:(id)sender {
-    //sets up uiactionsheet
     NSString *toggleTitle;
     if (self.taskList.done) {
         toggleTitle = @"Mark as unfinished";
@@ -113,7 +106,6 @@
     [self.addItemTextField resignFirstResponder];
 }
 
-// Gets task lists
 - (void)refreshTaskListElements {
     if ([[User currentUser] isMemberOfAHousehold]) {
         PFQuery *taskListElementsQuery = [TaskListElement query];
@@ -132,6 +124,7 @@
         
         
         [taskListElementsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [self.refreshControl endRefreshing];
             if (!error) {
                 NSMutableArray *unfinishedTaskListElements = [objects mutableCopy];
                 NSMutableArray *finishedTaskListElements = [[NSMutableArray alloc] init];
@@ -146,8 +139,9 @@
                 self.unfinishedTaskListElements = unfinishedTaskListElements;
                 self.finishedTaskListElements = finishedTaskListElements;
                 [self.tableView reloadData];
+            } else {
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
-            [self.refreshControl endRefreshing];
         }];
     }
     else {
@@ -244,7 +238,6 @@
         TaskListElement *taskListElement = [self.finishedTaskListElements objectAtIndex:indexPath.row];
         [taskListElement removeObjectForKey:@"finishedBy"];
         
-        //TODO: COMMENT THIS finishedTmpArray
         NSMutableArray *finishedTmpArray = [self.finishedTaskListElements mutableCopy];
         [finishedTmpArray removeObject:taskListElement];
         
@@ -302,8 +295,7 @@
                     [self refreshTaskListElements];
                 }
                 else {
-                    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Could not create new task list element" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [errorAlert show];
+                    [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                 }
             }];
         }
@@ -384,6 +376,8 @@
     [self.taskList saveEventually:^(BOOL succeeded, NSError *error) {
         if (!error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"TaskListChanged" object:nil];
+        } else {
+            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
         }
     }];
 }
@@ -393,8 +387,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 0) { // delete
         if (buttonIndex == 1) {
-            // OK, time to delete
-            
             [SVProgressHUD showWithStatus:@"Deleting Task List" maskType:SVProgressHUDMaskTypeBlack];
             [self.taskList deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [SVProgressHUD dismiss];
@@ -403,21 +395,16 @@
                     [self.navigationController popViewControllerAnimated:YES];
                 }
                 else {
-                    UIAlertView *deleteFailAlert = [[UIAlertView alloc] initWithTitle:@"Could not delete task list" message:error.userInfo[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [deleteFailAlert show];
+                    [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                 }
             }];
         }
     }
     else if (alertView.tag == 1) { // rename
         if (buttonIndex == 1) {
-            // Time to change the title
-            
-            // Get the title from the alertview
             NSString *newName = [alertView textFieldAtIndex:0].text;
             if ([newName isEqualToString:@""]) {
-                UIAlertView *emptyNameAlert = [[UIAlertView alloc] initWithTitle:@"Could not rename task list" message:@"Name cannot be empty" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [emptyNameAlert show];
+                [SVProgressHUD showErrorWithStatus:@"Name cannot be empty"];
             }
             else {
                 self.taskList.listName = newName;
@@ -425,6 +412,8 @@
                     if (!error) {
                         self.title = self.taskList.listName;
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"TaskListChanged" object:nil];
+                    } else {
+                        [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
                     }
                 }];
             }
