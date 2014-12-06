@@ -407,10 +407,10 @@
                             <constraint firstItem="foD-rn-8iD" firstAttribute="leading" secondItem="Zzt-Ik-cUb" secondAttribute="leading" id="49c-EL-sQY"/>
                             <constraint firstItem="foD-rn-8iD" firstAttribute="top" secondItem="Zzt-Ik-cUb" secondAttribute="bottom" constant="8" id="O0P-g3-ADF"/>
                             <constraint firstAttribute="centerX" secondItem="Zzt-Ik-cUb" secondAttribute="centerX" id="Rwy-XG-lSW"/>
-                            <constraint firstItem="Zzt-Ik-cUb" firstAttribute="top" secondItem="mHC-Di-MMj" secondAttribute="bottom" constant="8" id="aW5-Ng-P3u"/>
                             <constraint firstItem="Zzt-Ik-cUb" firstAttribute="leading" secondItem="7hY-Ns-QbP" secondAttribute="leading" id="aao-oq-YJd"/>
                             <constraint firstItem="foD-rn-8iD" firstAttribute="trailing" secondItem="Zzt-Ik-cUb" secondAttribute="trailing" id="cbo-B8-KlN"/>
                             <constraint firstItem="lRb-E8-UcN" firstAttribute="top" secondItem="foD-rn-8iD" secondAttribute="bottom" id="pCu-0o-2ba"/>
+                            <constraint firstItem="Zzt-Ik-cUb" firstAttribute="top" secondItem="mHC-Di-MMj" secondAttribute="bottom" constant="8" symbolic="YES" id="vdR-MS-fph"/>
                             <constraint firstItem="Zzt-Ik-cUb" firstAttribute="height" secondItem="foD-rn-8iD" secondAttribute="height" id="xkT-oe-UZa"/>
                         </constraints>
                     </view>

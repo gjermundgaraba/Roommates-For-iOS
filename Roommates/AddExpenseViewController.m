@@ -37,16 +37,8 @@
         if (!error) {
             self.householdMembers = objects;
             [self.tableView reloadData];
-            
-            // Select ourselves:
-            for (int i = 0; i < objects.count; ++i) {
-                User *user = [objects objectAtIndex:i];
-                if ([user.objectId isEqualToString:[User currentUser].objectId]) {
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-                    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-                    break;
-                }
-            }
+        } else {
+            [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
         }
     }];
     
