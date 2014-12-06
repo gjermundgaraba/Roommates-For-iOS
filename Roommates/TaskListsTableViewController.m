@@ -31,7 +31,6 @@
 
 #pragma mark setters and getters
 
-// Safety, just in case someone tries to access before it is set
 - (NSArray *)unfinishedTaskLists {
     if (!_unfinishedTaskLists) {
         _unfinishedTaskLists = @[];
@@ -39,7 +38,6 @@
     return _unfinishedTaskLists;
 }
 
-// Safety, just in case someone tries to access before it is set
 - (NSArray *)finishedTaskLists {
     if (!_finishedTaskLists) {
         _finishedTaskLists = @[];
@@ -69,6 +67,8 @@
         addTaskListAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
         [addTaskListAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [addTaskListAlert show];
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
     }
 }
 

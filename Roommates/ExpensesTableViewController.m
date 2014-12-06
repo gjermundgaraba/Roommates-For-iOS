@@ -3,6 +3,7 @@
 #import "User.h"
 #import "Expense.h"
 #import "ViewExepenseTableViewController.h"
+#import "SVProgressHUD.h"
 
 #define EXPENSES_UNSETTLED_SECTION 0
 #define EXPENSES_SETTLED_SECTION 1
@@ -32,6 +33,8 @@
 - (IBAction)addButtonPushed:(id)sender {
     if ([[User currentUser] isMemberOfAHousehold]) {
         [self performSegueWithIdentifier:@"addExpenseSegue" sender:nil];     
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
     }
    
 }

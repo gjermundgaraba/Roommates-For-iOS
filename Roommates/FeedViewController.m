@@ -22,6 +22,8 @@ static int ADD_BUTTON_INDEX = 1;
         newNoteAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
         [newNoteAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [newNoteAlert show];
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
     }
 }
 
