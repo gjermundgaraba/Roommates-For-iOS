@@ -72,10 +72,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) { // Add clicked
-        // Get the listName from the UIAlert TextField
         NSString *listName = [alertView textFieldAtIndex:0].text;
         
-        // Check validity
         if ([listName isEqualToString:@""]) {
             [SVProgressHUD showErrorWithStatus:@"List Name is Empty"];
         } else if ([User currentUser] && [User currentUser].isMemberOfAHousehold) {
@@ -215,7 +213,6 @@
 #pragma mark - Navigation
 
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"viewTaskListElementsSegue"]) {

@@ -26,7 +26,6 @@
     return UIStatusBarStyleLightContent;
 }
 
-/** Registrating user in background, progressHUD showing. If error the UIAlertView is showing **/
 - (IBAction)register {
     NSString *displayName = self.displayNameTextField.text;
     NSString *email = [[self.emailTextField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -56,7 +55,6 @@
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [SVProgressHUD dismiss];
             if (!error) {
-                // User created, time to log him in
                 [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeBlack];
                 [User logInWithUsernameInBackground:email password:password block:^(User *user, NSError *error) {
                     [SVProgressHUD dismiss];

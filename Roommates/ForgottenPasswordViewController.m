@@ -10,8 +10,6 @@
 
 @implementation ForgottenPasswordViewController
 
-/** Changes statusbar color to white **/
-
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;

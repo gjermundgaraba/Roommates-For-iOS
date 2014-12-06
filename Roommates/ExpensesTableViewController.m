@@ -95,7 +95,6 @@
 
 - (void)updateExpensesFromQuery:(NSArray *)objects error:(NSError *)error {
     if (!error) {
-        // Sort expenses into unsettled and settled
         NSMutableArray *tmp_unsettledExpenses = [objects mutableCopy];
         NSMutableArray *tmp_settledExpenses = [[NSMutableArray alloc] init];
         
@@ -194,9 +193,7 @@
     double whatEachOwe = expense.totalAmount.doubleValue / (expense.notPaidUp.count + expense.paidUp.count);
     
     if (indexPath.section == EXPENSES_UNSETTLED_SECTION) {
-        if ([expense.owed.objectId isEqualToString:[User currentUser].objectId]) {
-            // This is our own. People owe money to us
-            
+        if ([expense.owed.objectId isEqualToString:[User currentUser].objectId]) {            
             double whatWeAreOwed = whatEachOwe * expense.notPaidUp.count;
             
             cell.detailTextLabel.text = [NSString stringWithFormat:@"You are owed %.02f for this expense", whatWeAreOwed];

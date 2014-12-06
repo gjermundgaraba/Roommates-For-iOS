@@ -45,12 +45,10 @@
 {
     [super viewDidLoad];
     
-    // Changes height of the add item text field
     CGRect frameRect = self.addItemTextField.frame;
     frameRect.size.height = 44;
     self.addItemTextField.frame = frameRect;
     
-    // Sets up a toolbar to show over the keyboard
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleDefault;
     numberToolbar.items = [NSArray arrayWithObjects:
@@ -205,15 +203,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Marking an element as finished or unmarking an element
-    // Basicly toggeling
     if (indexPath.section == unfinishedSectionNumber) {
         TaskListElement *taskListElement = [self.unfinishedTaskListElements objectAtIndex:indexPath.row];
         taskListElement.finishedBy = [User currentUser];
-        
-        
-        
-        //TODO: COMMENT THIS
+
         NSMutableArray *unfinishedTmpArray = [self.unfinishedTaskListElements mutableCopy];
         [unfinishedTmpArray removeObject:taskListElement];
         
@@ -228,11 +221,6 @@
         
         
         [taskListElement saveEventually];
-//        [taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                [self refreshTaskListElements];
-//            }
-//        }];
     }
     else if (indexPath.section == finishedSectionNumber) {
         TaskListElement *taskListElement = [self.finishedTaskListElements objectAtIndex:indexPath.row];
@@ -250,12 +238,6 @@
         [self.tableView reloadData];
 
         [taskListElement saveEventually];
-//        [taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                [self refreshTaskListElements];
-//            }
-//        }];
-
     }
 }
 
@@ -303,7 +285,6 @@
 }
         
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"editTaskListElementSegue"]) {
@@ -326,8 +307,6 @@
             targetVC.taskListElement = taskListElement;
         }
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 // Needs to be here for unwind segue...

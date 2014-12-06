@@ -5,7 +5,6 @@
 #import "LoginViewController.h"
 #import "User.h"
 
-
 // Defines the sections and rows, so we can more readable
 // find the sections and rows later
 #define INFORMATION_SECTION 0
@@ -49,10 +48,23 @@
 
 #pragma mark - Table view data source
 
+- (void)setCellUnClickable:(UITableViewCell *)cell
+{
+    cell.userInteractionEnabled = NO;
+    cell.textLabel.textColor = [UIColor grayColor];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+}
+
+- (void)setCellClickable:(UITableViewCell *)cell
+{
+    cell.userInteractionEnabled = YES;
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    
     BOOL userIsLinkedWithFacebook = [PFFacebookUtils isLinkedWithUser:self.currentUser];
     
     if (indexPath.section == INFORMATION_SECTION) {
@@ -60,11 +72,11 @@
         switch (indexPath.row) {
             case EMAIL_ROW:
                 cell.detailTextLabel.text = self.currentUser.email;
-                cell.userInteractionEnabled = NO; // Not supposed to interact with it
+                cell.userInteractionEnabled = NO;
                 break;
             case DISPLAY_NAME_ROW:
                 cell.detailTextLabel.text = self.currentUser.displayName;
-                cell.userInteractionEnabled = NO; // Not supposed to interact with it
+                cell.userInteractionEnabled = NO;
                 break;
             default:
                 break;
@@ -74,41 +86,26 @@
         cell = [self.settingsCells objectAtIndex:indexPath.row];
         switch (indexPath.row) {
             case HOUSEHOLD_SETTINGS_ROW:
-                // No need to do anything with this one. Should always be clickable
                 break;
             case PROFILE_SETTINGS_ROW: {
                 if (userIsLinkedWithFacebook) {
-                    // Cell should *not* be clickable
-                    cell.userInteractionEnabled = NO;
-                    cell.textLabel.textColor = [UIColor grayColor];
-                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    [self setCellUnClickable:cell];
                 }
                 else {
-                    // Cell should be clickable
-                    cell.userInteractionEnabled = YES;
-                    cell.textLabel.textColor = [UIColor blackColor];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    
                 }
                 break;
             }
             case CHANGE_PASSWORD_ROW: {
                 if (userIsLinkedWithFacebook) {
-                    // Cell should not be clickable
-                    cell.userInteractionEnabled = NO;
-                    cell.textLabel.textColor = [UIColor grayColor];
-                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    [self setCellUnClickable:cell];
                 }
                 else {
-                    // Cell should be clickable
-                    cell.userInteractionEnabled = YES;
-                    cell.textLabel.textColor = [UIColor blackColor];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    [self setCellClickable:cell];
                 }
                 break;
             }
-                
             case LOGOUT_ROW:
-                // No need to do anything with this one. Should always be clickable
                 break;
             default:
                 break;
@@ -129,7 +126,6 @@
             }
         }
         else if (indexPath.row == LOGOUT_ROW) {
-            //Alert View to make sure the user wants to log out
             UIAlertView *logOutAlert = [[UIAlertView alloc] initWithTitle:@"Warning"
                           message:@"Are you sure you want to log out?"
                          delegate:self
@@ -150,8 +146,6 @@
     [self.tabBarController setSelectedIndex:0];
 }
 
-// Delegate Method after user clicked on an Alert View Button
-// Used in checking for User Logout (Are you sure you want to log out?)
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     if (buttonIndex == 1) {

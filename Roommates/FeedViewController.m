@@ -42,7 +42,6 @@ static int ADD_BUTTON_INDEX = 1;
 
 #pragma mark UIAlertView Delegate Methods
 
-// Add note
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == ADD_BUTTON_INDEX) {
         PFACL *acl = [PFACL ACL];

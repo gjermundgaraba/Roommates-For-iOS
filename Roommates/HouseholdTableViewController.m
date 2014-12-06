@@ -57,18 +57,15 @@
     UITableViewCell *cell;
     
     if (indexPath.section == HOUSEHOLD_INFORMATION_SECTION) {
-        // Get the cell (stored in Information Cell Outlet Collection)
         cell = [self.householdInformationCells objectAtIndex:indexPath.row];
         if (indexPath.row == HOUSEHOLD_NAME_ROW) {
             if (self.household) {
                 cell.detailTextLabel.text = self.household.householdName;
             } else {
-                // If havent gotten the household yet, just set N/A
                 cell.detailTextLabel.text = @"N/A";
             }
         }
     } else if (indexPath.section == HOUSEHOLD_SETTINGS_SECTION) {
-        // Get the cell (stored in Settings Cell Outlet Collection)
         cell = [self.householdSettingsCells objectAtIndex:indexPath.row];
     }
     
@@ -128,7 +125,7 @@
                      
                  }];
              } else {
-                 
+                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
              }
          }];
     } else {
@@ -136,7 +133,6 @@
     }
 }
 
-// Invites a new user to the household
 - (void)inviteRoommateToHouseholdWithUsername:(NSString *)invitee {
     if ([invitee isEqualToString:@""]) {
         [SVProgressHUD showErrorWithStatus:@"Empty email. Please fill out an email"];

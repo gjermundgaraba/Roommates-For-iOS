@@ -40,7 +40,6 @@
     [self.tableView reloadData];
 }
 
-// When a user press edit, we give the user some choices about what to edit
 - (IBAction)editExpense:(id)sender {
     if ([self.expense.owed.objectId isEqualToString:[User currentUser].objectId]) {
         UIActionSheet *popup =

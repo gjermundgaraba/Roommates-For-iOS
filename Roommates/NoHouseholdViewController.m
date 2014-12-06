@@ -30,17 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Set ourselves as the tableview's delegate
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // Set up a tableviewcontroller for the tableview (we need it for refresh controls)
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
     self.tableViewController = tableViewController;
     [self addChildViewController:tableViewController];
     
-    // Set up pull to refresh controls
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshInvitationsWithPull:) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = refreshControl;
@@ -49,11 +46,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Turn off acceptbutton (until we have invitations)
     [self.acceptButton setTitle:@"" forState:UIControlStateNormal];
     [self.acceptButton setEnabled:NO];
     
-    // Start refreshing (with animation)
     [self.tableView setContentOffset:CGPointMake(0, -self.tableViewController.refreshControl.frame.size.height) animated:YES];
     [self refreshInvitations];
 }
@@ -61,10 +56,8 @@
 #pragma mark Methods
 
 - (void)refreshInvitations {
-    // Start refresh animation
     [self.tableViewController.refreshControl beginRefreshing];
     
-    // Get invitations
     PFQuery *invitationQuery = [Invitation query];
     [invitationQuery whereKey:@"invitee" equalTo:[User currentUser]];
     [invitationQuery includeKey:@"household"];
@@ -75,7 +68,6 @@
         if (!error) {
             self.invitations = objects;
             
-            // If we have more than 0 invitations, turn on accept button
             if (self.invitations.count > 0) {
                 [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
                 [self.acceptButton setEnabled:YES];
@@ -87,7 +79,6 @@
     }];
 }
 
-// For the pull down refresh thingy
 - (void)refreshInvitationsWithPull:(UIRefreshControl *)sender {
     [self refreshInvitations];
 }
@@ -106,7 +97,6 @@
     if (buttonIndex == 1) { // User pressed Create
         NSString *householdName = [alertView textFieldAtIndex:0].text;
         
-        // Check if everything is OK to start creating the household
         if ([householdName isEqualToString:@""]) {
             [SVProgressHUD showErrorWithStatus:@"Empty Household Name"];
         }
@@ -182,7 +172,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
@@ -196,7 +185,6 @@
     static NSString *CellIdentifier = @"invitationCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
     Invitation *invitation = [self.invitations objectAtIndex:indexPath.row];
     Household *household = invitation.household;
     User *inviter = invitation.inviter;
@@ -208,7 +196,6 @@
     return cell;
 }
 
-// Header title
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"Invitations";
 }

@@ -17,10 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.taskListElement) {
-        // Set navigationbar title (aka title of the page)
         self.title = self.taskListElement.elementName;
         
-        // Set up the UI:
         BOOL isFinished = self.taskListElement.finishedBy ? YES : NO;
         
         self.elementNameTextField.text = self.taskListElement.elementName;
@@ -48,7 +46,6 @@
 
 
 - (IBAction)saveButtonPressed:(id)sender {
-    // Figure out what needs to be changed
     self.taskListElement.elementName = self.elementNameTextField.text;
     if (self.elementFinishedSlider.on && !self.taskListElement.finishedBy) {
         self.taskListElement.finishedBy = (User *)[PFUser currentUser];
@@ -57,7 +54,6 @@
         [self.taskListElement removeObjectForKey:@"finishedBy"];
     }
     
-    // Save the task list element
     [SVProgressHUD showWithStatus:@"Saving Task List Element" maskType:SVProgressHUDMaskTypeBlack];
     [self.taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [SVProgressHUD dismiss];
@@ -78,13 +74,12 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // Yes pressed
-        // Delete in background
+    if (buttonIndex == 1) {
         [self.taskListElement deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) { // delete success
+            if (!error) {
                 [SVProgressHUD showSuccessWithStatus:@"Task List Element Deleted!"];
                 [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
-            } else { // delete fail
+            } else {
                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
         }];
