@@ -84,7 +84,7 @@
     [expensesQuery includeKey:@"notPaidUp"];
     [expensesQuery includeKey:@"paidUp"];
     
-    if (self.unsettledExpenses.count == 0 && self.settledExpenses.count == 0) {
+    if (self.unsettledExpenses.count == 0 && self.settledExpenses.count == 0 && [expensesQuery hasCachedResult]) {
         expensesQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     else {

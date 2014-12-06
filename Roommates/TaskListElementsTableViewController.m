@@ -113,7 +113,7 @@
         [taskListElementsQuery includeKey:@"finishedBy"];
         [taskListElementsQuery orderByDescending:@"updatedAt"];
         
-        if (self.unfinishedTaskListElements.count == 0 && self.finishedTaskListElements == 0) {
+        if (self.unfinishedTaskListElements.count == 0 && self.finishedTaskListElements == 0 && [taskListElementsQuery hasCachedResult]) {
             taskListElementsQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
         }
         else {

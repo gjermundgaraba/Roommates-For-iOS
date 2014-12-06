@@ -18,12 +18,16 @@
 
 #pragma mark View Controller Life Cycle Methods
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveTaskListChangedNotification:) name:@"TaskListChanged" object:nil];
+    [self refreshTaskLists];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     [self.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
 }
 
 
@@ -47,6 +51,10 @@
 #pragma mark Methods
 
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
+    [self refreshTaskLists];
+}
+
+- (void)didReceiveTaskListChangedNotification:(NSNotificationCenter *)notificationCenter {
     [self refreshTaskLists];
 }
 
@@ -106,7 +114,7 @@
         [taskListsQuery includeKey:@"updatedBy"];
         [taskListsQuery orderByDescending:@"updatedAt"];
         
-        if (self.unfinishedTaskLists.count == 0 && self.finishedTaskLists.count == 0) {
+        if (self.unfinishedTaskLists.count == 0 && self.finishedTaskLists.count == 0 && [taskListsQuery hasCachedResult]) {
             taskListsQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
         }
         else {

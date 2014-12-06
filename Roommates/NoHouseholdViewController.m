@@ -62,7 +62,13 @@
     [invitationQuery whereKey:@"invitee" equalTo:[User currentUser]];
     [invitationQuery includeKey:@"household"];
     [invitationQuery includeKey:@"inviter"];
-    invitationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    if ([invitationQuery hasCachedResult]) {
+        invitationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    } else {
+        invitationQuery.cachePolicy = kPFCachePolicyNetworkOnly;
+    }
+    
     
     [invitationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
