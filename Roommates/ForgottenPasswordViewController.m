@@ -1,6 +1,7 @@
 
 #import "ForgottenPasswordViewController.h"
 #import "User.h"
+#import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 
 @interface ForgottenPasswordViewController () <UITextFieldDelegate>
@@ -23,19 +24,16 @@
     }
     else {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Resetting Password...", nil) maskType:SVProgressHUDMaskTypeBlack];
-        [User requestPasswordResetForEmailInBackground:email
-                                                   block:^(BOOL succeeded, NSError *error)
-         {
-             [SVProgressHUD dismiss];
-             if (!error) {
-                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"An email has been sent with instructions to reset your password", nil)];
-                 [self performSegueWithIdentifier:@"forgotUnwind" sender:nil];
-             }
-             else {
-                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
-             }
-         }];
-        
+        [PFCloud callFunctionInBackground:@"resetPassword" withParameters:@{@"username": email} block:^(id object, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                NSString *response = (NSString *)object;
+                [SVProgressHUD showSuccessWithStatus:response];
+                [self performSegueWithIdentifier:@"forgotUnwind" sender:nil];
+            } else {
+                [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+            }
+        }];
     }
 }
 
