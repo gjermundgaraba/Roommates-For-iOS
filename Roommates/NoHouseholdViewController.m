@@ -75,7 +75,7 @@
             self.invitations = objects;
             
             if (self.invitations.count > 0) {
-                [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+                [self.acceptButton setTitle:NSLocalizedString(@"Accept", nil) forState:UIControlStateNormal];
                 [self.acceptButton setEnabled:YES];
             }
             
@@ -90,11 +90,11 @@
 }
 
 - (IBAction)createNewHousehold {
-    UIAlertView *createHouseholdAlert = [[UIAlertView alloc] initWithTitle:@"Create New Household"
+    UIAlertView *createHouseholdAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Create New Household", nil)
                                                                    message:@""
                                                                   delegate:self
-                                                         cancelButtonTitle:@"Cancel"
-                                                         otherButtonTitles:@"Create", nil];
+                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                         otherButtonTitles:NSLocalizedString(@"Create", nil), nil];
     [createHouseholdAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [createHouseholdAlert show];
 }
@@ -104,10 +104,10 @@
         NSString *householdName = [alertView textFieldAtIndex:0].text;
         
         if ([householdName isEqualToString:@""]) {
-            [SVProgressHUD showErrorWithStatus:@"Empty Household Name"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Empty Household Name", nil)];
         }
         else if (![[User currentUser] isMemberOfAHousehold] || [User currentUser]) {
-            [SVProgressHUD showWithStatus:@"Creating New Household" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Creating New Household", nil) maskType:SVProgressHUDMaskTypeBlack];
             [PFCloud callFunctionInBackground:@"createNewHousehold"
                                withParameters:@{@"householdName": householdName}
                                         block:^(id object, NSError *error)
@@ -115,7 +115,7 @@
                  [SVProgressHUD dismiss];
                  if (!error) {
                      // Refresh the user information after the cloud call (user is now member of a household)
-                     [SVProgressHUD showWithStatus:@"Fetching user information" maskType:SVProgressHUDMaskTypeBlack];
+                     [SVProgressHUD showWithStatus:NSLocalizedString(@"Fetching user information", nil) maskType:SVProgressHUDMaskTypeBlack];
                      [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                          [SVProgressHUD dismiss];
                          if (!error) {
@@ -124,7 +124,7 @@
                              [self.navigationController popViewControllerAnimated:YES]; // unwind instead?
                          }
                          else {
-                             [SVProgressHUD showErrorWithStatus:@"Household created, but could not fetch user info. Log out and back in again to solve this issue."];
+                             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Household created, but could not fetch user info. Log out and back in again to solve this issue.", nil)];
                          }
                      }];
                  }
@@ -144,7 +144,7 @@
     
     if (selectedIndexPath) {
         Invitation *invitation = [self.invitations objectAtIndex:selectedIndexPath.row];
-        [SVProgressHUD showWithStatus:@"Joining household" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Joining household", nil) maskType:SVProgressHUDMaskTypeBlack];
         [PFCloud callFunctionInBackground:@"acceptInvitation"
                            withParameters:@{@"invitationId": invitation.objectId}
                                     block:^(id object, NSError *error)
@@ -153,17 +153,17 @@
              if (!error) {
                  
                  // Refresh the user information after the cloud call (user is now member of a household)
-                 [SVProgressHUD showWithStatus:@"Fetching user information" maskType:SVProgressHUDMaskTypeBlack];
+                 [SVProgressHUD showWithStatus:NSLocalizedString(@"Fetching user information", nil) maskType:SVProgressHUDMaskTypeBlack];
                  [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                      [SVProgressHUD dismiss];
                      if (!error) {
-                         [SVProgressHUD showSuccessWithStatus:@"Invitation accepted!"];
+                         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Invitation accepted!", nil)];
                          [User refreshChannels];
                          [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                          [self.navigationController popViewControllerAnimated:YES];
                      }
                      else {
-                         [SVProgressHUD showSuccessWithStatus:@"Invitation accepted, but could not fetch user. Log out and back in again to solve this issue."];
+                         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Invitation accepted, but could not fetch user. Log out and back in again to solve this issue.", nil)];
                      }
                  }];
              }
@@ -195,15 +195,15 @@
     Household *household = invitation.household;
     User *inviter = invitation.inviter;
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Household: %@", household.householdName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Invited by: %@", inviter.displayName];
+    cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Household: %@", nil), household.householdName];
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Invited by: %@", nil), inviter.displayName];
     
     
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Invitations";
+    return NSLocalizedString(@"Invitations", nil);
 }
 
 

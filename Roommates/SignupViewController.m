@@ -34,16 +34,16 @@
     
     
     if (![InputValidation validateEmail:email]) {
-        [SVProgressHUD showErrorWithStatus:@"Email is not valid"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Email is not valid", nil)];
     }
     else if (![InputValidation validateName:displayName]) {
-        [SVProgressHUD showErrorWithStatus:@"Display Name is not valid"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Display Name is not valid", nil)];
     }
     else if (![InputValidation validatePassword:password]) {
-        [SVProgressHUD showErrorWithStatus:@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number", nil)];
     }
     else if (![password isEqualToString:repeatedPassword]) {
-        [SVProgressHUD showErrorWithStatus:@"Passwords do not match"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Passwords do not match", nil)];
     }
     else {
         User *newUser = [User user];
@@ -51,11 +51,11 @@
         newUser.password = password;
         newUser.email = email;
         newUser.displayName = displayName;
-        [SVProgressHUD showWithStatus:@"Signing up..." maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Signing up...", nil) maskType:SVProgressHUDMaskTypeBlack];
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [SVProgressHUD dismiss];
             if (!error) {
-                [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Logging in...", nil) maskType:SVProgressHUDMaskTypeBlack];
                 [User logInWithUsernameInBackground:email password:password block:^(User *user, NSError *error) {
                     [SVProgressHUD dismiss];
                     if (!error) {
@@ -64,7 +64,7 @@
                         [self performSegueWithIdentifier:@"signUpUnwind" sender:self];
                     }
                     else {
-                        [SVProgressHUD showErrorWithStatus:@"User registered, but could not automatically sign in."];
+                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"User registered, but could not automatically sign in.", nil)];
                     }
                 }];
             }
@@ -78,8 +78,6 @@
 
 #pragma mark UITextField animation
 
-
-//TODO: FIX ALL THE ANIMATION THINGY AFTER TESTING
 - (int)getDistanceForTextField:(UITextField *)textField {
     int distance = 80;
     

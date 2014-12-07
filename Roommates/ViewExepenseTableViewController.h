@@ -3,5 +3,5 @@
 #import "Expense.h"
 
 @interface ViewExepenseTableViewController : UITableViewController
-@property (strong, nonatomic) Expense *expense; // The expense we are viewing
+@property (strong, nonatomic) Expense *expense;
 @end

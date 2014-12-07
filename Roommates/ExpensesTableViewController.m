@@ -34,7 +34,7 @@
     if ([[User currentUser] isMemberOfAHousehold]) {
         [self performSegueWithIdentifier:@"addExpenseSegue" sender:nil];     
     } else {
-        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Not member of a household! Go to Me->Household Settings.", nil)];
     }
    
 }
@@ -156,10 +156,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == EXPENSES_UNSETTLED_SECTION) {
-        return @"Unsettled Expenses";
+        return NSLocalizedString(@"Unsettled Expenses", nil);
     }
     else if (section == EXPENSES_SETTLED_SECTION){
-        return @"Settled Expenses";
+        return NSLocalizedString(@"Settled Expenses", nil);
     }
     else {
         return @"";
@@ -196,13 +196,13 @@
         if ([expense.owed.objectId isEqualToString:[User currentUser].objectId]) {            
             double whatWeAreOwed = whatEachOwe * expense.notPaidUp.count;
             
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"You are owed %.02f for this expense", whatWeAreOwed];
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You are owed %.02f for this expense", nil), whatWeAreOwed];
         }
         else {
-            cell.detailTextLabel.text = @"You do not owe anything for this";
+            cell.detailTextLabel.text = NSLocalizedString(@"You do not owe anything for this", nil);
             for (User *user in expense.notPaidUp) {
                 if ([user.objectId isEqualToString:[User currentUser].objectId]) {
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"You owe %.02f to %@", whatEachOwe, expense.owed.displayName];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You owe %.02f to %@", nil), whatEachOwe, expense.owed.displayName];
                     break;
                 }
             }

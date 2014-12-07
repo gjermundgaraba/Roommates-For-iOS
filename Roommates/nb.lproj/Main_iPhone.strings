@@ -1,0 +1,294 @@
+
+/* Class = "IBUIBarButtonItem"; title = "Lagre"; ObjectID = "021-fD-8zW"; */
+"021-fD-8zW.title" = "Lagre";
+
+/* Class = "IBUILabel"; text = "Tilbakestill Passord"; ObjectID = "0gX-0U-8nq"; */
+"0gX-0U-8nq.text" = "Tilbakestill Passord";
+
+/* Class = "IBUINavigationItem"; title = "Endre Profil"; ObjectID = "16f-Zf-ctk"; */
+"16f-Zf-ctk.title" = "Endre Profil";
+
+/* Class = "IBUITabBarItem"; title = "Strøm"; ObjectID = "1OB-eP-Zrs"; */
+"1OB-eP-Zrs.title" = "Strøm";
+
+/* Class = "IBUITextField"; accessibilityHint = "Skriv inn brukernavn"; ObjectID = "1VS-2c-pmV"; */
+"1VS-2c-pmV.accessibilityHint" = "Skriv inn brukernavn";
+
+/* Class = "IBUITextField"; accessibilityLabel = "UsernameTextField"; ObjectID = "1VS-2c-pmV"; */
+"1VS-2c-pmV.accessibilityLabel" = "UsernameTextField";
+
+/* Class = "IBUITextField"; placeholder = "E-post"; ObjectID = "1VS-2c-pmV"; */
+"1VS-2c-pmV.placeholder" = "E-post";
+
+/* Class = "IBUITextField"; placeholder = "E-post"; ObjectID = "1ey-Sn-vED"; */
+"1ey-Sn-vED.placeholder" = "E-post";
+
+/* Class = "IBUINavigationItem"; title = "Medlemmer"; ObjectID = "367-ER-UAJ"; */
+"367-ER-UAJ.title" = "Medlemmer";
+
+/* Class = "IBUILabel"; text = "Detaljer"; ObjectID = "37r-e6-GPz"; */
+"37r-e6-GPz.text" = "Detaljer";
+
+/* Class = "IBUITabBarItem"; title = "Utgifter"; ObjectID = "3L1-Tl-uC7"; */
+"3L1-Tl-uC7.title" = "Utgifter";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "3aQ-s8-Se7"; */
+"3aQ-s8-Se7.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Navn"; ObjectID = "4kY-pn-6eA"; */
+"4kY-pn-6eA.text" = "Navn";
+
+/* Class = "IBUIBarButtonItem"; title = "Endre Liste"; ObjectID = "4uo-bC-gKJ"; */
+"4uo-bC-gKJ.title" = "Endre Liste";
+
+/* Class = "IBUITextField"; placeholder = "Gjenta Passord"; ObjectID = "50G-mh-9JD"; */
+"50G-mh-9JD.placeholder" = "Gjenta Passord";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Profilinformasjon"; ObjectID = "5ax-Tk-ARi"; */
+"5ax-Tk-ARi.headerTitle" = "Profilinformasjon";
+
+/* Class = "IBUINavigationItem"; title = "Bofellesskap"; ObjectID = "7Wl-Zo-vS2"; */
+"7Wl-Zo-vS2.title" = "Bofellesskap";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Bofellesskap-informasjon"; ObjectID = "86l-FR-7GY"; */
+"86l-FR-7GY.headerTitle" = "Bofellesskap-informasjon";
+
+/* Class = "IBUINavigationItem"; title = "Utgifter"; ObjectID = "8F3-E9-eNb"; */
+"8F3-E9-eNb.title" = "Utgifter";
+
+/* Class = "IBUILabel"; text = "Logg inn på din Roommates-konto, eller registrer en ny konto."; ObjectID = "8ff-qk-t0X"; */
+"8ff-qk-t0X.text" = "Logg inn på din Roommates-konto, eller registrer en ny konto.";
+
+/* Class = "IBUIButton"; normalTitle = "Glemt  Passord"; ObjectID = "9JA-iT-a9P"; */
+"9JA-iT-a9P.normalTitle" = "Glemt  Passord";
+
+/* Class = "IBUINavigationItem"; title = "Invitasjoner"; ObjectID = "9bU-Qe-rBZ"; */
+"9bU-Qe-rBZ.title" = "Invitasjoner";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "CO4-hk-cdh"; */
+"CO4-hk-cdh.text" = "Subtitle";
+
+/* Class = "IBUIButton"; normalTitle = "Register"; ObjectID = "COp-nk-RJ5"; */
+"COp-nk-RJ5.normalTitle" = "Register";
+
+/* Class = "IBUILabel"; text = "Gjort ferdig av"; ObjectID = "CmX-j2-QS7"; */
+"CmX-j2-QS7.text" = "Gjort ferdig av";
+
+/* Class = "IBUILabel"; text = "Forlat Bofellesskap"; ObjectID = "Ew7-fc-4KE"; */
+"Ew7-fc-4KE.text" = "Forlat Bofellesskap";
+
+/* Class = "IBUIButton"; normalTitle = "Logg Inn"; ObjectID = "F0e-24-m2v"; */
+"F0e-24-m2v.normalTitle" = "Logg Inn";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "GLJ-6K-6rU"; */
+"GLJ-6K-6rU.text" = "Tittel";
+
+/* Class = "IBUIBarButtonItem"; title = "Endre"; ObjectID = "Gpd-bJ-4Ds"; */
+"Gpd-bJ-4Ds.title" = "Endre";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "HeK-Eh-ufT"; */
+"HeK-Eh-ufT.text" = "Tittel";
+
+/* Class = "IBUILabel"; text = "Endre Passord"; ObjectID = "Ih0-F6-Rma"; */
+"Ih0-F6-Rma.text" = "Endre Passord";
+
+/* Class = "IBUIBarButtonItem"; title = "Legg Til"; ObjectID = "K4d-Gg-yU0"; */
+"K4d-Gg-yU0.title" = "Legg Til";
+
+/* Class = "IBUILabel"; text = "Registrere Konto"; ObjectID = "KIH-KM-8XT"; */
+"KIH-KM-8XT.text" = "Registrere Konto";
+
+/* Class = "IBUILabel"; text = "Bofellesskap-innstillinger"; ObjectID = "Krd-Ek-ZkV"; */
+"Krd-Ek-ZkV.text" = "Bofellesskap-innstillinger";
+
+/* Class = "IBUITextField"; placeholder = "E-post"; ObjectID = "L3g-hX-Ysx"; */
+"L3g-hX-Ysx.placeholder" = "E-post";
+
+/* Class = "IBUITextField"; placeholder = "Navn"; ObjectID = "L59-Fo-QFR"; */
+"L59-Fo-QFR.placeholder" = "Navn";
+
+/* Class = "IBUITabBarItem"; title = "Gjøremål"; ObjectID = "L9U-Ru-7qT"; */
+"L9U-Ru-7qT.title" = "Gjøremål";
+
+/* Class = "IBUITextField"; placeholder = "Utgiftsnavn"; ObjectID = "LHP-vo-Sry"; */
+"LHP-vo-Sry.placeholder" = "Utgiftsnavn";
+
+/* Class = "IBUILabel"; text = "Detaljer"; ObjectID = "LbZ-vf-vXl"; */
+"LbZ-vf-vXl.text" = "Detaljer";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "Lu0-fQ-NRS"; */
+"Lu0-fQ-NRS.text" = "Tittel";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Bofellesskap-innstillinger"; ObjectID = "M5x-zw-IkI"; */
+"M5x-zw-IkI.headerTitle" = "Bofellesskap-innstillinger";
+
+/* Class = "IBUIButton"; normalTitle = "Avbryt"; ObjectID = "MSx-6a-Hbb"; */
+"MSx-6a-Hbb.normalTitle" = "Avbryt";
+
+/* Class = "IBUIButton"; normalTitle = "Registrere Konto"; ObjectID = "MjV-oh-S7p"; */
+"MjV-oh-S7p.normalTitle" = "Registrere Konto";
+
+/* Class = "IBUIBarButtonItem"; title = "Lagre"; ObjectID = "NDQ-IH-XjU"; */
+"NDQ-IH-XjU.title" = "Lagre";
+
+/* Class = "IBUIButton"; normalTitle = "Tilbakestill Passord"; ObjectID = "NtN-Uy-uxd"; */
+"NtN-Uy-uxd.normalTitle" = "Tilbakestill Passord";
+
+/* Class = "IBUITextField"; placeholder = "Passord"; ObjectID = "OzF-e8-fOp"; */
+"OzF-e8-fOp.placeholder" = "Passord";
+
+/* Class = "IBUIButton"; normalTitle = "Slette Element"; ObjectID = "POt-U8-EvF"; */
+"POt-U8-EvF.normalTitle" = "Slette Element";
+
+/* Class = "IBUINavigationItem"; title = "Gjøremål"; ObjectID = "QEE-a8-lTr"; */
+"QEE-a8-lTr.title" = "Gjøremål";
+
+/* Class = "IBUIBarButtonItem"; title = "Lagre"; ObjectID = "Qxd-Ib-J9H"; */
+"Qxd-Ib-J9H.title" = "Lagre";
+
+/* Class = "IBUILabel"; text = "Bofellesskap-navn"; ObjectID = "RQh-da-c0K"; */
+"RQh-da-c0K.text" = "Bofellesskap-navn";
+
+/* Class = "IBUITextField"; placeholder = "Passord"; ObjectID = "Rbp-ir-hAJ"; */
+"Rbp-ir-hAJ.placeholder" = "Passord";
+
+/* Class = "IBUINavigationItem"; title = "Alle Notater"; ObjectID = "S4x-bb-HFX"; */
+"S4x-bb-HFX.title" = "Alle Notater";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "VOC-3Y-ZCC"; */
+"VOC-3Y-ZCC.text" = "Tittel";
+
+/* Class = "IBUITextField"; placeholder = "E-post"; ObjectID = "Vdk-Bo-ext"; */
+"Vdk-Bo-ext.placeholder" = "E-post";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "Vj0-NP-uOh"; */
+"Vj0-NP-uOh.text" = "Tittel";
+
+/* Class = "IBUIBarButtonItem"; title = "Nytt Notat"; ObjectID = "Vvi-JT-Bpg"; */
+"Vvi-JT-Bpg.title" = "Nytt Notat";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "W8d-hl-Jp4"; */
+"W8d-hl-Jp4.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "Endre Personer"; ObjectID = "Xps-8R-VHg"; */
+"Xps-8R-VHg.title" = "Endre Personer";
+
+/* Class = "IBUILabel"; text = "Logg Inn"; ObjectID = "XyR-Ax-pT9"; */
+"XyR-Ax-pT9.text" = "Logg Inn";
+
+/* Class = "IBUILabel"; text = "Profilinformasjons-innstillinger"; ObjectID = "Y9y-nn-B2b"; */
+"Y9y-nn-B2b.text" = "Profilinformasjons-innstillinger";
+
+/* Class = "IBUILabel"; text = "Bofellesskapsmedlemmer"; ObjectID = "YM4-6M-zjD"; */
+"YM4-6M-zjD.text" = "Bofellesskapsmedlemmer";
+
+/* Class = "IBUINavigationItem"; title = "Profil"; ObjectID = "Yvu-8o-CDL"; */
+"Yvu-8o-CDL.title" = "Profil";
+
+/* Class = "IBUILabel"; text = "Laget Av"; ObjectID = "b5O-rC-tkh"; */
+"b5O-rC-tkh.text" = "Laget Av";
+
+/* Class = "IBUIBarButtonItem"; title = "Lagre"; ObjectID = "bFn-22-1aZ"; */
+"bFn-22-1aZ.title" = "Lagre";
+
+/* Class = "IBUITextField"; placeholder = "Bekreft Nytt Passord"; ObjectID = "bJi-qJ-nwe"; */
+"bJi-qJ-nwe.placeholder" = "Bekreft Nytt Passord";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "bPr-zu-Lld"; */
+"bPr-zu-Lld.text" = "Subtitle";
+
+/* Class = "IBUITextField"; placeholder = "Bekreft Passord"; ObjectID = "c7r-9l-y2i"; */
+"c7r-9l-y2i.placeholder" = "Bekreft Passord";
+
+/* Class = "IBUILabel"; text = "Logg Ut"; ObjectID = "chA-wo-s8P"; */
+"chA-wo-s8P.text" = "Logg Ut";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "eRU-ZX-fwA"; */
+"eRU-ZX-fwA.text" = "Tittel";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "ffL-AC-2YG"; */
+"ffL-AC-2YG.text" = "Tittel";
+
+/* Class = "IBUILabel"; text = "Undertittel"; ObjectID = "gIM-6q-YXy"; */
+"gIM-6q-YXy.text" = "Undertittel";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "ibl-xq-HJY"; */
+"ibl-xq-HJY.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Tittel"; ObjectID = "itp-Pe-mts"; */
+"itp-Pe-mts.text" = "Tittel";
+
+/* Class = "IBUIButton"; normalTitle = "Lag Bofellesskap"; ObjectID = "k5h-Mg-4RQ"; */
+"k5h-Mg-4RQ.normalTitle" = "Lag Bofellesskap";
+
+/* Class = "IBUILabel"; text = "Gjøremålsnavn"; ObjectID = "kW0-tm-Yn5"; */
+"kW0-tm-Yn5.text" = "Gjøremålsnavn";
+
+/* Class = "IBUIBarButtonItem"; title = "Lagre"; ObjectID = "lof-3c-xmG"; */
+"lof-3c-xmG.title" = "Lagre";
+
+/* Class = "IBUILabel"; text = "Inviter Romkamerat til Bofellesskap"; ObjectID = "mTX-pg-Wbw"; */
+"mTX-pg-Wbw.text" = "Inviter Romkamerat til Bofellesskap";
+
+/* Class = "IBUILabel"; text = "Ferdig"; ObjectID = "o6h-C9-dR4"; */
+"o6h-C9-dR4.text" = "Ferdig";
+
+/* Class = "IBUINavigationItem"; title = "Strøm"; ObjectID = "oq9-WN-d89"; */
+"oq9-WN-d89.title" = "Strøm";
+
+/* Class = "IBUIButton"; normalTitle = "Avbryt"; ObjectID = "oqB-gt-qSE"; */
+"oqB-gt-qSE.normalTitle" = "Avbryt";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Innstillinger"; ObjectID = "pc0-e9-2Ad"; */
+"pc0-e9-2Ad.headerTitle" = "Innstillinger";
+
+/* Class = "IBUITextField"; placeholder = "Nytt Passord"; ObjectID = "qVe-Do-Mrc"; */
+"qVe-Do-Mrc.placeholder" = "Nytt Passord";
+
+/* Class = "IBUILabel"; text = "Underittel"; ObjectID = "suo-6Q-LJr"; */
+"suo-6Q-LJr.text" = "Underittel";
+
+/* Class = "IBUITextField"; placeholder = "Gammelt Passord"; ObjectID = "tWg-JI-vdO"; */
+"tWg-JI-vdO.placeholder" = "Gammelt Passord";
+
+/* Class = "IBUIButton"; normalTitle = "Aksepter Invitasjon"; ObjectID = "tiN-k5-HZS"; */
+"tiN-k5-HZS.normalTitle" = "Aksepter Invitasjon";
+
+/* Class = "IBUILabel"; text = "E-post"; ObjectID = "uNZ-6B-vT9"; */
+"uNZ-6B-vT9.text" = "E-post";
+
+/* Class = "IBUINavigationItem"; title = "Ny Utgift"; ObjectID = "ueb-yC-PfL"; */
+"ueb-yC-PfL.title" = "Ny Utgift";
+
+/* Class = "IBUILabel"; text = "Undertittel"; ObjectID = "uom-OP-qiL"; */
+"uom-OP-qiL.text" = "Undertittel";
+
+/* Class = "IBUIBarButtonItem"; title = "Legg Til"; ObjectID = "vJ8-Yx-nWM"; */
+"vJ8-Yx-nWM.title" = "Legg Til";
+
+/* Class = "IBUITextField"; placeholder = "Detaljer"; ObjectID = "vTr-Qk-HCT"; */
+"vTr-Qk-HCT.placeholder" = "Detaljer";
+
+/* Class = "IBUITabBarItem"; title = "Meg"; ObjectID = "vZ6-OI-bXu"; */
+"vZ6-OI-bXu.title" = "Meg";
+
+/* Class = "IBUITextField"; placeholder = "Navn"; ObjectID = "vh2-HM-TXZ"; */
+"vh2-HM-TXZ.placeholder" = "Navn";
+
+/* Class = "IBUITextField"; placeholder = "Nytt Element"; ObjectID = "was-tL-tvI"; */
+"was-tL-tvI.placeholder" = "Nytt Element";
+
+/* Class = "IBUILabel"; text = "Underittel"; ObjectID = "wfP-oJ-tFz"; */
+"wfP-oJ-tFz.text" = "Underittel";
+
+/* Class = "IBUINavigationItem"; title = "Endre Passord"; ObjectID = "x9A-JB-Isj"; */
+"x9A-JB-Isj.title" = "Endre Passord";
+
+/* Class = "IBUITextField"; placeholder = "Beløp"; ObjectID = "xAx-FU-ePe"; */
+"xAx-FU-ePe.placeholder" = "Beløp";
+
+/* Class = "IBUILabel"; text = "Undertittel"; ObjectID = "yRp-mv-VSp"; */
+"yRp-mv-VSp.text" = "Undertittel";
+
+/* Class = "IBUILabel"; text = "Navn"; ObjectID = "ym0-ZX-GuT"; */
+"ym0-ZX-GuT.text" = "Navn";

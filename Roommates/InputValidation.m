@@ -46,9 +46,9 @@
 + (BOOL)validateTotalAmount:(NSString *)totalAmount {
     if ([totalAmount isEqualToString:@""]) return NO;
     
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber * myNumber = [f numberFromString:totalAmount];
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber = [numberFormatter numberFromString:totalAmount];
     
     if (!myNumber) return NO;
     

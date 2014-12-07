@@ -14,25 +14,25 @@ static int ADD_BUTTON_INDEX = 1;
 
 - (IBAction)addNote:(id)sender {
     if ([[User currentUser] isMemberOfAHousehold]) {
-        UIAlertView *newNoteAlert = [[UIAlertView alloc] initWithTitle:@"New Note"
+        UIAlertView *newNoteAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New Note", nil)
                                                                message:@""
                                                               delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                     otherButtonTitles:@"OK", nil];
+                                                     cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                     otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
         newNoteAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
         [newNoteAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [newNoteAlert show];
     } else {
-        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Not member of a household! Go to Me->Household Settings.", nil)];
     }
 }
 
 - (void)createNewNote:(Note *)newNote {
-    [SVProgressHUD showWithStatus:@"Creating new Note"];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Creating new Note", nil)];
     [newNote saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [SVProgressHUD dismiss];
         if (!error) {
-            [SVProgressHUD showSuccessWithStatus:@"Note Created!"];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Note Created!", nil)];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"NewNoteCreated" object:nil];
         } else {
             [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
@@ -47,7 +47,7 @@ static int ADD_BUTTON_INDEX = 1;
         NSString *noteText = [alertView textFieldAtIndex:0].text;
         
         if ([noteText isEqualToString:@""]) {
-            [SVProgressHUD showErrorWithStatus:@"Note cannot be empty"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Note cannot be empty", nil)];
         } else {
             PFACL *acl = [PFACL ACL];
             [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];

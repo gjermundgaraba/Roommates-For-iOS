@@ -43,14 +43,14 @@
 - (IBAction)editExpense:(id)sender {
     if ([self.expense.owed.objectId isEqualToString:[User currentUser].objectId]) {
         UIActionSheet *popup =
-        [[UIActionSheet alloc] initWithTitle:@"Edit Expense"
+        [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Edit Expense", nil)
                                     delegate:self
-                           cancelButtonTitle:@"Cancel"
-                      destructiveButtonTitle:@"Delete Expense"
-                           otherButtonTitles:@"Rename Expense",
-         @"Edit Amount",
-         @"Edit Details",
-         @"Change People",
+                           cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                      destructiveButtonTitle:NSLocalizedString(@"Delete Expense", nil)
+                           otherButtonTitles:NSLocalizedString(@"Rename Expense", nil),
+         NSLocalizedString(@"Edit Amount", nil),
+         NSLocalizedString(@"Edit Details", nil),
+         NSLocalizedString(@"Change People", nil),
          nil];
         [popup showInView:[UIApplication sharedApplication].keyWindow];
     }
@@ -96,13 +96,13 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case INFORMATION_SECTION:
-            return @"Information about expense";
+            return NSLocalizedString(@"Information about expense", nil);
             break;
         case UNSETTLED_SECTION:
-            return @"Roommates not paid up";
+            return NSLocalizedString(@"Roommates not paid up", nil);
             break;
         case SETTLED_SECTION:
-            return @"Rommates who has settled";
+            return NSLocalizedString(@"Rommates who has settled", nil);
             break;
         default:
             return @"";
@@ -120,19 +120,19 @@
             cell.userInteractionEnabled = NO;
             switch (indexPath.row) {
                 case INFORMATION_NAME_ROW:
-                    cell.textLabel.text = @"Expense";
+                    cell.textLabel.text = NSLocalizedString(@"Expense", nil);
                     cell.detailTextLabel.text = self.expense.name;
                     break;
                 case INFORMATION_OWED_ROW:
-                    cell.textLabel.text = @"Owed";
+                    cell.textLabel.text = NSLocalizedString(@"Owed", nil);
                     cell.detailTextLabel.text = self.expense.owed.displayName;
                     break;
                 case INFORMATION_AMOUNT_ROW:
-                    cell.textLabel.text = @"Total Amount";
+                    cell.textLabel.text = NSLocalizedString(@"Total Amount", nil);
                     cell.detailTextLabel.text = [self.expense.totalAmount stringValue];
                     break;
                 case INFORMATION_DETAILS_ROW:
-                    cell.textLabel.text = @"Details";
+                    cell.textLabel.text = NSLocalizedString(@"Details", nil);
                     cell.detailTextLabel.text = self.expense.details;
                     break;
             }
@@ -145,14 +145,14 @@
             
             User *user = [self.expense.notPaidUp objectAtIndex:indexPath.row];
             cell.textLabel.text = user.displayName;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"Owes %.02f", eachOwes];
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Owes %.02f", nil), eachOwes];
             break;
         }
         case SETTLED_SECTION: {
             cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
             User *user = [self.expense.paidUp objectAtIndex:indexPath.row];
             cell.textLabel.text = user.displayName;
-            cell.detailTextLabel.text = @"Has paid up";
+            cell.detailTextLabel.text = NSLocalizedString(@"Has paid up", nil);
             break;
         }
             
@@ -232,13 +232,13 @@
 #pragma mark ActionSheet Helper Methods
 
 - (void)deleteExpenseDialog {
-    UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this expense?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure you want to delete this expense?", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
     deleteAlert.tag = 0;
     [deleteAlert show];
 }
 
 - (void)renameExpenseDialog {
-    UIAlertView *renameAlert = [[UIAlertView alloc] initWithTitle:@"Rename Expense" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rename", nil];
+    UIAlertView *renameAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Rename Expense", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Rename", nil), nil];
     [renameAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [[renameAlert textFieldAtIndex:0] setText:self.expense.name];
     [renameAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
@@ -247,7 +247,7 @@
 }
 
 - (void)changeAmountDialog {
-    UIAlertView *changeAmountAlert = [[UIAlertView alloc] initWithTitle:@"Change Total Amount" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Change Amount", nil];
+    UIAlertView *changeAmountAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Change Total Amount", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Change Amount", nil), nil];
     [changeAmountAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [[changeAmountAlert textFieldAtIndex:0] setText:[self.expense.totalAmount stringValue]];
     [[changeAmountAlert textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
@@ -256,7 +256,7 @@
 }
 
 - (void)editDetailsDialog {
-    UIAlertView *editDetailsAlert = [[UIAlertView alloc] initWithTitle:@"Edit Details" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Change", nil];
+    UIAlertView *editDetailsAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Edit Details", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Change", nil), nil];
     [editDetailsAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [[editDetailsAlert textFieldAtIndex:0] setText:self.expense.details];
     [editDetailsAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
@@ -270,7 +270,7 @@
     switch (alertView.tag) {
         case 0: {// deleteAlert
             if (buttonIndex == 1) { // YES, delete
-                [SVProgressHUD showWithStatus:@"Deleting expense..." maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Deleting expense...", nil) maskType:SVProgressHUDMaskTypeBlack];
                 [self.expense deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [SVProgressHUD dismiss];
                     if (!error) {
@@ -289,7 +289,7 @@
                 if (![newExpenseName isEqualToString:@""]) {
                     self.expense.name = newExpenseName;
                     
-                    [SVProgressHUD showWithStatus:@"Saving expense.." maskType:SVProgressHUDMaskTypeBlack];
+                    [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving expense...", nil) maskType:SVProgressHUDMaskTypeBlack];
                     [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [SVProgressHUD dismiss];
                         if (!error) {
@@ -301,7 +301,7 @@
                         }
                     }];
                 } else {
-                    [SVProgressHUD showErrorWithStatus:@"Expense name cannot be empty"];
+                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Expense name cannot be empty", nil)];
                 }
             }
             break;
@@ -316,7 +316,7 @@
                     NSNumber * myNumber = [numberFormatter numberFromString:newAmount];
                     
                     self.expense.totalAmount = myNumber;
-                    [SVProgressHUD showWithStatus:@"Saving expense..." maskType:SVProgressHUDMaskTypeBlack];
+                    [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving expense...", nil) maskType:SVProgressHUDMaskTypeBlack];
                     [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [SVProgressHUD dismiss];
                         if (!error) {
@@ -328,7 +328,7 @@
                     }];
                 }
                 else {
-                    [SVProgressHUD showErrorWithStatus:@"Invalid Amount"];
+                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Invalid Amount", nil)];
                 }
             }
             break;

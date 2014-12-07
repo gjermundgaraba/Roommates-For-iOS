@@ -82,17 +82,17 @@
 - (IBAction)editList:(id)sender {
     NSString *toggleTitle;
     if (self.taskList.done) {
-        toggleTitle = @"Mark as unfinished";
+        toggleTitle = NSLocalizedString(@"Mark as unfinished", nil);
     }
     else {
-        toggleTitle = @"Mark as finished";
+        toggleTitle = NSLocalizedString(@"Mark as finished", nil);
     }
     UIActionSheet *popup =
-            [[UIActionSheet alloc] initWithTitle:@"Edit List"
+            [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Edit List", nil)
                                         delegate:self
-                               cancelButtonTitle:@"Cancel"
-                          destructiveButtonTitle:@"Delete Task List"
-                               otherButtonTitles:@"Rename Task List",
+                               cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                          destructiveButtonTitle:NSLocalizedString(@"Delete Task List", nil)
+                               otherButtonTitles:NSLocalizedString(@"Rename Task List", nil),
                                                  toggleTitle,
                                                  nil];
     [popup showInView:[UIApplication sharedApplication].keyWindow];
@@ -183,7 +183,7 @@
         taskListElement = [self.unfinishedTaskListElements objectAtIndex:indexPath.row];
         User *createdBy = taskListElement.createdBy;
         cell.detailTextLabel.text =
-                [NSString stringWithFormat:@"Added by %@", createdBy.displayName];
+                [NSString stringWithFormat:NSLocalizedString(@"Added by %@", nil), createdBy.displayName];
     }
     else if (indexPath.section == finishedSectionNumber) {
         cell.textLabel.textColor = [UIColor lightGrayColor];
@@ -192,7 +192,7 @@
         taskListElement = [self.finishedTaskListElements objectAtIndex:indexPath.row];
         User *finishedBy = taskListElement.finishedBy;
         cell.detailTextLabel.text =
-                [NSString stringWithFormat:@"Finished by %@", finishedBy.displayName];
+                [NSString stringWithFormat:NSLocalizedString(@"Finished by %@", nil), finishedBy.displayName];
     }
     
     
@@ -246,7 +246,7 @@
         return @"";
     }
     else if (section == finishedSectionNumber) {
-        return @"Done";
+        return NSLocalizedString(@"Done", nil);
     }
     
     return @"";
@@ -270,7 +270,7 @@
             newTaskListElement.taskList    = self.taskList;
             newTaskListElement.createdBy   = [User currentUser];
             
-            [SVProgressHUD showWithStatus:@"Adding New Task List Element" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Adding New Task List Element", nil) maskType:SVProgressHUDMaskTypeBlack];
             [newTaskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (!error) {
@@ -336,13 +336,13 @@
 #pragma mark Helper Methods
 
 - (void)deleteTaskListDialog {
-    UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this task list?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure you want to delete this task list?", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
     deleteAlert.tag = 0;
     [deleteAlert show];
 }
 
 - (void)renameTaskListDialog {
-    UIAlertView *renameAlert = [[UIAlertView alloc] initWithTitle:@"Task List Name" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Change", nil];
+    UIAlertView *renameAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Task List Name", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Change", nil), nil];
     [renameAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [renameAlert textFieldAtIndex:0].text = self.taskList.listName;
     [renameAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
@@ -366,7 +366,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 0) { // delete
         if (buttonIndex == 1) {
-            [SVProgressHUD showWithStatus:@"Deleting Task List" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Deleting Task List", nil) maskType:SVProgressHUDMaskTypeBlack];
             [self.taskList deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (!error) {
@@ -383,7 +383,7 @@
         if (buttonIndex == 1) {
             NSString *newName = [alertView textFieldAtIndex:0].text;
             if ([newName isEqualToString:@""]) {
-                [SVProgressHUD showErrorWithStatus:@"Name cannot be empty"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Name cannot be empty", nil)];
             }
             else {
                 self.taskList.listName = newName;

@@ -22,26 +22,26 @@
     if ([self.oldPasswordTextField.text isEqualToString:@""] ||
         [self.changePasswordTextField.text isEqualToString:@""] ||
         [self.confirmNewPasswordTextField.text isEqualToString:@""]) {
-        [SVProgressHUD showErrorWithStatus:@"Please fill out all fields"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please fill out all fields", nil)];
     }
     else if (![changePassword isEqualToString:confirmPassword]) {
-        [SVProgressHUD showErrorWithStatus:@"Passwords do not match!"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Passwords do not match!", nil)];
     }
     else if (![InputValidation validatePassword:changePassword]) {
-        [SVProgressHUD showErrorWithStatus:@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number", nil)];
     }
     else {
-        [SVProgressHUD showWithStatus:@"Changing password..." maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Changing password...", nil) maskType:SVProgressHUDMaskTypeBlack];
         User *user = [User currentUser];
         [User logInWithUsernameInBackground:user.username password:oldPassword block:^(User *user, NSError *error) {
             [SVProgressHUD dismiss];
             if (!error) {
                 user.password = changePassword;
-                [SVProgressHUD showWithStatus:@"Saving.." maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving..", nil) maskType:SVProgressHUDMaskTypeBlack];
                 [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [SVProgressHUD dismiss];
                     if (!error) {
-                        [SVProgressHUD showSuccessWithStatus:@"User has been updated!"];
+                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"User has been updated!", nil)];
                         [self dismissViewControllerAnimated:YES completion:nil];
                     }
                     else {
@@ -50,7 +50,7 @@
                 }];
             }
             else {
-                [SVProgressHUD showErrorWithStatus:@"Password is incorrect"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password is incorrect", nil)];
             }
         }];
     }

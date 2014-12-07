@@ -36,9 +36,9 @@
     NSString *password = self.passwordTextField.text;
     
     if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
-        [SVProgressHUD showErrorWithStatus:@"Please fill out username and password"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please fill out username and password", nil)];
     } else {
-        [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Logging in", nil) maskType:SVProgressHUDMaskTypeBlack];
         [User logInWithUsernameInBackground:username
                                    password:password
                                       block:^(PFUser *user, NSError *error)
@@ -50,9 +50,9 @@
                  [self dismissViewControllerAnimated:YES completion:nil];
              } else {
                  if (error.code == kPFErrorObjectNotFound) {
-                     [SVProgressHUD showErrorWithStatus:@"Username Password Combination is Wrong"];
+                     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Username Password Combination is Wrong", nil)];
                  } else {
-                     [SVProgressHUD showErrorWithStatus:@"Something went wrong"];
+                     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Something went wrong", nil)];
                  }
              }
          }];
@@ -60,7 +60,7 @@
 }
 
 - (IBAction)loginWithFacebbok  {
-    [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Logging in", nil) maskType:SVProgressHUDMaskTypeBlack];
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     
@@ -76,7 +76,7 @@
                  if (user.isNew) {
                      FBRequest *request = [FBRequest requestForMe];
                      
-                     [SVProgressHUD showWithStatus:@"Getting data from Facebook" maskType:SVProgressHUDMaskTypeBlack];
+                     [SVProgressHUD showWithStatus:NSLocalizedString(@"Getting data from Facebook", nil) maskType:SVProgressHUDMaskTypeBlack];
                      [request startWithCompletionHandler:^(FBRequestConnection *connection,
                                                            id result,
                                                            NSError *error)
@@ -112,7 +112,7 @@
                               }];
                           } else {
                               [SVProgressHUD dismiss];
-                              [SVProgressHUD showErrorWithStatus:@"Could not contact Facebook, please try again."];
+                              [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not contact Facebook, please try again later.", nil)];
                               [user deleteInBackground];
                           }
                       }];

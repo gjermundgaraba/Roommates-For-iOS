@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.householdNameLabel.text = @"N/A";
+    self.householdNameLabel.text = NSLocalizedString(@"N/A", nil);
     Household *household = [User currentUser].activeHousehold;
     [household fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {

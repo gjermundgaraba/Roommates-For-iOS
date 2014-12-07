@@ -158,7 +158,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Events";
+    return NSLocalizedString(@"Events", nil);
 }
 
 #pragma mark - UITableViewDelegate
@@ -174,11 +174,11 @@
         
         NSString *timeAgo = [event.createdAt formattedAsTimeAgo];
         
-        NSString *title = [NSString stringWithFormat:@"Event %@", timeAgo];
+        NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Event %@", nil), timeAgo];
         UIAlertView *noteAlertView = [[UIAlertView alloc] initWithTitle:title
                                                                 message:event.descriptionString
                                                                delegate:nil
-                                                      cancelButtonTitle:@"Close"
+                                                      cancelButtonTitle:NSLocalizedString(@"Close", nil)
                                                       otherButtonTitles:nil];
         [noteAlertView show];
 

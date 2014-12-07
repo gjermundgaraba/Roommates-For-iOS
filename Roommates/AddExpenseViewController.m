@@ -59,13 +59,13 @@
     NSString *expenseDescription = self.expenseDescriptionTextField.text;
     
     if ([expenseName isEqualToString:@""]) {
-        [SVProgressHUD showErrorWithStatus:@"Empty expense name"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Empty expense name", nil)];
     }
     else if (![InputValidation validateTotalAmount:expenseTotalAmount]) {
-        [SVProgressHUD showErrorWithStatus:@"Invalid Amount"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Invalid Amount", nil)];
     }
     else if (selectedRows.copy == 0) {
-        [SVProgressHUD showErrorWithStatus:@"No members selcted for the expense"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"No members selcted for the expense", nil)];
     }
     else {
         NSMutableArray *notPaidUp = [[NSMutableArray alloc] init];
@@ -103,12 +103,12 @@
         [ACL setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
         newExpense.ACL = ACL;
         
-        [SVProgressHUD showWithStatus:@"Saving Expense" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving Expense", nil) maskType:SVProgressHUDMaskTypeBlack];
         [newExpense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [SVProgressHUD dismiss];
             if (!error) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ExpensesDidChange" object:nil];
-                [SVProgressHUD showSuccessWithStatus:@"Expense saved!"];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Expense saved!", nil)];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
             else {
@@ -123,7 +123,7 @@
 #pragma mark Table View Methods
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Split between:";
+    return NSLocalizedString(@"Split between:", nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

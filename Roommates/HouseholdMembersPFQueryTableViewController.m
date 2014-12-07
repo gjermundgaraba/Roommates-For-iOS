@@ -150,7 +150,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Roommates";
+    return NSLocalizedString(@"Roommates", nil);
 }
 
 

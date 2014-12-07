@@ -19,16 +19,16 @@
     NSString *email = self.emailTextField.text;
     
     if ([email isEqualToString:@""]) {
-        [SVProgressHUD showErrorWithStatus:@"You must enter an email!"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You must enter an email!", nil)];
     }
     else {
-        [SVProgressHUD showWithStatus:@"Resetting Password..." maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Resetting Password...", nil) maskType:SVProgressHUDMaskTypeBlack];
         [User requestPasswordResetForEmailInBackground:email
                                                    block:^(BOOL succeeded, NSError *error)
          {
              [SVProgressHUD dismiss];
              if (!error) {
-                 [SVProgressHUD showSuccessWithStatus:@"An email has been sent with instructions to reset your password"];
+                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"An email has been sent with instructions to reset your password", nil)];
                  [self performSegueWithIdentifier:@"forgotUnwind" sender:nil];
              }
              else {

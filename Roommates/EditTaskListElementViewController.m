@@ -47,7 +47,7 @@
 
 - (IBAction)saveButtonPressed:(id)sender {
     if ([self.elementNameTextField.text isEqualToString:@""]) {
-        [SVProgressHUD showErrorWithStatus:@"Task list element cannot be empty"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Task list element cannot be empty", nil)];
     } else {
         self.taskListElement.elementName = self.elementNameTextField.text;
         if (self.elementFinishedSlider.on && !self.taskListElement.finishedBy) {
@@ -57,11 +57,11 @@
             [self.taskListElement removeObjectForKey:@"finishedBy"];
         }
         
-        [SVProgressHUD showWithStatus:@"Saving Task List Element" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving Task List Element", nil) maskType:SVProgressHUDMaskTypeBlack];
         [self.taskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [SVProgressHUD dismiss];
             if (!error) {
-                [SVProgressHUD showSuccessWithStatus:@"Task List Element Saved!"];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Task List Element Saved!", nil)];
                 [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
             } else {
                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
@@ -73,7 +73,7 @@
 
 
 - (IBAction)deleteButtonPressed {
-    UIAlertView *deleteListAlert = [[UIAlertView alloc] initWithTitle:@"Delete List Element" message:@"Are you sure you want to delete this element?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *deleteListAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete List Element", nil) message:NSLocalizedString(@"Are you sure you want to delete this element?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
     [deleteListAlert show];
 }
 
@@ -81,7 +81,7 @@
     if (buttonIndex == 1) {
         [self.taskListElement deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [SVProgressHUD showSuccessWithStatus:@"Task List Element Deleted!"];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Task List Element Deleted!", nil)];
                 [self performSegueWithIdentifier:@"unwindToTaskListElementsSegue" sender:nil];
             } else {
                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];

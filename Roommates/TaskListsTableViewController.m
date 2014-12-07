@@ -65,16 +65,16 @@
 
 - (IBAction)addTaskListButtonPressed:(id)sender {
     if ([[User currentUser] isMemberOfAHousehold]) {
-        UIAlertView *addTaskListAlert = [[UIAlertView alloc] initWithTitle:@"Add New Task List"
+        UIAlertView *addTaskListAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add New Task List", nil)
                                                                    message:@""
                                                                   delegate:self
-                                                         cancelButtonTitle:@"Cancel"
-                                                         otherButtonTitles:@"Add", nil];
+                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                         otherButtonTitles:NSLocalizedString(@"Add", nil), nil];
         addTaskListAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
         [addTaskListAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [addTaskListAlert show];
     } else {
-        [SVProgressHUD showErrorWithStatus:@"Not member of a household! Go to Me->Household Settings."];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Not member of a household! Go to Me->Household Settings.", nil)];
     }
 }
 
@@ -83,7 +83,7 @@
         NSString *listName = [alertView textFieldAtIndex:0].text;
         
         if ([listName isEqualToString:@""]) {
-            [SVProgressHUD showErrorWithStatus:@"List Name is Empty"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"List Name is Empty", nil)];
         } else if ([User currentUser] && [User currentUser].isMemberOfAHousehold) {
             TaskList *newTaskList = (TaskList *)[PFObject objectWithClassName:@"TaskList"];
             newTaskList.listName  = listName;
@@ -91,11 +91,11 @@
             newTaskList.createdBy = [User currentUser];
             newTaskList.household = [User currentUser].activeHousehold;
             
-            [SVProgressHUD showWithStatus:@"Creating new Task List" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Creating new Task List", nil) maskType:SVProgressHUDMaskTypeBlack];
             [newTaskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (!error) {
-                    [SVProgressHUD showSuccessWithStatus:@"New Task List Created!"];
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"New Task List Created!", nil)];
                     [self refreshTaskLists];
                 }
                 else {
@@ -176,10 +176,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == TASK_LIST_UNFINISHED_SECTION) {
-        return @"Tasks";
+        return NSLocalizedString(@"Tasks", nil);
     }
     else if (section == TASK_LIST_FINISHED_SECTION){
-        return @"Finished Tasks";
+        return NSLocalizedString(@"Finished Tasks", nil);
     }
     else {
         return @"";
@@ -213,7 +213,7 @@
     User *createdBy = taskList.createdBy;
     
     cell.textLabel.text = taskList.listName;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Created by %@", createdBy.displayName];
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Created by %@", nil), createdBy.displayName];
     return cell;
 }
 

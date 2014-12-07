@@ -71,17 +71,17 @@
     }
     else
     {
-        [SVProgressHUD showErrorWithStatus:@"Source not supported"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Source not supported", nil)];
     }
 }
 
 - (IBAction)profilePictureClicked:(id)sender {
     //sets up uiactionsheet
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Change Profile Picture:"
-                                                       delegate:self cancelButtonTitle:@"Cancel"
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Change Profile Picture:", nil)
+                                                       delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Picture from Camera Roll",
-                                                                @"Take a New Picture",
+                                              otherButtonTitles:NSLocalizedString(@"Picture from Camera Roll", nil),
+                                                                NSLocalizedString(@"Take a New Picture", nil),
                                                                 nil];
     [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -105,13 +105,13 @@
     
     if (displayNameChanged || emailChanged || profilePictureChanged) {
         if (![InputValidation validateName:displayName]) {
-            [SVProgressHUD showErrorWithStatus:@"Display Name is not valid."];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Display Name is not valid.", nil)];
         }
         else if (![InputValidation validateEmail:email]) {
-            [SVProgressHUD showErrorWithStatus:@"Email is not valid."];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Email is not valid.", nil)];
         }
         else {
-            [SVProgressHUD showWithStatus:@"Checking Password" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Checking Password", nil) maskType:SVProgressHUDMaskTypeBlack];
             [User logInWithUsernameInBackground:self.currentUser.username password:confirmPassword block:^(User *user, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (!error) {
@@ -120,11 +120,11 @@
                     self.currentUser.displayName = displayName;
                     self.currentUser.profilePicture = profilePicture;
                     
-                    [SVProgressHUD showWithStatus:@"Changing user info" maskType:SVProgressHUDMaskTypeBlack];
+                    [SVProgressHUD showWithStatus:NSLocalizedString(@"Changing user info", nil) maskType:SVProgressHUDMaskTypeBlack];
                     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [SVProgressHUD dismiss];
                         if (!error) {
-                            [SVProgressHUD showSuccessWithStatus:@"User info changed!"];
+                            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"User info changed!", nil)];
                             [self.navigationController popToRootViewControllerAnimated:YES];
                         }
                         else {
@@ -139,7 +139,7 @@
                     }];
                 }
                 else {
-                    [SVProgressHUD showErrorWithStatus:@"Password not correct"];
+                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password not correct", nil)];
                 }
             }];
         }

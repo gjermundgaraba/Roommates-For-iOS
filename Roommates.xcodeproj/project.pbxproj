@@ -60,6 +60,7 @@
 		7C4753DB18D4B78B00131F95 /* ForgottenPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753DA18D4B78B00131F95 /* ForgottenPasswordViewController.m */; };
 		7C535DAA1A25150E00AF1969 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */; };
 		7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C535DA91A25150E00AF1969 /* SVProgressHUD.m */; };
+		7C536D251A347F0300129009 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C536D241A347F0300129009 /* ErrorHandler.m */; };
 		7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */; };
 		7C5D037B18FC9A020055DDD5 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037A18FC9A020055DDD5 /* ProfileTableViewController.m */; };
 		7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037D18FC9D0B0055DDD5 /* ProfileInformationViewController.m */; };
@@ -171,6 +172,8 @@
 		7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		7C535DA81A25150E00AF1969 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		7C535DA91A25150E00AF1969 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		7C536D231A347F0300129009 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
+		7C536D241A347F0300129009 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHandler.m; sourceTree = "<group>"; };
 		7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		7C5D037718FC68F30055DDD5 /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		7C5D037918FC9A020055DDD5 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
@@ -184,6 +187,7 @@
 		7C68F8431A337EF4000A53AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7C69F4CD18BE0E380013FBD3 /* NoHouseholdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoHouseholdViewController.h; sourceTree = "<group>"; };
 		7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHouseholdViewController.m; sourceTree = "<group>"; };
+		7C7D64911A347A050023B1FB /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		7C818F841A30F4C800B54D8E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7C94294718BCC653007FA97E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -519,6 +523,8 @@
 				7C0C559918E87C4900AED964 /* GenericNavigationController.m */,
 				7C062F7618B4DFD000F56529 /* SuperViewController.h */,
 				7C062F7718B4DFD000F56529 /* SuperViewController.m */,
+				7C536D231A347F0300129009 /* ErrorHandler.h */,
+				7C536D241A347F0300129009 /* ErrorHandler.m */,
 			);
 			name = Div;
 			sourceTree = "<group>";
@@ -819,6 +825,7 @@
 				7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */,
 				7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */,
 				7CE2CB2F18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m in Sources */,
+				7C536D251A347F0300129009 /* ErrorHandler.m in Sources */,
 				7C96E5E01901BE9900BF355A /* Installation.m in Sources */,
 				7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */,
 				7C4753DB18D4B78B00131F95 /* ForgottenPasswordViewController.m in Sources */,
@@ -882,6 +889,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7C68F8431A337EF4000A53AE /* Base */,
+				7C7D64911A347A050023B1FB /* nb */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";

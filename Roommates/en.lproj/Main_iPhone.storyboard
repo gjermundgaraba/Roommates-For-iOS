@@ -974,7 +974,7 @@
             </objects>
             <point key="canvasLocation" x="3543" y="1322"/>
         </scene>
-        <!--Roommates-->
+        <!--Members-->
         <scene sceneID="nED-FV-GM1">
             <objects>
                 <tableViewController id="p3R-Jx-8Gb" customClass="HouseholdMembersPFQueryTableViewController" sceneMemberID="viewController">
@@ -987,7 +987,7 @@
                             <outlet property="delegate" destination="p3R-Jx-8Gb" id="pMA-YU-6SD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Roommates" id="367-ER-UAJ"/>
+                    <navigationItem key="navigationItem" title="Members" id="367-ER-UAJ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>

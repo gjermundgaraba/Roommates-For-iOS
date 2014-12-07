@@ -107,7 +107,7 @@
             self.expense.notPaidUp = tmpNotPaidUp;
             self.expense.paidUp = tmpPaidUp;
             
-            [SVProgressHUD showWithStatus:@"Saving expense" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Saving Expense", nil) maskType:SVProgressHUDMaskTypeBlack];
             [self.expense saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (!error) {
@@ -118,10 +118,10 @@
                 }
             }];
         } else {
-            [SVProgressHUD showErrorWithStatus:@"Expense cannot be split between 0 persons"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Expense cannot be split between 0 persons", nil)];
         }
     } else {
-        [SVProgressHUD showErrorWithStatus:@"No changes made"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"No changes made", nil)];
     }
 }
 
@@ -175,7 +175,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Split between:";
+    return NSLocalizedString(@"Split between:", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

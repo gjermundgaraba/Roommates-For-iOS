@@ -3,5 +3,4 @@
 #import <UIKit/UIKit.h>
 
 @interface GenericNavigationController : UINavigationController
-
 @end

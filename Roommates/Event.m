@@ -17,33 +17,33 @@
     
     switch (type) {
         case 0: // Join
-            descriptionString = [NSString stringWithFormat:@"%@ joined %@", self.user.displayName, self.household.householdName];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ joined %@", nil), self.user.displayName, self.household.householdName];
             break;
         case 1: // Leave
-            descriptionString = [NSString stringWithFormat:@"%@ left %@", self.user.displayName, self.household.householdName];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ left %@", nil), self.user.displayName, self.household.householdName];
             break;
         case 2: { // Add tasklist
             TaskList *taskList = (TaskList *)self.objects[0];
             if ([taskList isEqual:[NSNull null]]) return @"<Task List Deleted>";
-            descriptionString = [NSString stringWithFormat:@"%@ created a new task list: %@", self.user.displayName, taskList.listName];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ created a new task list: %@", nil), self.user.displayName, taskList.listName];
             break;
         }
         case 3: {// Finished Tasklist
             TaskList *taskList = (TaskList *)self.objects[0];
             if ([taskList isEqual:[NSNull null]]) return @"<Task List Deleted>";
-            descriptionString = [NSString stringWithFormat:@"%@ finished a task list: %@", self.user.displayName, taskList.listName];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ finished a task list: %@", nil), self.user.displayName, taskList.listName];
             break;
         }
         case 4: { // Add expense
             Expense *expense = (Expense *)self.objects[0];
             if ([expense isEqual:[NSNull null]]) return @"<Expense Deleted>";
-            descriptionString = [NSString stringWithFormat:@"%@ created a new expense: %@", self.user.displayName, expense.name];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ created a new expense: %@", nil), self.user.displayName, expense.name];
             break;
         }
         case 5: { // Settled Expense
             Expense *expense = (Expense *)self.objects[0];
             if ([expense isEqual:[NSNull null]]) return @"<Expense Deleted>";
-            descriptionString = [NSString stringWithFormat:@"%@ settled an expense: %@", self.user.displayName, expense.name];
+            descriptionString = [NSString stringWithFormat:NSLocalizedString(@"%@ settled an expense: %@", nil), self.user.displayName, expense.name];
             break;
         }
         default:

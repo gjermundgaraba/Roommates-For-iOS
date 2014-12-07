@@ -3,5 +3,5 @@
 #import "Expense.h"
 
 @interface AddPeopleToExpenseTableViewController : UITableViewController
-@property (strong, nonatomic) Expense *expense; // The expense we are editing people on
+@property (strong, nonatomic) Expense *expense;
 @end

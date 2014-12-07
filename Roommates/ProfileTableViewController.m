@@ -126,11 +126,11 @@
             }
         }
         else if (indexPath.row == LOGOUT_ROW) {
-            UIAlertView *logOutAlert = [[UIAlertView alloc] initWithTitle:@"Warning"
-                          message:@"Are you sure you want to log out?"
+            UIAlertView *logOutAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                          message:NSLocalizedString(@"Are you sure you want to log out?", nil)
                          delegate:self
-                cancelButtonTitle:@"Cancel"
-                otherButtonTitles:@"OK", nil];
+                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
             [logOutAlert show];
         }
     }
