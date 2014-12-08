@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self updateUserInteractionEnabled];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveTaskListChangedNotification:) name:@"TaskListChanged" object:nil];
     [self refreshTaskLists];
@@ -50,7 +51,16 @@
 
 #pragma mark Methods
 
+- (void)updateUserInteractionEnabled {
+    if ([[User currentUser] isMemberOfAHousehold]) {
+        self.tableView.userInteractionEnabled = YES;
+    } else {
+        self.tableView.userInteractionEnabled = NO;
+    }
+}
+
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
+    [self updateUserInteractionEnabled];
     [self refreshTaskLists];
 }
 

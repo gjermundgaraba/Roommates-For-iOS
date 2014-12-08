@@ -41,6 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self updateUserInteractionEnabled];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewNoteCreated:) name:@"NewNoteCreated" object:nil];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -53,7 +55,16 @@
 }
 
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
+    [self updateUserInteractionEnabled];
     [self loadObjects];
+}
+
+- (void)updateUserInteractionEnabled {
+    if ([[User currentUser] isMemberOfAHousehold]) {
+        self.tableView.userInteractionEnabled = YES;
+    } else {
+        self.tableView.userInteractionEnabled = NO;
+    }
 }
 
 - (void)didReceiveNewNoteCreated:(NSNotificationCenter *)notificationCenter {

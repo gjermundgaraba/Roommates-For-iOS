@@ -47,6 +47,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self updateUserInteractionEnabled];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveReloadNotification:) name:@"ExpensesDidChange" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
     
@@ -60,7 +62,16 @@
 
 #pragma mark custom methods
 
+- (void)updateUserInteractionEnabled {
+    if ([[User currentUser] isMemberOfAHousehold]) {
+        self.tableView.userInteractionEnabled = YES;
+    } else {
+        self.tableView.userInteractionEnabled = NO;
+    }
+}
+
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
+    [self updateUserInteractionEnabled];
     [self refreshExpenses];
 }
 

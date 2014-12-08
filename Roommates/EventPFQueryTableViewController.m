@@ -44,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self updateUserInteractionEnabled];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -54,7 +56,16 @@
 }
 
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
+    [self updateUserInteractionEnabled];
     [self loadObjects];
+}
+
+- (void)updateUserInteractionEnabled {
+    if ([[User currentUser] isMemberOfAHousehold]) {
+        self.tableView.userInteractionEnabled = YES;
+    } else {
+        self.tableView.userInteractionEnabled = NO;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
