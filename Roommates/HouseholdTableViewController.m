@@ -59,6 +59,7 @@
     if (indexPath.section == HOUSEHOLD_INFORMATION_SECTION) {
         cell = [self.householdInformationCells objectAtIndex:indexPath.row];
         if (indexPath.row == HOUSEHOLD_NAME_ROW) {
+            [cell setUserInteractionEnabled:NO];
             if (self.household) {
                 cell.detailTextLabel.text = self.household.householdName;
             } else {
