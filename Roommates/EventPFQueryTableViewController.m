@@ -156,7 +156,13 @@
 
     // Configure the cell
     cell.textLabel.text = event.descriptionString;
-    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
+    
+    // Configure the cell
+    cell.imageView.image = [UIImage imageNamed:@"placeholder.jpg"];
+    cell.imageView.file = event.user.profilePicture;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     NSDate *date = event.createdAt;
     cell.detailTextLabel.text = [date formattedAsTimeAgo];

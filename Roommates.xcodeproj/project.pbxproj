@@ -40,6 +40,8 @@
 		7C0C554618E4B20500AED964 /* TaskListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C554518E4B20500AED964 /* TaskListsTableViewController.m */; };
 		7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C559918E87C4900AED964 /* GenericNavigationController.m */; };
 		7C0C559D18E88CA800AED964 /* TaskListElementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C559C18E88CA800AED964 /* TaskListElementsTableViewController.m */; };
+		7C12EE091A3767A300A5EFCE /* NoteUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C12EE081A3767A300A5EFCE /* NoteUITableViewCell.m */; };
+		7C12EE0C1A37688B00A5EFCE /* NoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C12EE0B1A37688B00A5EFCE /* NoteTableViewController.m */; };
 		7C17F72D18D8DD54003BF1E3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */; };
 		7C17F72E18D8DD54003BF1E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F8D18B4E0F100F56529 /* SystemConfiguration.framework */; };
 		7C17F73018D8DD54003BF1E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F8918B4E0DC00F56529 /* Security.framework */; };
@@ -53,7 +55,6 @@
 		7C17F73818D8DD54003BF1E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F3D18B4CCD900F56529 /* CoreGraphics.framework */; };
 		7C17F73918D8DD54003BF1E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F3F18B4CCD900F56529 /* UIKit.framework */; };
 		7C17F73A18D8DD54003BF1E3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C062F5D18B4CCDA00F56529 /* XCTest.framework */; };
-		7C1E35C118FC574E00F626E2 /* AllNotesPFQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E35C018FC574E00F626E2 /* AllNotesPFQueryTableViewController.m */; };
 		7C1FC28118C3D9C1001A30F0 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FC28018C3D9C1001A30F0 /* SignupViewController.m */; };
 		7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C42150418C8A3D4007DA6BC /* FeedViewController.m */; };
 		7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753D718D4AFC000131F95 /* InputValidation.m */; };
@@ -152,8 +153,10 @@
 		7C0C559918E87C4900AED964 /* GenericNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericNavigationController.m; sourceTree = "<group>"; };
 		7C0C559B18E88CA800AED964 /* TaskListElementsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListElementsTableViewController.h; sourceTree = "<group>"; };
 		7C0C559C18E88CA800AED964 /* TaskListElementsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListElementsTableViewController.m; sourceTree = "<group>"; };
-		7C1E35BF18FC574E00F626E2 /* AllNotesPFQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllNotesPFQueryTableViewController.h; sourceTree = "<group>"; };
-		7C1E35C018FC574E00F626E2 /* AllNotesPFQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllNotesPFQueryTableViewController.m; sourceTree = "<group>"; };
+		7C12EE071A3767A300A5EFCE /* NoteUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUITableViewCell.h; sourceTree = "<group>"; };
+		7C12EE081A3767A300A5EFCE /* NoteUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteUITableViewCell.m; sourceTree = "<group>"; };
+		7C12EE0A1A37688B00A5EFCE /* NoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewController.h; sourceTree = "<group>"; };
+		7C12EE0B1A37688B00A5EFCE /* NoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewController.m; sourceTree = "<group>"; };
 		7C1FC27F18C3D9C1001A30F0 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		7C1FC28018C3D9C1001A30F0 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		7C42150318C8A3D4007DA6BC /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
@@ -455,6 +458,17 @@
 			name = Tasks;
 			sourceTree = "<group>";
 		};
+		7C12EE061A37677300A5EFCE /* NoteFeed */ = {
+			isa = PBXGroup;
+			children = (
+				7C12EE071A3767A300A5EFCE /* NoteUITableViewCell.h */,
+				7C12EE081A3767A300A5EFCE /* NoteUITableViewCell.m */,
+				7C12EE0A1A37688B00A5EFCE /* NoteTableViewController.h */,
+				7C12EE0B1A37688B00A5EFCE /* NoteTableViewController.m */,
+			);
+			name = NoteFeed;
+			sourceTree = "<group>";
+		};
 		7C1E35B818FC522000F626E2 /* Parse Subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,12 +507,11 @@
 		7C1FC27C18C1FFAA001A30F0 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				7C12EE061A37677300A5EFCE /* NoteFeed */,
 				7C42150318C8A3D4007DA6BC /* FeedViewController.h */,
 				7C42150418C8A3D4007DA6BC /* FeedViewController.m */,
 				7CE2CAD618F829C900B7E52B /* EventPFQueryTableViewController.h */,
 				7CE2CAD718F829C900B7E52B /* EventPFQueryTableViewController.m */,
-				7C1E35BF18FC574E00F626E2 /* AllNotesPFQueryTableViewController.h */,
-				7C1E35C018FC574E00F626E2 /* AllNotesPFQueryTableViewController.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -817,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */,
+				7C12EE0C1A37688B00A5EFCE /* NoteTableViewController.m in Sources */,
 				7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */,
 				7C02430618FF069700DCA653 /* Event.m in Sources */,
 				7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */,
@@ -840,9 +854,9 @@
 				7C062F9718B4E38C00F56529 /* LoginViewController.m in Sources */,
 				7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */,
 				7C071F71190C1795009FE5E8 /* ViewExepenseTableViewController.m in Sources */,
+				7C12EE091A3767A300A5EFCE /* NoteUITableViewCell.m in Sources */,
 				7C1FC28118C3D9C1001A30F0 /* SignupViewController.m in Sources */,
 				7C69F4CF18BE0E380013FBD3 /* NoHouseholdViewController.m in Sources */,
-				7C1E35C118FC574E00F626E2 /* AllNotesPFQueryTableViewController.m in Sources */,
 				7C0C559D18E88CA800AED964 /* TaskListElementsTableViewController.m in Sources */,
 				7CE2CAD818F829C900B7E52B /* EventPFQueryTableViewController.m in Sources */,
 				7C0242F718FEF9DF00DCA653 /* Household.m in Sources */,
@@ -997,6 +1011,7 @@
 				GCC_PREFIX_HEADER = "Roommates/Roommates-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Roommates/Roommates-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					CFNetwork,
@@ -1025,6 +1040,7 @@
 				GCC_PREFIX_HEADER = "Roommates/Roommates-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Roommates/Roommates-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					CFNetwork,
