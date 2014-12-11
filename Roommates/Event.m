@@ -53,6 +53,40 @@
     return descriptionString;
 }
 
+- (NSString *)descriptionTitle {
+    int type = self.type.intValue;
+    NSString *descriptionString;
+    
+    switch (type) {
+        case 0: // Join
+            descriptionString = NSLocalizedString(@"New Roommate", nil);
+            break;
+        case 1: // Leave
+            descriptionString = NSLocalizedString(@"Roommate Left", nil);
+            break;
+        case 2: { // Add tasklist
+            descriptionString = NSLocalizedString(@"New Task List", nil);
+            break;
+        }
+        case 3: {// Finished Tasklist
+            descriptionString = NSLocalizedString(@"Task List Finished", nil);
+            break;
+        }
+        case 4: { // Add expense
+            descriptionString = NSLocalizedString(@"New Expense", nil);
+            break;
+        }
+        case 5: { // Settled Expense
+            descriptionString = NSLocalizedString(@"Expense Settled", nil);
+            break;
+        }
+        default:
+            break;
+    }
+    
+    return descriptionString;
+}
+
 + (NSString *)parseClassName {
     return @"Event";
 }

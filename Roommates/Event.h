@@ -11,6 +11,7 @@
 @property NSArray *objects;
 
 - (NSString *)descriptionString;
+- (NSString *)descriptionTitle;
 
 + (NSString *)parseClassName;
 

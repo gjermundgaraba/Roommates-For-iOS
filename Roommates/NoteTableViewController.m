@@ -1,20 +1,12 @@
-//
-//  NoteTableViewController.m
-//  Roommates
-//
-//  Created by Gjermund Bjaanes on 09/12/14.
-//  Copyright (c) 2014 Gjermund Bjaanes. All rights reserved.
-//
 
 #import "NoteTableViewController.h"
-#import "NoteUITableViewCell.h"
+#import "NoteTableViewCell.h"
 #import "Note.h"
 #import "Household.h"
 #import "SVProgressHUD.h"
 
 @interface NoteTableViewController ()
 @property (strong, nonatomic) NSArray *notes;
-@property (strong, nonatomic) NoteUITableViewCell *prototypeCell;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
@@ -22,12 +14,7 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
 
 @implementation NoteTableViewController
 
-- (NoteUITableViewCell *)prototypeCell {
-    if (!_prototypeCell) {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:noteCellIdentifier];
-    }
-    return _prototypeCell;
-}
+#pragma mark life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +31,8 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResetHouseholdScenesNotification:) name:@"ResetHouseholdScenes" object:nil];
 }
+
+#pragma mark methods
 
 - (void)didReceiveResetHouseholdScenesNotification:(NSNotificationCenter *)notificationCenter {
     [self updateUserInteractionEnabled];
@@ -104,17 +93,14 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NoteUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:noteCellIdentifier forIndexPath:indexPath];
-    
+    NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:noteCellIdentifier forIndexPath:indexPath];
     [self configureCell:cell forRowAtIndexPath:indexPath];
-    // Configure the cell...
-    
     return cell;
 }
 
-- (void)configureCell:(NoteUITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(NoteTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell isKindOfClass:[NoteUITableViewCell class]])
+    if ([cell isKindOfClass:[NoteTableViewCell class]])
     {
         Note *note = [self.notes objectAtIndex:indexPath.row];
         
@@ -126,6 +112,14 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
         cell.profilePicture.file = note.createdBy.profilePicture;
         [cell.profilePicture loadInBackground];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Note *note = [self.notes objectAtIndex:indexPath.row];
+    UIAlertView *noteAlert = [[UIAlertView alloc] initWithTitle:@"Note" message:note.body delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [noteAlert show];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

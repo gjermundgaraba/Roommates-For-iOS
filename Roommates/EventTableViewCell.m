@@ -1,17 +1,16 @@
 //
-//  NoteUITableViewCell.m
+//  EventTableViewCell.m
 //  Roommates
 //
-//  Created by Gjermund Bjaanes on 09/12/14.
+//  Created by Gjermund Bjaanes on 11/12/14.
 //  Copyright (c) 2014 Gjermund Bjaanes. All rights reserved.
 //
 
-#import "NoteUITableViewCell.h"
+#import "EventTableViewCell.h"
 
-@implementation NoteUITableViewCell
+@implementation EventTableViewCell
 
 - (void)awakeFromNib {
-    //self.profilePicture = [[PFImageView alloc] init];
     // Initialization code
 }
 
