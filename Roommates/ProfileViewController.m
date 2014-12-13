@@ -28,8 +28,6 @@
     
     self.imageView.clipsToBounds = YES;
     self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
-    self.imageView.layer.borderWidth = 3.0f;
-    self.imageView.layer.borderColor = [UIColor grayColor].CGColor;
     self.imageView.layer.masksToBounds = YES;
 }
 
