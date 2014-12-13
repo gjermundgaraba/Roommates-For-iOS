@@ -6,11 +6,16 @@
 #import "Event.h"
 #import "Household.h"
 #import "SVProgressHUD.h"
+#import "NSDate+NVTimeAgo.h"
 
 @interface EventTableViewController ()
 @property (nonatomic, strong) NSArray *events;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property int maxNumberOfEvents;
 @end
+
+static NSString *eventCellIdentifier = @"EventCellIdentifier";
+static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
 
 @implementation EventTableViewController
 
@@ -19,12 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.maxNumberOfEvents = 5;
+    
     [self updateUserInteractionEnabled];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self updateEvents];
     
+    self.tableView.estimatedRowHeight = 80.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -59,6 +67,7 @@
         [query includeKey:@"household"];
         [query includeKey:@"objects"];
         [query orderByDescending:@"createdAt"];
+        query.limit = self.maxNumberOfEvents;
         
         if (self.events.count == 0 && [query hasCachedResult]) {
             query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -89,7 +98,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.events.count;
+    if (self.events.count > 0) {
+        return self.events.count + 1;
+    } else {
+        return 0;
+    }
+    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -108,14 +122,30 @@
     cell.profilePicture.file = event.user.profilePicture;
     [cell.profilePicture loadInBackground];
     
-    /*NSDate *date = event.createdAt;
-    cell.detailTextLabel.text = [date formattedAsTimeAgo];*/
+    NSDate *date = event.createdAt;
+    cell.time.text = [date formattedAsTimeAgo];
+    
+    cell.userInteractionEnabled = NO;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCellIdentifier" forIndexPath:indexPath];
-    [self configureCell:cell forRowAtIndexPath:indexPath];
+    UITableViewCell *cell;
+    
+    if (indexPath.row < self.events.count) {
+        cell = [tableView dequeueReusableCellWithIdentifier:eventCellIdentifier forIndexPath:indexPath];
+        [self configureCell:(EventTableViewCell *)cell forRowAtIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:loadMoreEventsIdentifier forIndexPath:indexPath];
+    }
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.events.count) {
+        self.maxNumberOfEvents += 5;
+        [self updateEvents];
+    }
 }
 
 @end

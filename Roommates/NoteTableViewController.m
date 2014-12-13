@@ -4,13 +4,16 @@
 #import "Note.h"
 #import "Household.h"
 #import "SVProgressHUD.h"
+#import "NSDate+NVTimeAgo.h"
 
 @interface NoteTableViewController ()
 @property (strong, nonatomic) NSArray *notes;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property int maxNumberOfNotes;
 @end
 
 static NSString *noteCellIdentifier = @"NoteCellIdentifier";
+static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
 
 @implementation NoteTableViewController
 
@@ -19,8 +22,14 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateUserInteractionEnabled];
+    
+    self.maxNumberOfNotes = 5;
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [self updateNotes];
+    
+    self.tableView.estimatedRowHeight = 80.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -52,14 +61,15 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
 }
 
 - (void)updateNotes {
-    if ([[User currentUser] isMemberOfAHousehold]) {
+    User *user = [User currentUser];
+    if ([user isMemberOfAHousehold]) {
         PFQuery *queryForNotes = [Note query];
-        Household *household = [User currentUser].activeHousehold;
-        [queryForNotes whereKey:@"household" equalTo:household];
+        [queryForNotes whereKey:@"household" equalTo:user.activeHousehold];
         [queryForNotes includeKey:@"createdBy"];
         [queryForNotes orderByDescending:@"updatedAt"];
+        queryForNotes.limit = self.maxNumberOfNotes;
         
-        if (self.notes.count == 0) {
+        if (self.notes.count == 0 && [queryForNotes hasCachedResult]) {
             queryForNotes.cachePolicy = kPFCachePolicyCacheThenNetwork;
         } else {
             queryForNotes.cachePolicy = kPFCachePolicyNetworkOnly;
@@ -88,38 +98,52 @@ static NSString *noteCellIdentifier = @"NoteCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.notes.count;
+    if (self.notes.count > 0) {
+        return self.notes.count + 1;
+    } else {
+        return 0;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:noteCellIdentifier forIndexPath:indexPath];
-    [self configureCell:cell forRowAtIndexPath:indexPath];
+    UITableViewCell *cell;
+    
+    if (indexPath.row < self.notes.count) {
+        cell = [tableView dequeueReusableCellWithIdentifier:noteCellIdentifier forIndexPath:indexPath];
+        [self configureCell:(NoteTableViewCell *)cell forRowAtIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:loadMoreNotesIdentifier];
+    }
+    
     return cell;
 }
 
 - (void)configureCell:(NoteTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell isKindOfClass:[NoteTableViewCell class]])
-    {
+    if ([cell isKindOfClass:[NoteTableViewCell class]]) {
         Note *note = [self.notes objectAtIndex:indexPath.row];
         
         cell.displayName.text = note.createdBy.displayName;
         
         cell.noteBody.text = note.body;
         
+        NSDate *date = note.createdAt;
+        cell.time.text = [date formattedAsTimeAgo];
+        
         cell.profilePicture.image = [UIImage imageNamed:@"placeholder"];
         cell.profilePicture.file = note.createdBy.profilePicture;
         [cell.profilePicture loadInBackground];
+        
+        cell.userInteractionEnabled = NO;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Note *note = [self.notes objectAtIndex:indexPath.row];
-    UIAlertView *noteAlert = [[UIAlertView alloc] initWithTitle:@"Note" message:note.body delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [noteAlert show];
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == self.notes.count) {
+        self.maxNumberOfNotes += 5;
+        [self updateNotes];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
