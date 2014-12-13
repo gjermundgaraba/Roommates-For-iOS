@@ -122,9 +122,25 @@
                  }
              }
          } else {
-             [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+             [self handleAuthError:error];
          }
      }];
+}
+
+- (void)handleAuthError:(NSError *)error
+{
+    if ([FBErrorUtility shouldNotifyUserForError:error] == YES){
+        [SVProgressHUD showErrorWithStatus:[FBErrorUtility userMessageForError:error]];
+        
+    } else {
+        // You need to find more information to handle the error within your app
+        if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
+            [SVProgressHUD showErrorWithStatus:@"You need to login to access this part of the app"];
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Something went wrong, please retry"];
+        }
+    }
 }
 
 #pragma mark UITextField animation

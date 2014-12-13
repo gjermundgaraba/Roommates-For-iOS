@@ -36,7 +36,6 @@
 		7C071F6B190AE780009FE5E8 /* AddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C071F6A190AE780009FE5E8 /* AddExpenseViewController.m */; };
 		7C071F71190C1795009FE5E8 /* ViewExepenseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C071F70190C1795009FE5E8 /* ViewExepenseTableViewController.m */; };
 		7C071F74190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C071F73190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.m */; };
-		7C0C554318E328F600AED964 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0C554218E328F600AED964 /* FacebookSDK.framework */; };
 		7C0C554618E4B20500AED964 /* TaskListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C554518E4B20500AED964 /* TaskListsTableViewController.m */; };
 		7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C559918E87C4900AED964 /* GenericNavigationController.m */; };
 		7C0C559D18E88CA800AED964 /* TaskListElementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C559C18E88CA800AED964 /* TaskListElementsTableViewController.m */; };
@@ -67,6 +66,8 @@
 		7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037D18FC9D0B0055DDD5 /* ProfileInformationViewController.m */; };
 		7C5D038418FDA08D0055DDD5 /* HouseholdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D038318FDA08D0055DDD5 /* HouseholdTableViewController.m */; };
 		7C69F4CF18BE0E380013FBD3 /* NoHouseholdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */; };
+		7C7071FB1A3C95F6007F751B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7071F91A3C95F6007F751B /* FacebookSDK.framework */; };
+		7C7071FC1A3C95F6007F751B /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */; };
 		7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C818F841A30F4C800B54D8E /* iAd.framework */; };
 		7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */; };
 		7C930D6D1A3A210100C13A01 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C930D6C1A3A210100C13A01 /* EventTableViewCell.m */; };
@@ -147,7 +148,6 @@
 		7C071F70190C1795009FE5E8 /* ViewExepenseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewExepenseTableViewController.m; sourceTree = "<group>"; };
 		7C071F72190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPeopleToExpenseTableViewController.h; sourceTree = "<group>"; };
 		7C071F73190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPeopleToExpenseTableViewController.m; sourceTree = "<group>"; };
-		7C0C554218E328F600AED964 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		7C0C554418E4B20500AED964 /* TaskListsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsTableViewController.h; sourceTree = "<group>"; };
 		7C0C554518E4B20500AED964 /* TaskListsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsTableViewController.m; sourceTree = "<group>"; };
 		7C0C559818E87C4900AED964 /* GenericNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericNavigationController.h; sourceTree = "<group>"; };
@@ -191,6 +191,8 @@
 		7C68F8431A337EF4000A53AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7C69F4CD18BE0E380013FBD3 /* NoHouseholdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoHouseholdViewController.h; sourceTree = "<group>"; };
 		7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHouseholdViewController.m; sourceTree = "<group>"; };
+		7C7071F91A3C95F6007F751B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		7C7D64911A347A050023B1FB /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		7C818F841A30F4C800B54D8E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -293,13 +295,14 @@
 				7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */,
 				7C062F8E18B4E0F100F56529 /* SystemConfiguration.framework in Frameworks */,
 				7C062F8A18B4E0DC00F56529 /* Security.framework in Frameworks */,
+				7C7071FB1A3C95F6007F751B /* FacebookSDK.framework in Frameworks */,
+				7C7071FC1A3C95F6007F751B /* FBAudienceNetwork.framework in Frameworks */,
 				7CE2CB2C18FADF8A00B7E52B /* Parse.framework in Frameworks */,
 				7C062F8818B4E0D600F56529 /* QuartzCore.framework in Frameworks */,
 				7C062F8618B4E0D100F56529 /* MobileCoreServices.framework in Frameworks */,
 				7C062F8418B4E0CB00F56529 /* libz.dylib in Frameworks */,
 				7C062F3E18B4CCD900F56529 /* CoreGraphics.framework in Frameworks */,
 				7C062F8018B4E0B900F56529 /* CFNetwork.framework in Frameworks */,
-				7C0C554318E328F600AED964 /* FacebookSDK.framework in Frameworks */,
 				7C062F7E18B4E0B400F56529 /* AudioToolbox.framework in Frameworks */,
 				7CAFD78C1A0E582C00524CE1 /* Bolts.framework in Frameworks */,
 				7CAFD7881A0E553900524CE1 /* ParseUI.framework in Frameworks */,
@@ -357,6 +360,8 @@
 		7C062F3A18B4CCD900F56529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C7071F91A3C95F6007F751B /* FacebookSDK.framework */,
+				7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */,
 				7C818F841A30F4C800B54D8E /* iAd.framework */,
 				7CAFD78B1A0E582C00524CE1 /* Bolts.framework */,
 				7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */,
@@ -368,7 +373,6 @@
 				7C4B54F6190E5F8F0041CB21 /* CoreImage.framework */,
 				7C4B54F4190E5F850041CB21 /* AdSupport.framework */,
 				7CE2CB2B18FADF8A00B7E52B /* Parse.framework */,
-				7C0C554218E328F600AED964 /* FacebookSDK.framework */,
 				7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */,
 				7C062F8D18B4E0F100F56529 /* SystemConfiguration.framework */,
 				7C062F8918B4E0DC00F56529 /* Security.framework */,
