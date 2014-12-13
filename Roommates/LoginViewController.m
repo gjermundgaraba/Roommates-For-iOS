@@ -81,41 +81,49 @@
                                                            id result,
                                                            NSError *error)
                       {
-                          if (!error) {
-                              NSDictionary *userData = (NSDictionary *)result;
-                              NSString *fbPictureURL =
-                              @"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1";
-                              
-                              NSString *facebookID = userData[@"id"];
-                              NSURL *pictureURL = [NSURL URLWithString:
-                                                   [NSString stringWithFormat:fbPictureURL, facebookID]];
-                              
-                              NSData *pictureData = [NSData dataWithContentsOfURL:pictureURL];
-                              UIImage *profilePicture = [UIImage imageWithData:pictureData];
-                              NSData *imageData = UIImagePNGRepresentation(profilePicture);
-                              PFFile *pictureFile = [PFFile fileWithData:imageData];
-                              
-                              user[@"username"] = userData[@"email"];
-                              user[@"displayName"] = userData[@"name"];
-                              user[@"email"] = userData[@"email"];
-                              user[@"profilePicture"] = pictureFile;
-                              
-                              [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                          NSArray *declinedPermission = [PFFacebookUtils session].declinedPermissions;
+                          if (declinedPermission.count == 0) {
+                              if (!error) {
+                                  NSDictionary *userData = (NSDictionary *)result;
+                                  NSString *fbPictureURL =
+                                  @"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1";
+                                  
+                                  NSString *facebookID = userData[@"id"];
+                                  NSURL *pictureURL = [NSURL URLWithString:
+                                                       [NSString stringWithFormat:fbPictureURL, facebookID]];
+                                  
+                                  NSData *pictureData = [NSData dataWithContentsOfURL:pictureURL];
+                                  UIImage *profilePicture = [UIImage imageWithData:pictureData];
+                                  NSData *imageData = UIImagePNGRepresentation(profilePicture);
+                                  PFFile *pictureFile = [PFFile fileWithData:imageData];
+                                  
+                                  user[@"username"] = userData[@"email"];
+                                  user[@"displayName"] = userData[@"name"];
+                                  user[@"email"] = userData[@"email"];
+                                  user[@"profilePicture"] = pictureFile;
+                                  
+                                  [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                      [SVProgressHUD dismiss];
+                                      if (!error) {
+                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                      } else {
+                                          [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
+                                          [user deleteInBackground];
+                                          //[PFUser logOut];
+                                      }
+                                  }];
+                              } else {
                                   [SVProgressHUD dismiss];
-                                  if (!error) {
-                                      [self dismissViewControllerAnimated:YES completion:nil];
-                                  } else {
-                                      [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
-                                      [user deleteInBackground];
-                                      //[PFUser logOut];
-                                  }
-                              }];
+                                  [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not contact Facebook, please try again later.", nil)];
+                                  [user deleteInBackground];
+                              }
+
                           } else {
                               [SVProgressHUD dismiss];
-                              [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Could not contact Facebook, please try again later.", nil)];
+                              [SVProgressHUD showErrorWithStatus:@"Roommates cannot create a user wihtout email permissions. Grant permission or register a user without Facebook."];
                               [user deleteInBackground];
                           }
-                      }];
+                    }];
                  } else {
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
                      [self dismissViewControllerAnimated:YES completion:nil];
