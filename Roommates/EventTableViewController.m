@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSArray *events;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property int maxNumberOfEvents;
+@property BOOL loadMoreShouldBeShown;
 @end
 
 static NSString *eventCellIdentifier = @"EventCellIdentifier";
@@ -25,6 +26,7 @@ static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
     [super viewDidLoad];
     
     self.maxNumberOfEvents = 5;
+    self.loadMoreShouldBeShown = YES;
     
     [self updateUserInteractionEnabled];
     
@@ -80,6 +82,18 @@ static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
             if (!error) {
                 self.events = objects;
                 [self.tableView reloadData];
+                
+                [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+                    if (!error) {
+                        if (self.events.count >= number) {
+                            self.loadMoreShouldBeShown = NO;
+                            [self.tableView reloadData];
+                        } else {
+                            self.loadMoreShouldBeShown = YES;
+                            [self.tableView reloadData];
+                        }
+                    }
+                }];
             } else {
                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
@@ -98,12 +112,17 @@ static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    int numberOfRows = 0;
+    
     if (self.events.count > 0) {
-        return self.events.count + 1;
-    } else {
-        return 0;
+        numberOfRows += self.events.count;
     }
     
+    if (self.loadMoreShouldBeShown) {
+        numberOfRows += 1;
+    }
+    
+    return numberOfRows;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -120,6 +139,9 @@ static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
     
     cell.profilePicture.image = [UIImage imageNamed:@"placeholder"];
     cell.profilePicture.file = event.user.profilePicture;
+    cell.profilePicture.clipsToBounds = YES;
+    cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2;
+    cell.profilePicture.layer.masksToBounds = YES;
     [cell.profilePicture loadInBackground];
     
     NSDate *date = event.createdAt;

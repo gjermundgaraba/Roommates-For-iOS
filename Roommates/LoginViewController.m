@@ -120,7 +120,7 @@
 
                           } else {
                               [SVProgressHUD dismiss];
-                              [SVProgressHUD showErrorWithStatus:@"Roommates cannot create a user wihtout email permissions. Grant permission or register a user without Facebook."];
+                              [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Roommates cannot create a user wihtout email permissions. Grant permission or register a user without Facebook.", nil)];
                               [user deleteInBackground];
                           }
                     }];

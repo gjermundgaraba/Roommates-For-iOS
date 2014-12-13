@@ -114,14 +114,13 @@
              {
                  [SVProgressHUD dismiss];
                  if (!error) {
-                     // Refresh the user information after the cloud call (user is now member of a household)
                      [SVProgressHUD showWithStatus:NSLocalizedString(@"Fetching user information", nil) maskType:SVProgressHUDMaskTypeBlack];
                      [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                          [SVProgressHUD dismiss];
                          if (!error) {
-                             // Refreshed, set up Push
                              [User refreshChannels];
-                             [self.navigationController popViewControllerAnimated:YES]; // unwind instead?
+                             [[NSNotificationCenter defaultCenter] postNotificationName:@"ResetHouseholdScenes" object:nil];
+                             [self.navigationController popViewControllerAnimated:YES];
                          }
                          else {
                              [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Household created, but could not fetch user info. Log out and back in again to solve this issue.", nil)];

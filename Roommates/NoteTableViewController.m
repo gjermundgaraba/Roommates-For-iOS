@@ -10,6 +10,7 @@
 @property (strong, nonatomic) NSArray *notes;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property int maxNumberOfNotes;
+@property BOOL loadMoreShouldBeShown;
 @end
 
 static NSString *noteCellIdentifier = @"NoteCellIdentifier";
@@ -24,6 +25,7 @@ static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
     [self updateUserInteractionEnabled];
     
     self.maxNumberOfNotes = 5;
+    self.loadMoreShouldBeShown = YES;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -80,6 +82,18 @@ static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
             if (!error) {
                 self.notes = objects;
                 [self.tableView reloadData];
+                
+                [queryForNotes countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+                    if (!error) {
+                        if (self.notes.count >= number) {
+                            self.loadMoreShouldBeShown = NO;
+                            [self.tableView reloadData];
+                        } else {
+                            self.loadMoreShouldBeShown = YES;
+                            [self.tableView reloadData];
+                        }
+                    }
+                }];
             } else {
                 [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
             }
@@ -98,11 +112,18 @@ static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    int numberOfRows = 0;
+    
     if (self.notes.count > 0) {
-        return self.notes.count + 1;
-    } else {
-        return 0;
+        numberOfRows += self.notes.count;
     }
+    
+    if (self.loadMoreShouldBeShown) {
+        numberOfRows += 1;
+    }
+    
+    return numberOfRows;
+    
 }
 
 
@@ -133,6 +154,9 @@ static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
         
         cell.profilePicture.image = [UIImage imageNamed:@"placeholder"];
         cell.profilePicture.file = note.createdBy.profilePicture;
+        cell.profilePicture.clipsToBounds = YES;
+        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2;
+        cell.profilePicture.layer.masksToBounds = YES;
         [cell.profilePicture loadInBackground];
         
         cell.userInteractionEnabled = NO;
