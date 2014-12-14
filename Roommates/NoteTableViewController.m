@@ -118,7 +118,7 @@ static NSString *loadMoreNotesIdentifier = @"LoadMoreNotesIdentifier";
         numberOfRows += self.notes.count;
     }
     
-    if (self.loadMoreShouldBeShown) {
+    if (numberOfRows > 0 && self.loadMoreShouldBeShown) {
         numberOfRows += 1;
     }
     

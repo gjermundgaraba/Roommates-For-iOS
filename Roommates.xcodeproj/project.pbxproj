@@ -58,8 +58,6 @@
 		7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C42150418C8A3D4007DA6BC /* FeedViewController.m */; };
 		7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753D718D4AFC000131F95 /* InputValidation.m */; };
 		7C4753DB18D4B78B00131F95 /* ForgottenPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4753DA18D4B78B00131F95 /* ForgottenPasswordViewController.m */; };
-		7C535DAA1A25150E00AF1969 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */; };
-		7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C535DA91A25150E00AF1969 /* SVProgressHUD.m */; };
 		7C536D251A347F0300129009 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C536D241A347F0300129009 /* ErrorHandler.m */; };
 		7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */; };
 		7C5D037B18FC9A020055DDD5 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D037A18FC9A020055DDD5 /* ProfileTableViewController.m */; };
@@ -80,6 +78,9 @@
 		7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */; };
 		7CBF4168190ABDF600D964FC /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF4167190ABDF600D964FC /* Expense.m */; };
 		7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */; };
+		7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */; };
+		7CC4B3EC1A3D9C7200E2752B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */; };
+		7CC4B3ED1A3D9C7200E2752B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */; };
 		7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF84FD18CA24E600CDE0D3 /* HouseholdViewController.m */; };
 		7CE2CA2218F3F9B500B7E52B /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CA2118F3F9B500B7E52B /* libSpecta-ios-universal.a */; };
 		7CE2CA4D18F3FDFC00B7E52B /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CA4C18F3FDFC00B7E52B /* libExpecta-ios-universal.a */; };
@@ -172,10 +173,6 @@
 		7C4B54FA190E5FB70041CB21 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		7C4B5501190E63D50041CB21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C4B5503190E644F0041CB21 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		7C535DA61A25150E00AF1969 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		7C535DA81A25150E00AF1969 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		7C535DA91A25150E00AF1969 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C536D231A347F0300129009 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
 		7C536D241A347F0300129009 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHandler.m; sourceTree = "<group>"; };
 		7C5D037618FC68F30055DDD5 /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
@@ -213,6 +210,12 @@
 		7CBF4167190ABDF600D964FC /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 		7CBF4169190ABF6700D964FC /* ExpensesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpensesTableViewController.h; sourceTree = "<group>"; };
 		7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesTableViewController.m; sourceTree = "<group>"; };
+		7CC4B3E51A3D9C7200E2752B /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		7CC4B3E71A3D9C7200E2752B /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7CC4B3E91A3D9C7200E2752B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7CCF84FC18CA24E600CDE0D3 /* HouseholdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseholdViewController.h; sourceTree = "<group>"; };
 		7CCF84FD18CA24E600CDE0D3 /* HouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseholdViewController.m; sourceTree = "<group>"; };
 		7CE2CA1218F3F9A600B7E52B /* Specta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Specta.h; sourceTree = "<group>"; };
@@ -393,7 +396,7 @@
 		7C062F4118B4CCD900F56529 /* Roommates */ = {
 			isa = PBXGroup;
 			children = (
-				7C535DA51A25150E00AF1969 /* SVProgressHUD */,
+				7CC4B3E41A3D9C7200E2752B /* SVProgressHUD */,
 				7C5D037518FC68C90055DDD5 /* NSDate Time Ago */,
 				7C1E35B818FC522000F626E2 /* Parse Subclasses */,
 				7C062F7A18B4DFE700F56529 /* View Controllers */,
@@ -591,17 +594,6 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		7C535DA51A25150E00AF1969 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				7C535DA61A25150E00AF1969 /* SVProgressHUD-Prefix.pch */,
-				7C535DA71A25150E00AF1969 /* SVProgressHUD.bundle */,
-				7C535DA81A25150E00AF1969 /* SVProgressHUD.h */,
-				7C535DA91A25150E00AF1969 /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
 		7C5D037518FC68C90055DDD5 /* NSDate Time Ago */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +627,19 @@
 				7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */,
 			);
 			name = Expenses;
+			sourceTree = "<group>";
+		};
+		7CC4B3E41A3D9C7200E2752B /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7CC4B3E51A3D9C7200E2752B /* SVIndefiniteAnimatedView.h */,
+				7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */,
+				7CC4B3E71A3D9C7200E2752B /* SVProgressHUD-Prefix.pch */,
+				7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */,
+				7CC4B3E91A3D9C7200E2752B /* SVProgressHUD.h */,
+				7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		7CDED9B818E090DB00EE67B8 /* Change Info */ = {
@@ -824,10 +829,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C535DAA1A25150E00AF1969 /* SVProgressHUD.bundle in Resources */,
 				7C062F5718B4CCD900F56529 /* Images.xcassets in Resources */,
 				7C062F4F18B4CCD900F56529 /* Main_iPhone.storyboard in Resources */,
 				7C062F4618B4CCD900F56529 /* InfoPlist.strings in Resources */,
+				7CC4B3EC1A3D9C7200E2752B /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,7 +859,6 @@
 				7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */,
 				7C02430318FF053300DCA653 /* Invitation.m in Sources */,
 				7C0C554618E4B20500AED964 /* TaskListsTableViewController.m in Sources */,
-				7C535DAB1A25150E00AF1969 /* SVProgressHUD.m in Sources */,
 				7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */,
 				7CE2CB2F18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m in Sources */,
 				7C536D251A347F0300129009 /* ErrorHandler.m in Sources */,
@@ -870,6 +874,7 @@
 				7C0242FD18FF030800DCA653 /* TaskListElement.m in Sources */,
 				7C062F7818B4DFD000F56529 /* SuperViewController.m in Sources */,
 				7C062F9718B4E38C00F56529 /* LoginViewController.m in Sources */,
+				7CC4B3ED1A3D9C7200E2752B /* SVProgressHUD.m in Sources */,
 				7C930D701A3A246D00C13A01 /* EventTableViewController.m in Sources */,
 				7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */,
 				7C071F71190C1795009FE5E8 /* ViewExepenseTableViewController.m in Sources */,
@@ -882,6 +887,7 @@
 				7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */,
 				7CE2CAD218F7EF2700B7E52B /* EditTaskListElementViewController.m in Sources */,
 				7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */,
+				7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */,
 				7C02430018FF03B600DCA653 /* Note.m in Sources */,
 				7C0242F418FEF7D400DCA653 /* TaskList.m in Sources */,
 				7C071F6B190AE780009FE5E8 /* AddExpenseViewController.m in Sources */,

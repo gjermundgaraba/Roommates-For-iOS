@@ -118,7 +118,7 @@ static NSString *loadMoreEventsIdentifier = @"LoadMoreEvents";
         numberOfRows += self.events.count;
     }
     
-    if (self.loadMoreShouldBeShown) {
+    if (numberOfRows > 0 && self.loadMoreShouldBeShown) {
         numberOfRows += 1;
     }
     
