@@ -1,5 +1,5 @@
 
-#import "SuperViewController.h"
+#import "BannerViewController.h"
 
-@interface FeedViewController : SuperViewController
+@interface FeedViewController : BannerViewController
 @end

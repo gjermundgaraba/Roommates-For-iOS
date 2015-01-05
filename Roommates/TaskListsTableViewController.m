@@ -72,50 +72,6 @@
     [self refreshTaskLists];
 }
 
-
-- (IBAction)addTaskListButtonPressed:(id)sender {
-    if ([[User currentUser] isMemberOfAHousehold]) {
-        UIAlertView *addTaskListAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add New Task List", nil)
-                                                                   message:@""
-                                                                  delegate:self
-                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                         otherButtonTitles:NSLocalizedString(@"Add", nil), nil];
-        addTaskListAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [addTaskListAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeSentences;
-        [addTaskListAlert show];
-    } else {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Not member of a household! Go to Me->Household Settings.", nil)];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // Add clicked
-        NSString *listName = [alertView textFieldAtIndex:0].text;
-        
-        if ([listName isEqualToString:@""]) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"List Name is Empty", nil)];
-        } else if ([User currentUser] && [User currentUser].isMemberOfAHousehold) {
-            TaskList *newTaskList = (TaskList *)[PFObject objectWithClassName:@"TaskList"];
-            newTaskList.listName  = listName;
-            newTaskList.done = NO;
-            newTaskList.createdBy = [User currentUser];
-            newTaskList.household = [User currentUser].activeHousehold;
-            
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Creating new Task List", nil) maskType:SVProgressHUDMaskTypeBlack];
-            [newTaskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [SVProgressHUD dismiss];
-                if (!error) {
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"New Task List Created!", nil)];
-                    [self refreshTaskLists];
-                }
-                else {
-                    [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
-                }
-            }];
-        }
-    }
-}
-
 - (void)refreshTaskLists {
     if ([[User currentUser] isMemberOfAHousehold]) {
         PFQuery *taskListsQuery = [TaskList query];

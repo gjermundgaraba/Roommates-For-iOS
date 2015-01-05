@@ -78,6 +78,9 @@
 		7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */; };
 		7CBF4168190ABDF600D964FC /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF4167190ABDF600D964FC /* Expense.m */; };
 		7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */; };
+		7CC156831A5B2B5700C809A6 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156811A5B2B5700C809A6 /* BannerViewController.m */; };
+		7CC156861A5B2BA800C809A6 /* ExpensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156851A5B2BA800C809A6 /* ExpensesViewController.m */; };
+		7CC156891A5B2BBF00C809A6 /* TaskListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156871A5B2BBF00C809A6 /* TaskListsViewController.m */; };
 		7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */; };
 		7CC4B3EC1A3D9C7200E2752B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */; };
 		7CC4B3ED1A3D9C7200E2752B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */; };
@@ -210,6 +213,12 @@
 		7CBF4167190ABDF600D964FC /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 		7CBF4169190ABF6700D964FC /* ExpensesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpensesTableViewController.h; sourceTree = "<group>"; };
 		7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesTableViewController.m; sourceTree = "<group>"; };
+		7CC156811A5B2B5700C809A6 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
+		7CC156821A5B2B5700C809A6 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
+		7CC156841A5B2B9300C809A6 /* ExpensesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpensesViewController.h; sourceTree = "<group>"; };
+		7CC156851A5B2BA800C809A6 /* ExpensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesViewController.m; sourceTree = "<group>"; };
+		7CC156871A5B2BBF00C809A6 /* TaskListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsViewController.m; sourceTree = "<group>"; };
+		7CC156881A5B2BBF00C809A6 /* TaskListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsViewController.h; sourceTree = "<group>"; };
 		7CC4B3E51A3D9C7200E2752B /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7CC4B3E71A3D9C7200E2752B /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -458,6 +467,8 @@
 		7C0C554718E4B20D00AED964 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				7CC156871A5B2BBF00C809A6 /* TaskListsViewController.m */,
+				7CC156881A5B2BBF00C809A6 /* TaskListsViewController.h */,
 				7CE2CAD018F7EF2700B7E52B /* EditTaskListElementViewController.h */,
 				7CE2CAD118F7EF2700B7E52B /* EditTaskListElementViewController.m */,
 				7C0C554418E4B20500AED964 /* TaskListsTableViewController.h */,
@@ -588,6 +599,8 @@
 		7C329E3018DE0FA600BF6513 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7CC156811A5B2B5700C809A6 /* BannerViewController.m */,
+				7CC156821A5B2B5700C809A6 /* BannerViewController.h */,
 				7C4753D618D4AFC000131F95 /* InputValidation.h */,
 				7C4753D718D4AFC000131F95 /* InputValidation.m */,
 			);
@@ -617,6 +630,8 @@
 		7CBF4162190A8FA900D964FC /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
+				7CC156851A5B2BA800C809A6 /* ExpensesViewController.m */,
+				7CC156841A5B2B9300C809A6 /* ExpensesViewController.h */,
 				7C071F72190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.h */,
 				7C071F73190D51BD009FE5E8 /* AddPeopleToExpenseTableViewController.m */,
 				7C071F6F190C1795009FE5E8 /* ViewExepenseTableViewController.h */,
@@ -852,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */,
+				7CC156891A5B2BBF00C809A6 /* TaskListsViewController.m in Sources */,
 				7C12EE0C1A37688B00A5EFCE /* NoteTableViewController.m in Sources */,
 				7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */,
 				7C02430618FF069700DCA653 /* Event.m in Sources */,
@@ -865,6 +881,7 @@
 				7C96E5E01901BE9900BF355A /* Installation.m in Sources */,
 				7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */,
 				7C4753DB18D4B78B00131F95 /* ForgottenPasswordViewController.m in Sources */,
+				7CC156831A5B2B5700C809A6 /* BannerViewController.m in Sources */,
 				7CBF4168190ABDF600D964FC /* Expense.m in Sources */,
 				7C5D038418FDA08D0055DDD5 /* HouseholdTableViewController.m in Sources */,
 				7C062F4C18B4CCD900F56529 /* AppDelegate.m in Sources */,
@@ -885,6 +902,7 @@
 				7C0242F718FEF9DF00DCA653 /* Household.m in Sources */,
 				7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */,
 				7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */,
+				7CC156861A5B2BA800C809A6 /* ExpensesViewController.m in Sources */,
 				7CE2CAD218F7EF2700B7E52B /* EditTaskListElementViewController.m in Sources */,
 				7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */,
 				7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */,
