@@ -66,31 +66,35 @@
 		7C69F4CF18BE0E380013FBD3 /* NoHouseholdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */; };
 		7C7071FB1A3C95F6007F751B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7071F91A3C95F6007F751B /* FacebookSDK.framework */; };
 		7C7071FC1A3C95F6007F751B /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */; };
+		7C74E6AA1A5C69D3006FEADC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6A61A5C69D3006FEADC /* Parse.framework */; };
+		7C74E6AB1A5C69D3006FEADC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6A71A5C69D3006FEADC /* ParseCrashReporting.framework */; };
+		7C74E6AC1A5C69D3006FEADC /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6A81A5C69D3006FEADC /* ParseFacebookUtils.framework */; };
+		7C74E6AD1A5C69D3006FEADC /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6A91A5C69D3006FEADC /* ParseUI.framework */; };
+		7C74E6AF1A5C6A2B006FEADC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6AE1A5C6A2B006FEADC /* Bolts.framework */; };
+		7C74E6B11A5C6AC4006FEADC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6B01A5C6AC4006FEADC /* libsqlite3.dylib */; };
+		7C74E6B31A5C6ACF006FEADC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6B21A5C6ACF006FEADC /* StoreKit.framework */; };
+		7C74E6B51A5C6AE9006FEADC /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C74E6B41A5C6AE9006FEADC /* libstdc++.6.dylib */; };
+		7C74E6BD1A5C6DC4006FEADC /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C74E6B81A5C6DC4006FEADC /* SVIndefiniteAnimatedView.m */; };
+		7C74E6BE1A5C6DC4006FEADC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C74E6BA1A5C6DC4006FEADC /* SVProgressHUD.bundle */; };
+		7C74E6BF1A5C6DC4006FEADC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C74E6BC1A5C6DC4006FEADC /* SVProgressHUD.m */; };
 		7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C818F841A30F4C800B54D8E /* iAd.framework */; };
 		7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */; };
 		7C930D6D1A3A210100C13A01 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C930D6C1A3A210100C13A01 /* EventTableViewCell.m */; };
 		7C930D701A3A246D00C13A01 /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C930D6F1A3A246D00C13A01 /* EventTableViewController.m */; };
 		7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94294818BCC653007FA97E /* ProfileViewController.m */; };
 		7C96E5E01901BE9900BF355A /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96E5DF1901BE9900BF355A /* Installation.m */; };
-		7CAFD7881A0E553900524CE1 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD7871A0E553900524CE1 /* ParseUI.framework */; };
-		7CAFD78A1A0E562200524CE1 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */; };
-		7CAFD78C1A0E582C00524CE1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFD78B1A0E582C00524CE1 /* Bolts.framework */; };
 		7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */; };
 		7CBF4168190ABDF600D964FC /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF4167190ABDF600D964FC /* Expense.m */; };
 		7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */; };
 		7CC156831A5B2B5700C809A6 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156811A5B2B5700C809A6 /* BannerViewController.m */; };
 		7CC156861A5B2BA800C809A6 /* ExpensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156851A5B2BA800C809A6 /* ExpensesViewController.m */; };
 		7CC156891A5B2BBF00C809A6 /* TaskListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC156871A5B2BBF00C809A6 /* TaskListsViewController.m */; };
-		7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */; };
-		7CC4B3EC1A3D9C7200E2752B /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */; };
-		7CC4B3ED1A3D9C7200E2752B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */; };
 		7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF84FD18CA24E600CDE0D3 /* HouseholdViewController.m */; };
 		7CE2CA2218F3F9B500B7E52B /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CA2118F3F9B500B7E52B /* libSpecta-ios-universal.a */; };
 		7CE2CA4D18F3FDFC00B7E52B /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CA4C18F3FDFC00B7E52B /* libExpecta-ios-universal.a */; };
 		7CE2CA5718F3FE4F00B7E52B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CA4F18F3FE4F00B7E52B /* libOCMock.a */; };
 		7CE2CA7318F45EEB00B7E52B /* InputValidationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CA7218F45EEB00B7E52B /* InputValidationSpec.m */; };
 		7CE2CAD218F7EF2700B7E52B /* EditTaskListElementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CAD118F7EF2700B7E52B /* EditTaskListElementViewController.m */; };
-		7CE2CB2C18FADF8A00B7E52B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE2CB2B18FADF8A00B7E52B /* Parse.framework */; };
 		7CE2CB2F18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CB2E18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +197,20 @@
 		7C69F4CE18BE0E380013FBD3 /* NoHouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHouseholdViewController.m; sourceTree = "<group>"; };
 		7C7071F91A3C95F6007F751B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		7C74E6A61A5C69D3006FEADC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		7C74E6A71A5C69D3006FEADC /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		7C74E6A81A5C69D3006FEADC /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		7C74E6A91A5C69D3006FEADC /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		7C74E6AE1A5C6A2B006FEADC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		7C74E6B01A5C6AC4006FEADC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7C74E6B21A5C6ACF006FEADC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7C74E6B41A5C6AE9006FEADC /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		7C74E6B71A5C6DC4006FEADC /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		7C74E6B81A5C6DC4006FEADC /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		7C74E6B91A5C6DC4006FEADC /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		7C74E6BA1A5C6DC4006FEADC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7C74E6BB1A5C6DC4006FEADC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		7C74E6BC1A5C6DC4006FEADC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C7D64911A347A050023B1FB /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		7C818F841A30F4C800B54D8E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -204,9 +222,6 @@
 		7C94294818BCC653007FA97E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C96E5DE1901BE9900BF355A /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
 		7C96E5DF1901BE9900BF355A /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
-		7CAFD7871A0E553900524CE1 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		7CAFD78B1A0E582C00524CE1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		7CBADDC518CA599B00B16792 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		7CBF4166190ABDF600D964FC /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
@@ -219,12 +234,6 @@
 		7CC156851A5B2BA800C809A6 /* ExpensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesViewController.m; sourceTree = "<group>"; };
 		7CC156871A5B2BBF00C809A6 /* TaskListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsViewController.m; sourceTree = "<group>"; };
 		7CC156881A5B2BBF00C809A6 /* TaskListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsViewController.h; sourceTree = "<group>"; };
-		7CC4B3E51A3D9C7200E2752B /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		7CC4B3E71A3D9C7200E2752B /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		7CC4B3E91A3D9C7200E2752B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7CCF84FC18CA24E600CDE0D3 /* HouseholdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseholdViewController.h; sourceTree = "<group>"; };
 		7CCF84FD18CA24E600CDE0D3 /* HouseholdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseholdViewController.m; sourceTree = "<group>"; };
 		7CE2CA1218F3F9A600B7E52B /* Specta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Specta.h; sourceTree = "<group>"; };
@@ -292,7 +301,6 @@
 		7CE2CA7218F45EEB00B7E52B /* InputValidationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputValidationSpec.m; sourceTree = "<group>"; };
 		7CE2CAD018F7EF2700B7E52B /* EditTaskListElementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskListElementViewController.h; sourceTree = "<group>"; };
 		7CE2CAD118F7EF2700B7E52B /* EditTaskListElementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskListElementViewController.m; sourceTree = "<group>"; };
-		7CE2CB2B18FADF8A00B7E52B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		7CE2CB2D18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseholdMembersPFQueryTableViewController.h; sourceTree = "<group>"; };
 		7CE2CB2E18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseholdMembersPFQueryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -302,24 +310,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */,
-				7C062F8218B4E0C500F56529 /* CoreLocation.framework in Frameworks */,
-				7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */,
-				7C062F8E18B4E0F100F56529 /* SystemConfiguration.framework in Frameworks */,
-				7C062F8A18B4E0DC00F56529 /* Security.framework in Frameworks */,
-				7C7071FB1A3C95F6007F751B /* FacebookSDK.framework in Frameworks */,
-				7C7071FC1A3C95F6007F751B /* FBAudienceNetwork.framework in Frameworks */,
-				7CE2CB2C18FADF8A00B7E52B /* Parse.framework in Frameworks */,
-				7C062F8818B4E0D600F56529 /* QuartzCore.framework in Frameworks */,
-				7C062F8618B4E0D100F56529 /* MobileCoreServices.framework in Frameworks */,
-				7C062F8418B4E0CB00F56529 /* libz.dylib in Frameworks */,
+				7C74E6B51A5C6AE9006FEADC /* libstdc++.6.dylib in Frameworks */,
+				7C74E6B31A5C6ACF006FEADC /* StoreKit.framework in Frameworks */,
+				7C74E6B11A5C6AC4006FEADC /* libsqlite3.dylib in Frameworks */,
 				7C062F3E18B4CCD900F56529 /* CoreGraphics.framework in Frameworks */,
 				7C062F8018B4E0B900F56529 /* CFNetwork.framework in Frameworks */,
 				7C062F7E18B4E0B400F56529 /* AudioToolbox.framework in Frameworks */,
-				7CAFD78C1A0E582C00524CE1 /* Bolts.framework in Frameworks */,
-				7CAFD7881A0E553900524CE1 /* ParseUI.framework in Frameworks */,
+				7C818F851A30F4C800B54D8E /* iAd.framework in Frameworks */,
+				7C74E6AB1A5C69D3006FEADC /* ParseCrashReporting.framework in Frameworks */,
+				7C74E6AD1A5C69D3006FEADC /* ParseUI.framework in Frameworks */,
+				7C062F8218B4E0C500F56529 /* CoreLocation.framework in Frameworks */,
+				7C8F5B7E18D4DB9D0011194C /* Accelerate.framework in Frameworks */,
+				7C062F8E18B4E0F100F56529 /* SystemConfiguration.framework in Frameworks */,
+				7C74E6AC1A5C69D3006FEADC /* ParseFacebookUtils.framework in Frameworks */,
+				7C062F8A18B4E0DC00F56529 /* Security.framework in Frameworks */,
+				7C7071FB1A3C95F6007F751B /* FacebookSDK.framework in Frameworks */,
+				7C74E6AA1A5C69D3006FEADC /* Parse.framework in Frameworks */,
+				7C7071FC1A3C95F6007F751B /* FBAudienceNetwork.framework in Frameworks */,
+				7C062F8818B4E0D600F56529 /* QuartzCore.framework in Frameworks */,
+				7C062F8618B4E0D100F56529 /* MobileCoreServices.framework in Frameworks */,
+				7C062F8418B4E0CB00F56529 /* libz.dylib in Frameworks */,
+				7C74E6AF1A5C6A2B006FEADC /* Bolts.framework in Frameworks */,
 				7C062F4018B4CCD900F56529 /* UIKit.framework in Frameworks */,
-				7CAFD78A1A0E562200524CE1 /* ParseFacebookUtils.framework in Frameworks */,
 				7C062F3C18B4CCD900F56529 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,19 +384,23 @@
 		7C062F3A18B4CCD900F56529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C74E6B41A5C6AE9006FEADC /* libstdc++.6.dylib */,
+				7C74E6B21A5C6ACF006FEADC /* StoreKit.framework */,
+				7C74E6B01A5C6AC4006FEADC /* libsqlite3.dylib */,
+				7C74E6AE1A5C6A2B006FEADC /* Bolts.framework */,
+				7C74E6A61A5C69D3006FEADC /* Parse.framework */,
+				7C74E6A71A5C69D3006FEADC /* ParseCrashReporting.framework */,
+				7C74E6A81A5C69D3006FEADC /* ParseFacebookUtils.framework */,
+				7C74E6A91A5C69D3006FEADC /* ParseUI.framework */,
 				7C7071F91A3C95F6007F751B /* FacebookSDK.framework */,
 				7C7071FA1A3C95F6007F751B /* FBAudienceNetwork.framework */,
 				7C818F841A30F4C800B54D8E /* iAd.framework */,
-				7CAFD78B1A0E582C00524CE1 /* Bolts.framework */,
-				7CAFD7891A0E562200524CE1 /* ParseFacebookUtils.framework */,
-				7CAFD7871A0E553900524CE1 /* ParseUI.framework */,
 				7C4B5503190E644F0041CB21 /* CoreMotion.framework */,
 				7C4B5501190E63D50041CB21 /* CoreData.framework */,
 				7C4B54FA190E5FB70041CB21 /* OpenGLES.framework */,
 				7C4B54F8190E5F9C0041CB21 /* CoreTelephony.framework */,
 				7C4B54F6190E5F8F0041CB21 /* CoreImage.framework */,
 				7C4B54F4190E5F850041CB21 /* AdSupport.framework */,
-				7CE2CB2B18FADF8A00B7E52B /* Parse.framework */,
 				7C8F5B7D18D4DB9D0011194C /* Accelerate.framework */,
 				7C062F8D18B4E0F100F56529 /* SystemConfiguration.framework */,
 				7C062F8918B4E0DC00F56529 /* Security.framework */,
@@ -405,7 +421,7 @@
 		7C062F4118B4CCD900F56529 /* Roommates */ = {
 			isa = PBXGroup;
 			children = (
-				7CC4B3E41A3D9C7200E2752B /* SVProgressHUD */,
+				7C74E6B61A5C6DC4006FEADC /* SVProgressHUD */,
 				7C5D037518FC68C90055DDD5 /* NSDate Time Ago */,
 				7C1E35B818FC522000F626E2 /* Parse Subclasses */,
 				7C062F7A18B4DFE700F56529 /* View Controllers */,
@@ -616,6 +632,19 @@
 			name = "NSDate Time Ago";
 			sourceTree = "<group>";
 		};
+		7C74E6B61A5C6DC4006FEADC /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7C74E6B71A5C6DC4006FEADC /* SVIndefiniteAnimatedView.h */,
+				7C74E6B81A5C6DC4006FEADC /* SVIndefiniteAnimatedView.m */,
+				7C74E6B91A5C6DC4006FEADC /* SVProgressHUD-Prefix.pch */,
+				7C74E6BA1A5C6DC4006FEADC /* SVProgressHUD.bundle */,
+				7C74E6BB1A5C6DC4006FEADC /* SVProgressHUD.h */,
+				7C74E6BC1A5C6DC4006FEADC /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		7C930D6A1A3A20CD00C13A01 /* EventFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,19 +671,6 @@
 				7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */,
 			);
 			name = Expenses;
-			sourceTree = "<group>";
-		};
-		7CC4B3E41A3D9C7200E2752B /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				7CC4B3E51A3D9C7200E2752B /* SVIndefiniteAnimatedView.h */,
-				7CC4B3E61A3D9C7200E2752B /* SVIndefiniteAnimatedView.m */,
-				7CC4B3E71A3D9C7200E2752B /* SVProgressHUD-Prefix.pch */,
-				7CC4B3E81A3D9C7200E2752B /* SVProgressHUD.bundle */,
-				7CC4B3E91A3D9C7200E2752B /* SVProgressHUD.h */,
-				7CC4B3EA1A3D9C7200E2752B /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		7CDED9B818E090DB00EE67B8 /* Change Info */ = {
@@ -847,7 +863,7 @@
 				7C062F5718B4CCD900F56529 /* Images.xcassets in Resources */,
 				7C062F4F18B4CCD900F56529 /* Main_iPhone.storyboard in Resources */,
 				7C062F4618B4CCD900F56529 /* InfoPlist.strings in Resources */,
-				7CC4B3EC1A3D9C7200E2752B /* SVProgressHUD.bundle in Resources */,
+				7C74E6BE1A5C6DC4006FEADC /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +891,7 @@
 				7C0C559A18E87C4900AED964 /* GenericNavigationController.m in Sources */,
 				7C02430318FF053300DCA653 /* Invitation.m in Sources */,
 				7C0C554618E4B20500AED964 /* TaskListsTableViewController.m in Sources */,
+				7C74E6BF1A5C6DC4006FEADC /* SVProgressHUD.m in Sources */,
 				7CCF84FE18CA24E600CDE0D3 /* HouseholdViewController.m in Sources */,
 				7CE2CB2F18FB24F600B7E52B /* HouseholdMembersPFQueryTableViewController.m in Sources */,
 				7C536D251A347F0300129009 /* ErrorHandler.m in Sources */,
@@ -891,7 +908,6 @@
 				7C0242FD18FF030800DCA653 /* TaskListElement.m in Sources */,
 				7C062F7818B4DFD000F56529 /* SuperViewController.m in Sources */,
 				7C062F9718B4E38C00F56529 /* LoginViewController.m in Sources */,
-				7CC4B3ED1A3D9C7200E2752B /* SVProgressHUD.m in Sources */,
 				7C930D701A3A246D00C13A01 /* EventTableViewController.m in Sources */,
 				7C42150518C8A3D4007DA6BC /* FeedViewController.m in Sources */,
 				7C071F71190C1795009FE5E8 /* ViewExepenseTableViewController.m in Sources */,
@@ -901,11 +917,11 @@
 				7C0C559D18E88CA800AED964 /* TaskListElementsTableViewController.m in Sources */,
 				7C0242F718FEF9DF00DCA653 /* Household.m in Sources */,
 				7C5D037E18FC9D0B0055DDD5 /* ProfileInformationViewController.m in Sources */,
+				7C74E6BD1A5C6DC4006FEADC /* SVIndefiniteAnimatedView.m in Sources */,
 				7C5D037818FC68F30055DDD5 /* NSDate+NVTimeAgo.m in Sources */,
 				7CC156861A5B2BA800C809A6 /* ExpensesViewController.m in Sources */,
 				7CE2CAD218F7EF2700B7E52B /* EditTaskListElementViewController.m in Sources */,
 				7C4753D818D4AFC000131F95 /* InputValidation.m in Sources */,
-				7CC4B3EB1A3D9C7200E2752B /* SVIndefiniteAnimatedView.m in Sources */,
 				7C02430018FF03B600DCA653 /* Note.m in Sources */,
 				7C0242F418FEF7D400DCA653 /* TaskList.m in Sources */,
 				7C071F6B190AE780009FE5E8 /* AddExpenseViewController.m in Sources */,

@@ -127,7 +127,7 @@
 - (void)whereKey:(NSString *)key lessThan:(id)object;
 
 /*!
- @abstractAdd a constraint to the query that requires a particular key's object
+ @abstract Add a constraint to the query that requires a particular key's object
  to be less than or equal to the provided object.
 
  @param key The key to be constrained.
@@ -490,7 +490,7 @@
 - (void)getObjectInBackgroundWithId:(NSString *)objectId
                               block:(PFObjectResultBlock)block;
 
-/*!
+/*
  @abstract Gets a <PFObject> asynchronously.
 
  This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
@@ -567,7 +567,7 @@
  */
 - (void)findObjectsInBackgroundWithBlock:(PFArrayResultBlock)block;
 
-/*!
+/*
  @abstract Finds objects *asynchronously* and calls the given callback with the results.
 
  @param target The object to call the selector on.
@@ -622,7 +622,7 @@
  */
 - (void)getFirstObjectInBackgroundWithBlock:(PFObjectResultBlock)block;
 
-/*!
+/*
  @abstract Gets an object *asynchronously* and calls the given callback with the results.
 
  @warning This method mutates the query. It will reset the limit to `1`.
@@ -670,7 +670,7 @@
  */
 - (void)countObjectsInBackgroundWithBlock:(PFIntegerResultBlock)block;
 
-/*!
+/*
  @abstract Counts objects *asynchronously* and calls the given callback with the count.
 
  @param target The object to call the selector on.
@@ -711,6 +711,12 @@
 
 /*!
  @abstract The cache policy to use for requests.
+
+ Not allowed when Pinning is enabled.
+
+ @see fromLocalDatastore
+ @see fromPin
+ @see fromPinWithName:
  */
 @property (assign, readwrite) PFCachePolicy cachePolicy;
 
@@ -735,6 +741,41 @@
  @abstract Clears the cached results for all queries.
  */
 + (void)clearAllCachedResults;
+
+///--------------------------------------
+/// @name Query Source
+///--------------------------------------
+
+/*!
+ @abstract Change the source of this query to all pinned objects.
+
+ Requires Pinning to be enabled.
+
+ @see cachePolicy
+ */
+- (PFQuery *)fromLocalDatastore;
+
+/*!
+ @abstract Change the source of this query to the default group of pinned objects.
+
+ Requires Pinning to be enabled.
+
+ @see PFObjectDefaultPin
+ @see cachePolicy
+ */
+- (PFQuery *)fromPin;
+
+/*!
+ @abstract Change the source of this query to a specific group of pinned objects.
+
+ Requires Pinning to be enabled.
+
+ @param name The pinned group.
+
+ @see PFObjectDefaultPin
+ @see cachePolicy
+ */
+- (PFQuery *)fromPinWithName:(NSString *)name;
 
 ///--------------------------------------
 /// @name Advanced Settings
