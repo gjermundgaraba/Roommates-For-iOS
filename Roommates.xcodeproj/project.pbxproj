@@ -785,6 +785,7 @@
 				7C062F3418B4CCD900F56529 /* Sources */,
 				7C062F3518B4CCD900F56529 /* Frameworks */,
 				7C062F3618B4CCD900F56529 /* Resources */,
+				7C74E6C01A5C7241006FEADC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -876,6 +877,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C74E6C01A5C7241006FEADC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=/usr/local/bin:$PATH\ncd /Users/bjaanes/Documents/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7C062F3418B4CCD900F56529 /* Sources */ = {

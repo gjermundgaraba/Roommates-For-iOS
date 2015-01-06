@@ -3,6 +3,7 @@
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 
 #import "TaskList.h"
 #import "Household.h"
@@ -28,6 +29,8 @@
     [Event registerSubclass];
     [Installation registerSubclass];
     [Expense registerSubclass];
+    
+    [ParseCrashReporting enable];
     
     // Set up Parse:
     [Parse setApplicationId:@"XXX"
