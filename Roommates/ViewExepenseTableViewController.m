@@ -141,11 +141,11 @@
         case UNSETTLED_SECTION: {
             cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
             
-            double eachOwes = self.expense.totalAmount.doubleValue / (self.expense.notPaidUp.count + self.expense.paidUp.count);
+            NSNumber *eachOwes = [NSNumber numberWithDouble:(self.expense.totalAmount.doubleValue /(self.expense.notPaidUp.count + self.expense.paidUp.count))];
             
             User *user = [self.expense.notPaidUp objectAtIndex:indexPath.row];
             cell.textLabel.text = user.displayName;
-            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Owes %.02f", nil), eachOwes];
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Owes %@", nil), eachOwes.stringValue];
             break;
         }
         case SETTLED_SECTION: {
@@ -250,7 +250,7 @@
     UIAlertView *changeAmountAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Change Total Amount", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Change Amount", nil), nil];
     [changeAmountAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [[changeAmountAlert textFieldAtIndex:0] setText:[self.expense.totalAmount stringValue]];
-    [[changeAmountAlert textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
+    [[changeAmountAlert textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeDecimalPad];
     changeAmountAlert.tag = 2;
     [changeAmountAlert show];
 }

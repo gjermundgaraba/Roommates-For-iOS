@@ -193,19 +193,19 @@
     
     cell.textLabel.text = expense.name;
     cell.detailTextLabel.text = @"";
-    double whatEachOwe = expense.totalAmount.doubleValue / (expense.notPaidUp.count + expense.paidUp.count);
+    NSNumber *whatEachOwe = [NSNumber numberWithDouble:expense.totalAmount.doubleValue / (expense.notPaidUp.count + expense.paidUp.count)];
     
     if (indexPath.section == EXPENSES_UNSETTLED_SECTION) {
         if ([expense.owed.objectId isEqualToString:[User currentUser].objectId]) {            
-            double whatWeAreOwed = whatEachOwe * expense.notPaidUp.count;
+            NSNumber *whatWeAreOwed = [NSNumber numberWithDouble:whatEachOwe.doubleValue * expense.notPaidUp.count];
             
-            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You are owed %.02f for this expense", nil), whatWeAreOwed];
+            cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You are owed %@ for this expense", nil), whatWeAreOwed.stringValue];
         }
         else {
             cell.detailTextLabel.text = NSLocalizedString(@"You do not owe anything for this", nil);
             for (User *user in expense.notPaidUp) {
                 if ([user.objectId isEqualToString:[User currentUser].objectId]) {
-                    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You owe %.02f to %@", nil), whatEachOwe, expense.owed.displayName];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You owe %@ to %@", nil), whatEachOwe, expense.owed.displayName];
                     break;
                 }
             }
