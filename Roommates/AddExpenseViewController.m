@@ -65,7 +65,7 @@
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Invalid Amount", nil)];
     }
     else if (selectedRows.copy == 0) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"No members selcted for the expense", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"No members selected for the expense", nil)];
     }
     else {
         NSMutableArray *notPaidUp = [[NSMutableArray alloc] init];
