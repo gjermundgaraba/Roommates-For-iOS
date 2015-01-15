@@ -42,7 +42,7 @@
                     [SVProgressHUD dismiss];
                     if (!error) {
                         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"User has been updated!", nil)];
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        [self.navigationController popViewControllerAnimated:YES];
                     }
                     else {
                         [SVProgressHUD showErrorWithStatus:error.userInfo[@"error"]];
