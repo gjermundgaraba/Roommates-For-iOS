@@ -92,7 +92,7 @@
                     [self setCellUnClickable:cell];
                 }
                 else {
-                    
+                    [self setCellClickable:cell];
                 }
                 break;
             }
