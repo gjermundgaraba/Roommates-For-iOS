@@ -23,14 +23,12 @@
         [self.changePasswordTextField.text isEqualToString:@""] ||
         [self.confirmNewPasswordTextField.text isEqualToString:@""]) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Please fill out all fields", nil)];
-    }
-    else if (![changePassword isEqualToString:confirmPassword]) {
+    } else if (![changePassword isEqualToString:confirmPassword]) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Passwords do not match!", nil)];
     }
     else if (![InputValidation validatePassword:changePassword]) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Password is not valid. A Valid password needs to be at least 6 characters long, have at least one upper and one lower case letters and at least one number", nil)];
-    }
-    else {
+    } else {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Changing password...", nil) maskType:SVProgressHUDMaskTypeBlack];
         User *user = [User currentUser];
         [User logInWithUsernameInBackground:user.username password:oldPassword block:^(User *user, NSError *error) {

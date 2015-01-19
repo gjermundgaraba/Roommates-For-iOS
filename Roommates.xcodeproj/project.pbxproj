@@ -83,6 +83,7 @@
 		7C930D701A3A246D00C13A01 /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C930D6F1A3A246D00C13A01 /* EventTableViewController.m */; };
 		7C94294918BCC653007FA97E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94294818BCC653007FA97E /* ProfileViewController.m */; };
 		7C96E5E01901BE9900BF355A /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96E5DF1901BE9900BF355A /* Installation.m */; };
+		7CA4E8231A6D8CB0009D7586 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA4E8221A6D8CB0009D7586 /* Launch Screen.xib */; };
 		7CBADDC718CA599B00B16792 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */; };
 		7CBF4168190ABDF600D964FC /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF4167190ABDF600D964FC /* Expense.m */; };
 		7CBF416B190ABF6700D964FC /* ExpensesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF416A190ABF6700D964FC /* ExpensesTableViewController.m */; };
@@ -222,6 +223,7 @@
 		7C94294818BCC653007FA97E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C96E5DE1901BE9900BF355A /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
 		7C96E5DF1901BE9900BF355A /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
+		7CA4E8221A6D8CB0009D7586 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
 		7CBADDC518CA599B00B16792 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		7CBADDC618CA599B00B16792 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		7CBF4166190ABDF600D964FC /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				7C062F7A18B4DFE700F56529 /* View Controllers */,
 				7C329E3018DE0FA600BF6513 /* Helpers */,
 				7C062F4D18B4CCD900F56529 /* Main_iPhone.storyboard */,
+				7CA4E8221A6D8CB0009D7586 /* Launch Screen.xib */,
 				7C062F5618B4CCD900F56529 /* Images.xcassets */,
 				7C062F4218B4CCD900F56529 /* Supporting Files */,
 			);
@@ -832,6 +835,7 @@
 						};
 					};
 					7C062F5B18B4CCDA00F56529 = {
+						DevelopmentTeam = FEJ3WA4PXR;
 						TestTargetID = 7C062F3718B4CCD900F56529;
 					};
 				};
@@ -865,6 +869,7 @@
 				7C062F4F18B4CCD900F56529 /* Main_iPhone.storyboard in Resources */,
 				7C062F4618B4CCD900F56529 /* InfoPlist.strings in Resources */,
 				7C74E6BE1A5C6DC4006FEADC /* SVProgressHUD.bundle in Resources */,
+				7CA4E8231A6D8CB0009D7586 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,7 +1080,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gjermund Bjaanes (SLW6AJ6EGH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gjermund Bjaanes (SLW6AJ6EGH)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1104,7 +1108,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gjermund Bjaanes (SLW6AJ6EGH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gjermund Bjaanes (SLW6AJ6EGH)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1133,6 +1136,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Roommates.app/Roommates";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1162,7 +1167,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46113090-13E0-476E-A793-AC5D03C4BE86";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1172,6 +1177,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Roommates.app/Roommates";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1197,7 +1204,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46113090-13E0-476E-A793-AC5D03C4BE86";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
