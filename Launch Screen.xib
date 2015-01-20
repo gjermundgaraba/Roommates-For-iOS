@@ -21,36 +21,33 @@
                     </variation>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roommates" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="8" width="375" height="43"/>
+                    <rect key="frame" x="20" y="346" width="375" height="43"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="43" id="B7r-SW-zgI"/>
+                        <constraint firstAttribute="width" constant="375" id="L5M-2H-2fO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Roommates logo white" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-d7-BIT">
-                    <rect key="frame" x="153" y="313" width="109" height="109"/>
+                    <rect key="frame" x="153" y="229" width="109" height="109"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="109" id="E3Z-01-xcC"/>
-                        <constraint firstAttribute="height" constant="109" id="INm-cU-IN6"/>
+                        <constraint firstAttribute="width" constant="109" id="CcK-rr-fgq"/>
+                        <constraint firstAttribute="height" constant="109" id="NJS-Aq-bKH"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.33333333329999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="KkP-d7-BIT" secondAttribute="centerX" constant="-0.5" id="Ik1-wk-B37"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="0cV-z2-2DU"/>
+                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" constant="-0.5" id="KNY-iv-CAs"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="Kid-kn-2rF"/>
-                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
-                <constraint firstAttribute="centerY" secondItem="KkP-d7-BIT" secondAttribute="centerY" constant="0.5" id="MqD-dR-G9J"/>
-                <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="19" id="VCh-wi-xgC"/>
-                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="lUm-Pz-zos"/>
+                <constraint firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" constant="19" id="LCy-qb-IHL"/>
+                <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" constant="0.5" id="dbx-0f-Sg8"/>
+                <constraint firstAttribute="centerX" secondItem="KkP-d7-BIT" secondAttribute="centerX" constant="-0.5" id="kip-x9-pNM"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="leU-ow-4ZH"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="KkP-d7-BIT" secondAttribute="bottom" constant="8" id="mDq-g2-uHC"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <variation key="default">
                 <mask key="constraints">
@@ -61,6 +58,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Roommates logo white" width="1805" height="1928"/>
+        <image name="Roommates logo white" width="512" height="547"/>
     </resources>
 </document>
