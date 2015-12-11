@@ -1,8 +1,10 @@
 Roommates-iOS
 =============
 
-Project is near release.
+Project is released and available on the App Store.
 
+For more information:
+http://gjermundbjaanes.com/roommates/
 
 Instructions
 ============
