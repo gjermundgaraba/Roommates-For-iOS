@@ -265,10 +265,15 @@
 - (void) saveTaskListElement:(NSString *)elementName {
     if (![elementName isEqualToString:@""]) {
         if ([User currentUser] && [User currentUser].activeHousehold && self.taskList) {
+            PFACL *acl = [PFACL ACL];
+            [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
+            [acl setWriteAccess:YES forRoleWithName:[User currentUser].householdChannel];
+            
             TaskListElement *newTaskListElement = [TaskListElement object];
             newTaskListElement.elementName = elementName;
             newTaskListElement.taskList    = self.taskList;
             newTaskListElement.createdBy   = [User currentUser];
+            newTaskListElement.ACL         = acl;
             
             [SVProgressHUD showWithStatus:NSLocalizedString(@"Adding New Task List Element", nil) maskType:SVProgressHUDMaskTypeBlack];
             [newTaskListElement saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

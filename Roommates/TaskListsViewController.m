@@ -36,11 +36,16 @@
         if ([listName isEqualToString:@""]) {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"List Name is Empty", nil)];
         } else if ([User currentUser] && [User currentUser].isMemberOfAHousehold) {
+            PFACL *acl = [PFACL ACL];
+            [acl setReadAccess:YES forRoleWithName:[User currentUser].householdChannel];
+            [acl setWriteAccess:YES forRoleWithName:[User currentUser].householdChannel];
+            
             TaskList *newTaskList = (TaskList *)[PFObject objectWithClassName:@"TaskList"];
             newTaskList.listName  = listName;
             newTaskList.done = NO;
             newTaskList.createdBy = [User currentUser];
             newTaskList.household = [User currentUser].activeHousehold;
+            newTaskList.ACL = acl;
             
             [SVProgressHUD showWithStatus:NSLocalizedString(@"Creating new Task List", nil) maskType:SVProgressHUDMaskTypeBlack];
             [newTaskList saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
